@@ -636,6 +636,57 @@
     letter-spacing: 0.12em;
   }
 
+  /* ─── NEWSLETTER SIGNUP ─── */
+  .newsletter-signup {
+    margin-top: clamp(48px, 7vh, 72px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .newsletter-signup form {
+    display: flex;
+    gap: 0;
+  }
+  .newsletter-signup input[type="email"] {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    color: #111;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    padding: 8px 0;
+    width: 220px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .newsletter-signup input[type="email"]::placeholder { color: #bbb; }
+  .newsletter-signup input[type="email"]:focus { border-color: #111; }
+  .newsletter-signup button {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #FFD700;
+    background: none;
+    border: none;
+    padding: 8px 0 8px 20px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .newsletter-signup button:hover { opacity: 0.6; }
+  .newsletter-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #ccc;
+  }
+
   /* ─── RESPONSIVE: TABLET ─── */
   @media (max-width: 1119px) {
     header { padding: 0 32px; }
@@ -708,6 +759,14 @@
     <li><a href="#technik">Atelier Studie</a></li>
     <li><a href="#ausstellungen">Ausstellungen</a></li>
   </ul>
+
+  <div class="newsletter-signup">
+    <span class="newsletter-label">Jeden Montag &amp; Donnerstag</span>
+    <form action="https://titanweiss.beehiiv.com/subscribe" method="GET" target="_blank">
+      <input type="email" name="email" placeholder="Deine Email-Adresse" required>
+      <button type="submit">Abonnieren →</button>
+    </form>
+  </div>
 </section>
 
 <!-- ═══════════════════════════════════════
