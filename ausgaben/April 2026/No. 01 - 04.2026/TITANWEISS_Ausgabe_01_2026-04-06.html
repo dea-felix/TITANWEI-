@@ -149,18 +149,27 @@
 
   /* ─── ARTIST SECTIONS ─── */
   .artist-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
+    display: block;
     margin-bottom: 96px;
-    align-items: start;
   }
-  .artist-section.reverse {
-    direction: rtl;
+
+  /* ─── WERK-LINKS ─── */
+  .artist-links {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 16px;
   }
-  .artist-section.reverse > * {
-    direction: ltr;
+  .artist-link {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: #FFD700;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: opacity 0.2s;
   }
+  .artist-link:hover { opacity: 0.55; }
   .artist-text {}
   .artist-level {
     display: inline-block;
@@ -264,109 +273,117 @@
     color: #FFD700;
   }
 
-  /* ─── TECHNIK-SECTION ─── */
+  /* ─── ATELIER STUDIE ─── */
   .technique-section {
-    background: #fafafa;
+    background: #ffffff;
     padding: 80px 48px;
     margin: 0;
   }
   .technique-inner {
-    max-width: 1200px;
+    max-width: 720px;
     margin: 0 auto;
   }
   .technique-header {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
     margin-bottom: 64px;
-    align-items: end;
   }
   .technique-title {
     font-family: 'Montserrat', sans-serif;
     font-weight: 900;
-    font-size: 1.8rem;
-    line-height: 1.15;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    line-height: 1.1;
     color: #111111;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
   }
   .technique-intro {
     font-family: 'Inter', sans-serif;
-    font-size: 0.95rem;
-    color: #555;
-    line-height: 1.75;
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.8;
   }
 
   /* Material-Liste */
   .material-block {
-    background: #ffffff;
-    border: 1px solid #eeeeee;
-    padding: 32px;
-    margin-bottom: 48px;
+    background: none;
+    border: none;
+    padding: 0;
+    margin-bottom: 64px;
   }
   .material-block h4 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: #999;
-    margin-bottom: 16px;
+    color: #aaa;
+    margin-bottom: 20px;
   }
   .material-list {
     list-style: none;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px 32px;
+    columns: 2;
+    gap: 0 48px;
   }
   .material-list li {
     font-family: 'Inter', sans-serif;
-    font-size: 0.85rem;
+    font-size: 0.88rem;
     color: #444;
-    padding-left: 16px;
+    padding: 10px 0 10px 18px;
+    border-bottom: 1px solid #f5f5f5;
     position: relative;
+    break-inside: avoid;
   }
   .material-list li::before {
-    content: '–';
+    content: '—';
     position: absolute;
     left: 0;
-    color: #cccccc;
+    color: #FFD700;
+    font-size: 0.75rem;
   }
 
   /* Schritte */
   .steps-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
+    display: flex;
+    flex-direction: column;
   }
   .step-card {
-    background: #ffffff;
-    border: 1px solid #eeeeee;
-    padding: 28px;
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    column-gap: 28px;
+    padding: 28px 0;
+    border-top: 1px solid #f2f2f2;
+    background: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
   }
   .step-number {
     font-family: 'Montserrat', sans-serif;
     font-weight: 900;
-    font-size: 1.8rem;
+    font-size: 0.7rem;
     color: #FFD700;
-    line-height: 1;
-    margin-bottom: 12px;
+    letter-spacing: 0.08em;
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    padding-top: 3px;
   }
   .step-title {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    font-size: 0.85rem;
-    letter-spacing: 0.05em;
-    color: #111111;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    font-size: 0.75rem;
+    font-size: 0.78rem;
     letter-spacing: 0.12em;
+    color: #111111;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    grid-column: 2;
+    grid-row: 1;
   }
   .step-text {
     font-family: 'Inter', sans-serif;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: #555;
-    line-height: 1.7;
+    line-height: 1.75;
+    grid-column: 2;
+    grid-row: 2;
   }
 
   /* ─── AUSSTELLUNGEN ─── */
@@ -464,10 +481,11 @@
 
   /* ─── FOOTER ─── */
   footer {
-    background: #111111;
-    color: #ffffff;
+    background: #ffffff;
+    color: #111111;
     padding: 56px 48px;
     margin-top: 0;
+    border-top: 1px solid #eeeeee;
   }
   .footer-inner {
     max-width: 1200px;
@@ -482,7 +500,7 @@
     font-weight: 900;
     font-size: 1.1rem;
     letter-spacing: 0.35em;
-    color: #ffffff;
+    color: #111111;
     display: block;
     margin-bottom: 12px;
     text-decoration: none;
@@ -520,6 +538,98 @@
   .fade-in.visible {
     opacity: 1;
     transform: none;
+  }
+
+  /* ─── ARTICLE SECTIONS (versteckt bis Klick) ─── */
+  .article-section {
+    display: none;
+    padding-top: 64px;
+  }
+
+  /* ─── ARTIKEL HEADER ─── */
+  .article-header {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
+    height: 64px;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .article-header-logo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 1rem;
+    letter-spacing: 0.35em;
+    color: #111111;
+    text-transform: uppercase;
+  }
+
+  /* ─── BACK BUTTON ─── */
+  .back-btn {
+    display: inline-block;
+    position: fixed;
+    top: 20px;
+    left: 48px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #999;
+    text-decoration: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    z-index: 300;
+    transition: color 0.2s;
+  }
+  .back-btn:hover { color: #FFD700; }
+
+  /* ─── ISSUE LANDING ─── */
+  .issue-landing {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+  }
+  .issue-slogan {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: clamp(11px, 1.3vw, 14px);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: clamp(48px, 7vh, 80px);
+  }
+  .issue-kategorien {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(20px, 3.5vh, 36px);
+    list-style: none;
+  }
+  .issue-kategorien a {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: clamp(22px, 4vw, 52px);
+    color: #FFD700;
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: opacity 0.2s ease, letter-spacing 0.3s ease;
+  }
+  .issue-kategorien a:hover {
+    opacity: 0.5;
+    letter-spacing: 0.12em;
   }
 
   /* ─── RESPONSIVE: TABLET ─── */
@@ -581,35 +691,42 @@
 <body>
 
 <!-- ═══════════════════════════════════════
-     HEADER
+     ISSUE LANDING
 ════════════════════════════════════════ -->
-<header>
-  <a href="#" class="logo">TITANWEISS</a>
-  <span class="issue-meta">Ausgabe 01 &nbsp;—&nbsp; 6. April 2026</span>
-</header>
+<!-- ARTIKEL HEADER (nur beim Lesen sichtbar) -->
+<div id="article-header" class="article-header">
+  <span class="article-header-logo">TITANWEISS</span>
+</div>
 
-<!-- ═══════════════════════════════════════
-     HERO
-════════════════════════════════════════ -->
-<section id="zeitgeist" class="hero fade-in">
-  <div class="hero-label">Kunst. Technik. Ausstellungen.</div>
-  <h1>Fünf Positionen,<br>die man kennen sollte.</h1>
-  <p>
-    Von Cecily Browns sinnlicher Malerei im Herzen von Kensington Gardens bis zu Otis Kwame Kye Quaicoes Porträts, die das textile Erbe Ghanas in die Leinwandstruktur einschreiben — diese Ausgabe kartiert Positionen zwischen Institution und Entdeckung, zwischen Geste und Tiefe.
-  </p>
+<section class="issue-landing">
+  <p class="issue-slogan">Was die Kunst weiß.</p>
+  <ul class="issue-kategorien">
+    <li><a href="#zeitgeist">Zeitgeist</a></li>
+    <li><a href="#kuenstler">Künstler</a></li>
+    <li><a href="#technik">Atelier Studie</a></li>
+    <li><a href="#ausstellungen">Ausstellungen</a></li>
+  </ul>
 </section>
 
-<!-- CATEGORY NAV -->
-<nav class="category-nav">
-  <a href="#zeitgeist">Zeitgeist</a>
-  <a href="#kuenstler">Künstler</a>
-  <a href="#technik">Technik</a>
-  <a href="#ausstellungen">Ausstellungen</a>
-</nav>
+<!-- ═══════════════════════════════════════
+     ARTIKEL: ZEITGEIST
+════════════════════════════════════════ -->
+<div class="article-section" data-section="zeitgeist">
+  <button class="back-btn" onclick="goBack()">← Kategorien</button>
+  <section id="zeitgeist" class="hero fade-in">
+    <div class="hero-label">Zeitgeist</div>
+    <h1>Fünf Positionen,<br>die man kennen sollte.</h1>
+    <p>
+      Von Cecily Browns sinnlicher Malerei im Herzen von Kensington Gardens bis zu Otis Kwame Kye Quaicoes Porträts, die das textile Erbe Ghanas in die Leinwandstruktur einschreiben — diese Ausgabe kartiert Positionen zwischen Institution und Entdeckung, zwischen Geste und Tiefe.
+    </p>
+  </section>
+</div>
 
 <!-- ═══════════════════════════════════════
-     KÜNSTLER + WERKE
+     ARTIKEL: KÜNSTLER
 ════════════════════════════════════════ -->
+<div class="article-section" data-section="kuenstler">
+  <button class="back-btn" onclick="goBack()">← Kategorien</button>
 <div id="kuenstler" class="section-wrapper">
   <div class="section-heading">Teil 1 — Künstler &amp; Werke</div>
 
@@ -626,21 +743,9 @@
         <div class="artist-works-label">Ausgewählte Werke</div>
       </div>
     </div>
-    <div class="artist-works">
-      <a href="https://www.serpentinegalleries.org/whats-on/cecily-brown-picture-making/" target="_blank" rel="noopener" class="werk-link-block">
-        <div class="werk-link-inner">
-          <div class="werk-artist-name">Cecily Brown</div>
-          <div class="werk-title">The Fugitive Kind, 2000 — Öl auf Leinwand</div>
-          <div class="werk-cta">Werk ansehen →</div>
-        </div>
-      </a>
-      <a href="https://www.serpentinegalleries.org/whats-on/cecily-brown-picture-making/" target="_blank" rel="noopener" class="werk-link-block">
-        <div class="werk-link-inner">
-          <div class="werk-artist-name">Cecily Brown</div>
-          <div class="werk-title">Picture Making – Nature Walk, 2026 — Öl auf Leinwand, Serpentine London</div>
-          <div class="werk-cta">Werk ansehen →</div>
-        </div>
-      </a>
+    <div class="artist-links">
+      <a href="https://www.serpentinegalleries.org/whats-on/cecily-brown-picture-making/" target="_blank" rel="noopener" class="artist-link">The Fugitive Kind, 2000 →</a>
+      <a href="https://www.serpentinegalleries.org/whats-on/cecily-brown-picture-making/" target="_blank" rel="noopener" class="artist-link">Picture Making – Nature Walk, Serpentine London 2026 →</a>
     </div>
   </div>
 
@@ -659,21 +764,9 @@
         <div class="artist-works-label">Ausgewählte Werke</div>
       </div>
     </div>
-    <div class="artist-works">
-      <a href="https://gagosian.com/artists/jade-fadojutimi/" target="_blank" rel="noopener" class="werk-link-block">
-        <div class="werk-link-inner">
-          <div class="werk-artist-name">Jadé Fadojutimi</div>
-          <div class="werk-title">Untitled No. 4 (DWELVE), 2024 — Öl auf Leinwand</div>
-          <div class="werk-cta">Werk ansehen →</div>
-        </div>
-      </a>
-      <a href="https://gagosian.com/artists/jade-fadojutimi/" target="_blank" rel="noopener" class="werk-link-block">
-        <div class="werk-link-inner">
-          <div class="werk-artist-name">Jadé Fadojutimi</div>
-          <div class="werk-title">Untitled No. 8 (DWELVE), 2024 — Öl auf Leinwand</div>
-          <div class="werk-cta">Werk ansehen →</div>
-        </div>
-      </a>
+    <div class="artist-links">
+      <a href="https://gagosian.com/artists/jade-fadojutimi/" target="_blank" rel="noopener" class="artist-link">Untitled No. 4 (DWELVE), 2024 →</a>
+      <a href="https://gagosian.com/artists/jade-fadojutimi/" target="_blank" rel="noopener" class="artist-link">Untitled No. 8 (DWELVE), 2024 →</a>
     </div>
   </div>
 
@@ -692,21 +785,9 @@
         <div class="artist-works-label">Ausgewählte Werke</div>
       </div>
     </div>
-    <div class="artist-works">
-      <a href="https://www.robertsprojectsla.com/artists/otis-kwame-kye-quaicoe" target="_blank" rel="noopener" class="werk-link-block">
-        <div class="werk-link-inner">
-          <div class="werk-artist-name">Otis Kwame Kye Quaicoe</div>
-          <div class="werk-title">Thomas Nii Quansah Sackey, 2024 — Öl + Stoff-Applikation, 274×213 cm</div>
-          <div class="werk-cta">Werk ansehen →</div>
-        </div>
-      </a>
-      <a href="https://www.robertsprojectsla.com/artists/otis-kwame-kye-quaicoe" target="_blank" rel="noopener" class="werk-link-block">
-        <div class="werk-link-inner">
-          <div class="werk-artist-name">Otis Kwame Kye Quaicoe</div>
-          <div class="werk-title">Encounter by Pool, 2024 — Öl + Stoff-Applikation, 183×183 cm</div>
-          <div class="werk-cta">Werk ansehen →</div>
-        </div>
-      </a>
+    <div class="artist-links">
+      <a href="https://www.robertsprojectsla.com/artists/otis-kwame-kye-quaicoe" target="_blank" rel="noopener" class="artist-link">Thomas Nii Quansah Sackey, 2024 →</a>
+      <a href="https://www.robertsprojectsla.com/artists/otis-kwame-kye-quaicoe" target="_blank" rel="noopener" class="artist-link">Encounter by Pool, 2024 →</a>
     </div>
   </div>
 
@@ -725,21 +806,9 @@
         <div class="artist-works-label">Ausgewählte Werke</div>
       </div>
     </div>
-    <div class="artist-works">
-      <a href="https://www.davidzwirner.com/artists/neo-rauch/survey" target="_blank" rel="noopener" class="werk-link-block">
-        <div class="werk-link-inner">
-          <div class="werk-artist-name">Neo Rauch</div>
-          <div class="werk-title">Feldzeichen, 2023 — Öl auf Leinwand, 200×250 cm</div>
-          <div class="werk-cta">Werk ansehen →</div>
-        </div>
-      </a>
-      <a href="https://www.davidzwirner.com/artists/neo-rauch/survey" target="_blank" rel="noopener" class="werk-link-block">
-        <div class="werk-link-inner">
-          <div class="werk-artist-name">Neo Rauch</div>
-          <div class="werk-title">Verwobene Sphären, 2024 — Werkgruppe (mit Rosa Loy)</div>
-          <div class="werk-cta">Werk ansehen →</div>
-        </div>
-      </a>
+    <div class="artist-links">
+      <a href="https://www.davidzwirner.com/artists/neo-rauch/survey" target="_blank" rel="noopener" class="artist-link">Feldzeichen, 2023 →</a>
+      <a href="https://www.davidzwirner.com/artists/neo-rauch/survey" target="_blank" rel="noopener" class="artist-link">Verwobene Sphären, 2024 →</a>
     </div>
   </div>
 
@@ -758,40 +827,27 @@
         <div class="artist-works-label">Ausgewählte Werke</div>
       </div>
     </div>
-    <div class="artist-works">
-      <a href="https://www.hauserwirth.com/artists/27465-henry-taylor/" target="_blank" rel="noopener" class="werk-link-block">
-        <div class="werk-link-inner">
-          <div class="werk-artist-name">Henry Taylor</div>
-          <div class="werk-title">Aus »Gathering Wool«, 2025/26 — Acryl auf Leinwand</div>
-          <div class="werk-cta">Werk ansehen →</div>
-        </div>
-      </a>
-      <a href="https://www.hauserwirth.com/hauser-wirth-exhibitions/james-jarvaise-henry-taylor-2025/" target="_blank" rel="noopener" class="werk-link-block">
-        <div class="werk-link-inner">
-          <div class="werk-artist-name">Henry Taylor</div>
-          <div class="werk-title">Aus »Sometimes a Straight Line Has to be Crooked«, 2025</div>
-          <div class="werk-cta">Werk ansehen →</div>
-        </div>
-      </a>
+    <div class="artist-links">
+      <a href="https://www.hauserwirth.com/artists/27465-henry-taylor/" target="_blank" rel="noopener" class="artist-link">Gathering Wool, 2025/26 →</a>
+      <a href="https://www.hauserwirth.com/hauser-wirth-exhibitions/james-jarvaise-henry-taylor-2025/" target="_blank" rel="noopener" class="artist-link">Sometimes a Straight Line Has to be Crooked, 2025 →</a>
     </div>
   </div>
 </div><!-- /section-wrapper -->
+</div><!-- /article-section kuenstler -->
 
 <!-- ═══════════════════════════════════════
-     TECHNIK
+     ARTIKEL: TECHNIK
 ════════════════════════════════════════ -->
+<div class="article-section" data-section="technik">
+  <button class="back-btn" onclick="goBack()">← Kategorien</button>
 <section id="technik" class="technique-section fade-in">
   <div class="technique-inner">
-    <div class="section-heading">Teil 2 — Atelier-Studie</div>
+    <div class="section-heading">Atelier Studie</div>
     <div class="technique-header">
-      <div>
-        <h2 class="technique-title">Expressionstransparenz:<br>Glazur und Geste kombinieren</h2>
-      </div>
-      <div>
-        <p class="technique-intro">
-          Grossformatig malen heisst: mit dem ganzen Körper denken. Diese Atelier-Studie verbindet die gestische Direktheit von Henry Taylor und Jadé Fadojutimi mit der lasierenden Tiefe von Neo Rauch — und zeigt, wie beide Pole in einer Arbeit aktiviert werden können.
-        </p>
-      </div>
+      <h2 class="technique-title">Expressionstransparenz:<br>Glazur und Geste kombinieren</h2>
+      <p class="technique-intro">
+        Grossformatig malen heisst: mit dem ganzen Körper denken. Diese Atelier-Studie verbindet die gestische Direktheit von Henry Taylor und Jadé Fadojutimi mit der lasierenden Tiefe von Neo Rauch — und zeigt, wie beide Pole in einer Arbeit aktiviert werden können.
+      </p>
     </div>
 
     <div class="material-block">
@@ -840,10 +896,13 @@
     </div>
   </div>
 </section>
+</div><!-- /article-section technik -->
 
 <!-- ═══════════════════════════════════════
-     AUSSTELLUNGEN
+     ARTIKEL: AUSSTELLUNGEN
 ════════════════════════════════════════ -->
+<div class="article-section" data-section="ausstellungen">
+  <button class="back-btn" onclick="goBack()">← Kategorien</button>
 <section id="ausstellungen" class="exhibitions-section fade-in">
   <div class="exhibitions-inner">
     <div class="section-heading">Teil 3 — Ausstellungen: Oldenburg + Bremen</div>
@@ -896,6 +955,7 @@
     </div>
   </div>
 </section>
+</div><!-- /article-section ausstellungen -->
 
 <!-- ═══════════════════════════════════════
      FOOTER
@@ -904,30 +964,60 @@
   <div class="footer-inner">
     <div>
       <span class="footer-logo">TITANWEISS</span>
-      <p class="footer-tagline">Ein persönliches Kunstmagazin.<br>Jeden Montag und Donnerstag.</p>
+      <p class="footer-tagline">Kunstmagazin.<br>Montag und Donnerstag.</p>
     </div>
     <div>
       <span class="footer-label">Diese Ausgabe</span>
       <p class="footer-text">Nr. 01 — 6. April 2026<br>Künstler: Cecily Brown, Jadé Fadojutimi, Otis Kwame Kye Quaicoe, Neo Rauch, Henry Taylor<br>Technik: Expressionstransparenz<br>Ausstellungen: Oldenburg + Bremen</p>
     </div>
     <div>
-      <span class="footer-label">Für Felix Weckner</span>
-      <p class="footer-text">Oldenburg, April 2026.<br>Kunst, die es wert ist, gesehen zu werden.</p>
+      <p class="footer-text" style="font-style: italic; font-size: 0.85rem; color: #aaa; letter-spacing: 0.05em;">Was die Kunst weiß.</p>
     </div>
   </div>
 </footer>
 
-<!-- ─── SCROLL ANIMATIONS ─── -->
+<!-- ─── NAVIGATION + SCROLL ANIMATIONS ─── -->
 <script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
+  // ── Scroll Animations (zuerst definieren) ──
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
     });
   }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  // ── Show/Hide Logik ──
+  function showSection(hash) {
+    var landing = document.querySelector('.issue-landing');
+    var sections = document.querySelectorAll('.article-section');
+    var header = document.getElementById('article-header');
+    var target = hash ? hash.replace('#', '') : '';
+
+    if (!target) {
+      landing.style.display = 'flex';
+      sections.forEach(function(s) { s.style.display = 'none'; });
+      header.style.display = 'none';
+    } else {
+      landing.style.display = 'none';
+      header.style.display = 'flex';
+      sections.forEach(function(s) {
+        s.style.display = (s.dataset.section === target) ? 'block' : 'none';
+      });
+      window.scrollTo(0, 0);
+      document.querySelectorAll('.article-section[data-section="' + target + '"] .fade-in')
+        .forEach(function(el) { observer.observe(el); });
+    }
+  }
+
+  function goBack() {
+    history.pushState('', document.title, window.location.pathname);
+    showSection('');
+  }
+
+  window.addEventListener('hashchange', function() { showSection(location.hash); });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    showSection(location.hash);
+  });
 </script>
 </body>
 </html>

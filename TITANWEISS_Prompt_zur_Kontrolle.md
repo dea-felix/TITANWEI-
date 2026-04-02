@@ -2,7 +2,7 @@
 
 Dieses Dokument enthält den kompletten Auftrag den Claude bei jedem automatischen Lauf (Montag & Donnerstag 7:10 Uhr) ausführt.
 
-**Letzte Aktualisierung:** 2. April 2026 — Lateraldenker-Review + Phase 0 (Zeitgeist) hinzugefügt.
+**Letzte Aktualisierung:** 2. April 2026 — Zeitgeist zu vollständiger Hauptrubrik ausgebaut.
 
 **Neu in dieser Version:**
 - Phase 0: Zeitgeist-Researcher (ganz oben im Magazin)
@@ -28,27 +28,69 @@ Du durchläufst 9 Phasen (0 bis 8). Fange immer mit Phase 0 an.
 
 ---
 
-## PHASE 0: ZEITGEIST-RESEARCHER *(NEU)*
+## PHASE 0: ZEITGEIST — DAS HERZSTÜCK
 
-Recherchiere was gerade in der zeitgenössischen Malerei passiert. Dein Output wird als erster Inhaltsblock ganz oben im Magazin erscheinen — als journalistischer Mini-Essay.
+Der Zeitgeist-Block ist die wichtigste und umfangreichste Rubrik des Magazins. Kein Mini-Essay — eine vollständige, investigative Bestandsaufnahme der aktuellen Kunstwelt in vier Unterrubriken. Gesamt: 1.200–1.800 Wörter, Deutsch, Artforum-Niveau.
 
-**Nutze NUR Quellen die garantiert frei zugänglich sind:**
+**Nutze diese Quellen (nur frei zugängliche):**
+- WebSearch: artnet.com/news, artforum.com, frieze.com, monopol-magazin.de, artprice.com/news, christies.com/stories, sothebys.com/stories, artdaily.org
+- WebFetch auf artdaily.org für tagesaktuelle Nachrichten
+- WebSearch: "auction record 2026 painting", "art market 2026", "emerging artist 2026 gallery", "painting trend 2026"
 
-1. WebSearch: "contemporary painting trends 2026", "emerging painters 2026", "art market painting 2026", "painting movement 2026 artforum"
-2. artdaily.org — WebFetch für aktuelle Kunstnachrichten
-3. Wikipedia API: `https://en.wikipedia.org/api/rest_v1/page/summary/{Artist_Name}` — prüfe ob Künstler-Artikel aktuell und gepflegt sind
-4. Monopol-Magazin, artnet.com/news (soweit zugänglich)
+---
 
-**Recherchiere:**
-- Welche Stile dominieren gerade? (Neo-Figuration, Neo-Expressionismus, Abstraktion, etc.)
-- Welche Künstler/innen sind auf dem Markt, in Institutionen, bei Sammlern gefragt?
-- Wer ist im Kommen? (Emerging Artists die in 2 Jahren überall sein werden)
-- Was zeigen große Institutionen? (MoMA, Tate, Serpentine, documenta, Biennale Venedig)
-- Welche Themen und Ästhetiken sind gefragt?
+### UNTERRUBRIK 1 — MARKT & PREISE
 
-**Mini-Essay:** ca. 300–400 Wörter, Deutsch, journalistisch wie Artforum — sachlich, analytisch, keine Ich-Perspektive. Keine erfundenen Fakten. Formulierungen wie "Die zeitgenössische Malerei zeigt..." oder "2026 zeichnet sich ab...".
+Recherchiere aktuelle Auktionsergebnisse und Marktbewegungen:
+- Welche Künstler/innen haben zuletzt neue Preis-Rekorde erzielt? (Auktionen bei Christie's, Sotheby's, Phillips, Bonhams)
+- Welche Werke haben sich stark verteuert oder verbilligt?
+- Welche Galerien haben neue Megadeals abgeschlossen oder Künstler neu unter Vertrag genommen?
+- Gibt es Spekulationsblasen oder überraschende Preiseinbrüche?
 
-Speichere Essay + Quellen in: `/tmp/phase0_zeitgeist.md`
+**Output:** 300–400 Wörter. Konkrete Zahlen und Namen — kein Aufrunden, keine Schätzungen. Nur verifizierte Preise. Formulierung: sachlich, wie eine Börsenkolumne für Kunst.
+
+---
+
+### UNTERRUBRIK 2 — IM KOMMEN: NAMES TO WATCH
+
+3–5 Künstler/innen die gerade massiv Fahrt aufnehmen:
+- Gerade neu von einer Top-Galerie vertreten (Gagosian, Hauser & Wirth, David Zwirner, Sprüth Magers etc.)?
+- Erstmals auf großen Art Fairs präsent (Art Basel, Frieze, FIAC)?
+- Plötzlich stark gestiegene Auktionspreise?
+- Institutionelle Erstausstellungen nach Jahren in der Underground-Szene?
+- Ausgezeichnet mit relevanten Preisen (Turner Prize, Hugo Boss, Preis der Nationalgalerie)?
+
+**Output:** Pro Künstler/in 60–100 Wörter: Name, Herkunft, Galerie, warum jetzt, eine konkrete Beobachtung. Kein Hype ohne Substanz.
+
+---
+
+### UNTERRUBRIK 3 — STIL & MATERIAL: WAS GERADE PASSIERT
+
+Was dominiert die Leinwand, das Atelier, die Messekoje?
+- Welche Malstile sind gerade auf dem Vormarsch? (z.B. Neo-Expressionismus, Lyrical Abstraction, Figuration, Pattern Painting, Process Painting)
+- Welche Materialien werden experimentell eingesetzt? (Ölfarbe, Acryl, Ölstick, Schellack, Rohleinen, Mixed Media)
+- Welche Farbpaletten dominieren die aktuellen Messen und Institutionen?
+- Welche historischen Einflüsse werden gerade neu verhandelt? (Basquiat-Revival? Neues Interesse an deutschen Expressionisten?)
+- Was ist gerade out? Was wirkt überholt?
+
+**Output:** 300–400 Wörter. Konkret und bildhaft — Felix ist selbst Maler, er will wissen was das für seine eigene Arbeit bedeutet.
+
+---
+
+### UNTERRUBRIK 4 — DER ZEITGEIST-ESSAY
+
+Ein analytischer Leitartikel der die drei Unterrubriken zusammenzieht:
+- Was sagen Markt, aufkommende Namen und Stilentwicklungen über den kulturellen Moment aus?
+- Welche gesellschaftlichen, politischen oder technologischen Themen spiegeln sich in der Malerei?
+- Wohin bewegt sich die Malerei in den nächsten 12–18 Monaten?
+
+**Output:** 400–500 Wörter. Artforum-Ton: analytisch, mutig in der These, keine Binsenweisheiten. Keine Ich-Perspektive. Darf provozieren.
+
+---
+
+**ABSOLUT VERBOTEN in Phase 0:** Erfundene Auktionspreise. Erfundene Galerien-Deals. Unverifizierte Rekorde. Lieber eine Unterrubrik kürzer als eine einzige falsche Zahl.
+
+Speichere alles in: `/tmp/phase0_zeitgeist.md`
 
 ---
 
