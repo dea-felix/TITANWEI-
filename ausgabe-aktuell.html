@@ -90,6 +90,39 @@
     max-width: 620px;
     line-height: 1.8;
   }
+  .hero {
+    min-height: 82vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* ─── CATEGORY NAV ─── */
+  .category-nav {
+    padding: 0 48px 80px;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 40px;
+  }
+  .category-nav a {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.68rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #FFD700;
+    text-decoration: none;
+    padding-bottom: 3px;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .category-nav a:hover {
+    border-bottom-color: #FFD700;
+  }
 
   /* ─── SECTION WRAPPERS ─── */
   .section-wrapper {
@@ -558,7 +591,7 @@
 <!-- ═══════════════════════════════════════
      HERO
 ════════════════════════════════════════ -->
-<section class="hero fade-in">
+<section id="zeitgeist" class="hero fade-in">
   <div class="hero-label">Kunst. Technik. Ausstellungen.</div>
   <h1>Fünf Positionen,<br>die man kennen sollte.</h1>
   <p>
@@ -566,10 +599,18 @@
   </p>
 </section>
 
+<!-- CATEGORY NAV -->
+<nav class="category-nav">
+  <a href="#zeitgeist">Zeitgeist</a>
+  <a href="#kuenstler">Künstler</a>
+  <a href="#technik">Technik</a>
+  <a href="#ausstellungen">Ausstellungen</a>
+</nav>
+
 <!-- ═══════════════════════════════════════
      KÜNSTLER + WERKE
 ════════════════════════════════════════ -->
-<div class="section-wrapper">
+<div id="kuenstler" class="section-wrapper">
   <div class="section-heading">Teil 1 — Künstler &amp; Werke</div>
 
   <!-- ── CECILY BROWN ── -->
@@ -739,7 +780,7 @@
 <!-- ═══════════════════════════════════════
      TECHNIK
 ════════════════════════════════════════ -->
-<section class="technique-section fade-in">
+<section id="technik" class="technique-section fade-in">
   <div class="technique-inner">
     <div class="section-heading">Teil 2 — Atelier-Studie</div>
     <div class="technique-header">
@@ -803,7 +844,7 @@
 <!-- ═══════════════════════════════════════
      AUSSTELLUNGEN
 ════════════════════════════════════════ -->
-<section class="exhibitions-section fade-in">
+<section id="ausstellungen" class="exhibitions-section fade-in">
   <div class="exhibitions-inner">
     <div class="section-heading">Teil 3 — Ausstellungen: Oldenburg + Bremen</div>
     <div class="shows-grid">
