@@ -395,15 +395,15 @@
     margin: 0 auto;
   }
   .shows-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
+    display: flex;
+    flex-direction: column;
     margin-top: 64px;
   }
   .show-card {
-    background: #ffffff;
-    border: 1px solid #eeeeee;
-    padding: 36px 32px;
+    background: none;
+    border: none;
+    border-top: 1px solid #f2f2f2;
+    padding: 40px 0;
   }
   .show-city {
     font-family: 'Montserrat', sans-serif;
@@ -651,7 +651,7 @@
     .material-list { grid-template-columns: 1fr; }
     .steps-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
     .exhibitions-section { padding: 64px 32px; }
-    .shows-grid { grid-template-columns: repeat(2, 1fr); }
+    .exhibitions-inner { max-width: 720px; }
     footer { padding: 48px 32px; }
     .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
   }
@@ -668,11 +668,9 @@
     .technique-section { padding: 48px 20px; }
     .steps-grid { grid-template-columns: 1fr; }
     .exhibitions-section { padding: 48px 20px; }
-    .shows-grid { grid-template-columns: 1fr; }
+    .show-card { padding: 28px 0; }
     footer { padding: 40px 20px; }
     .footer-inner { grid-template-columns: 1fr; gap: 32px; }
-    .werk-link-inner { padding: 16px; }
-    .show-card { padding: 24px 20px; }
   }
 
   /* ─── PRINT ─── */
@@ -718,7 +716,7 @@
 <div class="article-section" data-section="zeitgeist">
   <button class="back-btn" onclick="goBack()">← Kategorien</button>
   <section id="zeitgeist" class="hero fade-in">
-    <div class="hero-label">Zeitgeist</div>
+    <div class="section-heading">Zeitgeist</div>
     <h1>Fünf Positionen,<br>die man kennen sollte.</h1>
     <p>
       Von Cecily Browns sinnlicher Malerei im Herzen von Kensington Gardens bis zu Otis Kwame Kye Quaicoes Porträts, die das textile Erbe Ghanas in die Leinwandstruktur einschreiben — diese Ausgabe kartiert Positionen zwischen Institution und Entdeckung, zwischen Geste und Tiefe.
@@ -732,7 +730,7 @@
 <div class="article-section" data-section="kuenstler">
   <button class="back-btn" onclick="goBack()">← Kategorien</button>
 <div id="kuenstler" class="section-wrapper">
-  <div class="section-heading">Teil 1 — Künstler &amp; Werke</div>
+  <div class="section-heading">Künstler</div>
 
   <!-- ── CECILY BROWN ── -->
   <div class="artist-section fade-in">
@@ -909,7 +907,7 @@
   <button class="back-btn" onclick="goBack()">← Kategorien</button>
 <section id="ausstellungen" class="exhibitions-section fade-in">
   <div class="exhibitions-inner">
-    <div class="section-heading">Teil 3 — Ausstellungen: Oldenburg + Bremen</div>
+    <div class="section-heading">Ausstellungen</div>
     <div class="shows-grid">
 
       <!-- SHOW 1: OKV -->
