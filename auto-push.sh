@@ -79,12 +79,11 @@ if [ -n "$latest" ]; then
             \"subject\": \"TITANWEISS — Ausgabe No. $nummer\",
             \"preview_text\": \"Die neue Ausgabe ist da — Zeitgeist, Künstler, Atelier Studie, Ausstellungen.\",
             \"body\": $(echo "$EMAIL_BODY" | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))'),
-            \"status\": \"confirmed\",
-            \"send_at\": \"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"
+            \"status\": \"draft\"
         }")
 
     if [ "$RESPONSE" = "201" ] || [ "$RESPONSE" = "200" ]; then
-        echo "✓ Newsletter gesendet (Ausgabe $nummer)"
+        echo "✓ Newsletter-Entwurf erstellt — bitte in Beehiiv senden: https://app.beehiiv.com"
     else
         echo "⚠ Newsletter-Fehler (HTTP $RESPONSE)"
         cat /tmp/beehiiv_response.json
