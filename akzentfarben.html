@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akzentfarben — TITANWEISS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;900&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fff;
+      color: #111;
+      padding: 60px 48px;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      margin-bottom: 48px;
+      color: #111;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    .swatch {
+      border: 1px solid #e8e8e8;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .swatch-color {
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .swatch-label-demo {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 9px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #000;
+    }
+    .swatch-info {
+      padding: 20px;
+      background: #fff;
+    }
+    .swatch-nr {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 22px;
+      color: #111;
+      margin-bottom: 6px;
+    }
+    .swatch-hex {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 12px;
+      color: #999;
+      margin-bottom: 10px;
+      letter-spacing: 0.05em;
+    }
+    .swatch-desc {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 12px;
+      color: #555;
+      line-height: 1.5;
+    }
+    .preview {
+      padding: 20px;
+      background: #f8f8f8;
+      border-top: 1px solid #e8e8e8;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .preview-label {
+      font-size: 10px;
+      color: #999;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .preview-link {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding-bottom: 2px;
+    }
+    .old {
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 1px solid #e8e8e8;
+    }
+    .old h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 24px;
+    }
+    .old-swatch {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .old-color {
+      width: 80px;
+      height: 80px;
+      background: #c9a227;
+      flex-shrink: 0;
+    }
+    .old-info { font-size: 13px; color: #555; line-height: 1.6; }
+    .old-hex { font-family: 'Montserrat', sans-serif; font-size: 18px; color: #111; font-weight: 900; }
+  </style>
+</head>
+<body>
+
+  <h1>TITANWEISS — Akzentfarben Vergleich</h1>
+
+  <div class="grid">
+
+    <!-- Option 1 -->
+    <div class="swatch">
+      <div class="swatch-color" style="background: #FFD700;">
+        <span class="swatch-label-demo" style="color: #000;">INSTITUTION</span>
+      </div>
+      <div class="swatch-info">
+        <div class="swatch-nr">Option 1</div>
+        <div class="swatch-hex">#FFD700 — Gold</div>
+        <div class="swatch-desc">Klassisches reines Gold. Hell, klar, knallig. Erinnert an Auszeichnungen und Ausstellungsschilder.</div>
+      </div>
+      <div class="preview">
+        <span class="preview-label">Im Magazin so:</span>
+        <a class="preview-link" style="color: #FFD700; border-bottom: 1px solid #FFD700;">Werk ansehen →</a>
+        <a class="preview-link" style="color: #FFD700; border-bottom: 1px solid #FFD700;">Zur Ausstellung →</a>
+      </div>
+    </div>
+
+    <!-- Option 2 -->
+    <div class="swatch">
+      <div class="swatch-color" style="background: #F5C400;">
+        <span class="swatch-label-demo" style="color: #000;">INSTITUTION</span>
+      </div>
+      <div class="swatch-info">
+        <div class="swatch-nr">Option 2</div>
+        <div class="swatch-hex">#F5C400 — Chromgelb</div>
+        <div class="swatch-desc">Warmes, kräftiges Gelb. Knallig aber nicht grell. Denk an Warhol-Siebdruck oder Documenta-Beschilderung.</div>
+      </div>
+      <div class="preview">
+        <span class="preview-label">Im Magazin so:</span>
+        <a class="preview-link" style="color: #F5C400; border-bottom: 1px solid #F5C400;">Werk ansehen →</a>
+        <a class="preview-link" style="color: #F5C400; border-bottom: 1px solid #F5C400;">Zur Ausstellung →</a>
+      </div>
+    </div>
+
+    <!-- Option 3 -->
+    <div class="swatch">
+      <div class="swatch-color" style="background: #FFBE00;">
+        <span class="swatch-label-demo" style="color: #000;">INSTITUTION</span>
+      </div>
+      <div class="swatch-info">
+        <div class="swatch-nr">Option 3</div>
+        <div class="swatch-hex">#FFBE00 — Signalgelb</div>
+        <div class="swatch-desc">Zwischen Gold und Signal. Kräftig, modern, sehr präsent. Wie Pantone Process Yellow — aber wärmer.</div>
+      </div>
+      <div class="preview">
+        <span class="preview-label">Im Magazin so:</span>
+        <a class="preview-link" style="color: #FFBE00; border-bottom: 1px solid #FFBE00;">Werk ansehen →</a>
+        <a class="preview-link" style="color: #FFBE00; border-bottom: 1px solid #FFBE00;">Zur Ausstellung →</a>
+      </div>
+    </div>
+
+    <!-- Option 4 -->
+    <div class="swatch">
+      <div class="swatch-color" style="background: #E8B800;">
+        <span class="swatch-label-demo" style="color: #000;">INSTITUTION</span>
+      </div>
+      <div class="swatch-info">
+        <div class="swatch-nr">Option 4</div>
+        <div class="swatch-hex">#E8B800 — Sattgelb</div>
+        <div class="swatch-desc">Sattes, gesättigtes Gelb ohne Braun-Anteil. Knalliger als der aktuelle Senfton, aber kontrollierter als reines Gold.</div>
+      </div>
+      <div class="preview">
+        <span class="preview-label">Im Magazin so:</span>
+        <a class="preview-link" style="color: #E8B800; border-bottom: 1px solid #E8B800;">Werk ansehen →</a>
+        <a class="preview-link" style="color: #E8B800; border-bottom: 1px solid #E8B800;">Zur Ausstellung →</a>
+      </div>
+    </div>
+
+    <!-- Option 5 -->
+    <div class="swatch">
+      <div class="swatch-color" style="background: #FFC700;">
+        <span class="swatch-label-demo" style="color: #000;">INSTITUTION</span>
+      </div>
+      <div class="swatch-info">
+        <div class="swatch-nr">Option 5</div>
+        <div class="swatch-hex">#FFC700 — Sonnengelb</div>
+        <div class="swatch-desc">Warm, leuchtend, selbstbewusst. Denk an den gelben Streifen in Joseph Beuys' Katalogen.</div>
+      </div>
+      <div class="preview">
+        <span class="preview-label">Im Magazin so:</span>
+        <a class="preview-link" style="color: #FFC700; border-bottom: 1px solid #FFC700;">Werk ansehen →</a>
+        <a class="preview-link" style="color: #FFC700; border-bottom: 1px solid #FFC700;">Zur Ausstellung →</a>
+      </div>
+    </div>
+
+    <!-- Option 6 -->
+    <div class="swatch">
+      <div class="swatch-color" style="background: #F0C000;">
+        <span class="swatch-label-demo" style="color: #000;">INSTITUTION</span>
+      </div>
+      <div class="swatch-info">
+        <div class="swatch-nr">Option 6</div>
+        <div class="swatch-hex">#F0C000 — Goldgelb</div>
+        <div class="swatch-desc">Zwischen Option 2 und 4. Sehr satt, warm leuchtend, nicht zu metallisch. Funktioniert auf Schwarz und Weiß gleich gut.</div>
+      </div>
+      <div class="preview">
+        <span class="preview-label">Im Magazin so:</span>
+        <a class="preview-link" style="color: #F0C000; border-bottom: 1px solid #F0C000;">Werk ansehen →</a>
+        <a class="preview-link" style="color: #F0C000; border-bottom: 1px solid #F0C000;">Zur Ausstellung →</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="old">
+    <h2>Zum Vergleich — Aktuelle Farbe</h2>
+    <div class="old-swatch">
+      <div class="old-color"></div>
+      <div class="old-info">
+        <div class="old-hex">#c9a227</div>
+        Aktuelles Senfgelb — zu viel Braun-Anteil, wirkt gedämpft und "dreckig" auf weißem Hintergrund.
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

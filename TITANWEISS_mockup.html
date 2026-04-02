@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TITANWEISS — Ausgabe 01</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --yellow: #c9a227;
+      --black: #111111;
+      --gray: #888888;
+      --light: #f5f5f5;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── HEADER ─── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid #ebebeb;
+    }
+
+    .header-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 48px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 18px;
+      letter-spacing: 0.28em;
+      color: var(--black);
+      text-transform: uppercase;
+    }
+
+    .header-meta {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: var(--gray);
+    }
+
+    .header-nav {
+      display: flex;
+      gap: 36px;
+    }
+
+    .header-nav a {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .header-nav a:hover { color: var(--black); }
+
+    /* ─── HERO ─── */
+    .hero {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 120px 48px 100px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      font-weight: 500;
+      margin-bottom: 24px;
+    }
+
+    .hero-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 64px;
+      line-height: 1.0;
+      letter-spacing: -0.01em;
+      color: var(--black);
+      margin-bottom: 28px;
+    }
+
+    .hero-body {
+      font-size: 17px;
+      line-height: 1.75;
+      color: #555;
+      max-width: 420px;
+    }
+
+    .hero-image {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    /* ─── DIVIDER ─── */
+    .section-divider {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    .section-divider hr {
+      border: none;
+      border-top: 1px solid #ebebeb;
+    }
+
+    /* ─── SECTION WRAPPER ─── */
+    .section {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 100px 48px;
+    }
+
+    .section-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      font-weight: 500;
+      margin-bottom: 56px;
+    }
+
+    /* ─── SPOTLIGHT ─── */
+    .spotlight-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .spotlight-img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      display: block;
+    }
+
+    .spotlight-caption {
+      font-size: 11px;
+      color: var(--gray);
+      margin-top: 14px;
+      letter-spacing: 0.03em;
+    }
+
+    .spotlight-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 52px;
+      line-height: 1.0;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+    }
+
+    .spotlight-years {
+      font-size: 13px;
+      color: var(--gray);
+      margin-bottom: 40px;
+      letter-spacing: 0.04em;
+    }
+
+    .spotlight-body {
+      font-size: 16px;
+      line-height: 1.85;
+      color: #444;
+    }
+
+    .spotlight-body p + p { margin-top: 22px; }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 40px;
+    }
+
+    .tag {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      border: 1px solid #ddd;
+      color: #777;
+      padding: 6px 14px;
+      font-weight: 500;
+    }
+
+    /* ─── BILD DER AUSGABE ─── */
+    .bild-section {
+      background: var(--black);
+      padding: 100px 0;
+    }
+
+    .bild-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 48px;
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .bild-img {
+      width: 100%;
+      aspect-ratio: 5/4;
+      object-fit: cover;
+      display: block;
+    }
+
+    .bild-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      font-weight: 500;
+      margin-bottom: 28px;
+    }
+
+    .bild-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 40px;
+      line-height: 1.05;
+      color: #fff;
+      margin-bottom: 28px;
+    }
+
+    .bild-body {
+      font-size: 15px;
+      line-height: 1.85;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .bild-body p + p { margin-top: 18px; }
+
+    /* ─── TECHNIK ─── */
+    .technik-grid {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .technik-img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      display: block;
+    }
+
+    .technik-number {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 96px;
+      line-height: 1;
+      color: #ebebeb;
+      margin-bottom: 0;
+      letter-spacing: -0.03em;
+    }
+
+    .technik-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 36px;
+      line-height: 1.1;
+      margin-top: 8px;
+      margin-bottom: 28px;
+      letter-spacing: -0.01em;
+    }
+
+    .technik-body {
+      font-size: 15px;
+      line-height: 1.85;
+      color: #555;
+    }
+
+    .steps {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 32px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .step-n {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--yellow);
+      padding-top: 2px;
+    }
+
+    .step-text {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #555;
+    }
+
+    .step-text strong { color: var(--black); font-weight: 500; }
+
+    /* ─── AUSSTELLUNGEN ─── */
+    .ausst-section {
+      background: var(--light);
+      padding: 100px 0;
+    }
+
+    .ausst-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    .ausst-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 56px;
+    }
+
+    .ausst-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 44px;
+      letter-spacing: -0.01em;
+    }
+
+    .ausst-region {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    .ausst-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .ausst-card {
+      background: var(--white);
+      overflow: hidden;
+    }
+
+    .ausst-img {
+      width: 100%;
+      aspect-ratio: 3/2;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(25%);
+      transition: filter 0.4s ease;
+    }
+
+    .ausst-card:hover .ausst-img { filter: grayscale(0%); }
+
+    .ausst-body { padding: 28px; }
+
+    .ausst-city {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .ausst-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+
+    .ausst-ort {
+      font-size: 13px;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+
+    .ausst-date {
+      font-size: 12px;
+      color: #aaa;
+      border-top: 1px solid #ebebeb;
+      padding-top: 14px;
+      letter-spacing: 0.03em;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--white);
+      border-top: 1px solid #ebebeb;
+      padding: 64px 48px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 22px;
+      letter-spacing: 0.3em;
+      color: var(--black);
+      margin-bottom: 16px;
+    }
+
+    .footer-meta {
+      font-size: 12px;
+      color: #bbb;
+      letter-spacing: 0.06em;
+      line-height: 2;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 860px) {
+      .hero, .spotlight-grid, .technik-grid, .bild-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .hero { padding: 72px 24px 64px; }
+      .hero-title { font-size: 44px; }
+      .section { padding: 72px 24px; }
+      .ausst-grid { grid-template-columns: 1fr; gap: 2px; }
+      .header-nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="logo">Inspiration</div>
+    <nav class="header-nav">
+      <a href="#spotlight">Künstler</a>
+      <a href="#bild">Bild</a>
+      <a href="#technik">Technik</a>
+      <a href="#ausstellungen">Ausstellungen</a>
+    </nav>
+    <div class="header-meta">Ausgabe 01 &nbsp;·&nbsp; 6. April 2026</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="hero-eyebrow">Ausgabe 01 — Montag</div>
+    <h1 class="hero-title">Daniel<br />Richter</h1>
+    <p class="hero-body">Farbe als Sprache. Chaos als Methode. Richter malt Bilder die man nicht einfach anschaut — man wird von ihnen angeschaut. Diese Ausgabe ist ihm gewidmet.</p>
+  </div>
+  <img class="hero-image"
+    src="https://images.unsplash.com/photo-1579783901586-d88db74b4fe4?w=800&q=85"
+    alt="Expressives Gemälde" />
+</section>
+
+<div class="section-divider"><hr /></div>
+
+<!-- KÜNSTLER SPOTLIGHT -->
+<section class="section" id="spotlight">
+  <div class="section-eyebrow">Künstler-Spotlight</div>
+  <div class="spotlight-grid">
+    <div>
+      <img class="spotlight-img"
+        src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=700&q=85"
+        alt="Werk von Daniel Richter" />
+      <p class="spotlight-caption">Öl auf Leinwand, 2008. Ausschnitt. © Courtesy der Künstler.</p>
+    </div>
+    <div>
+      <h2 class="spotlight-name">Daniel<br />Richter</h2>
+      <p class="spotlight-years">* 1962, Eutin — Berlin & Wien</p>
+      <div class="spotlight-body">
+        <p>Daniel Richter ist einer der unbequemsten Maler seiner Generation. Nicht weil seine Bilder schwierig sind — sondern weil sie einen nicht in Ruhe lassen. Sie haben Haltung. Politisch, körperlich, kompromisslos.</p>
+        <p>Was ihn von anderen deutschen Malern unterscheidet: Er denkt nicht in Stilen. Er pendelt zwischen dichter Figuration und offener Abstraktion, und er entscheidet von Bild zu Bild neu welche Sprache er sprechen will.</p>
+        <p>Für dich als Maler besonders relevant: sein Umgang mit <strong>Farbflächen</strong>. Richter behandelt Farbe nicht als Mittel — sie ist der Inhalt. Das kannst du direkt in deine eigene Arbeit übersetzen.</p>
+      </div>
+      <div class="tags">
+        <span class="tag">Öl auf Leinwand</span>
+        <span class="tag">Großformat</span>
+        <span class="tag">Figuration</span>
+        <span class="tag">Abstraktion</span>
+        <span class="tag">Neo-Expressionismus</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"><hr /></div>
+
+<!-- BILD DER AUSGABE -->
+<section class="bild-section" id="bild">
+  <div class="bild-inner">
+    <img class="bild-img"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Jean-Michel_Basquiat%2C_Riddle_Me_This%2C_Batman%2C_1987.jpg/800px-Jean-Michel_Basquiat%2C_Riddle_Me_This%2C_Batman%2C_1987.jpg"
+      alt="Basquiat" />
+    <div>
+      <div class="bild-eyebrow">Bild der Ausgabe</div>
+      <h2 class="bild-title">Riddle Me This,<br />Batman — 1987</h2>
+      <div class="bild-body">
+        <p>Jean-Michel Basquiat. Acryl und Ölstick auf Leinwand. 244 × 213 cm. Eines der rätselhaftesten Bilder seines Spätwerks.</p>
+        <p>Was dieses Bild lehrt: Der Bildraum muss nicht erklärt werden. Zeichen, Schrift, Figur und Farbe koexistieren ohne Hierarchie. Jede Schicht kämpft um Sichtbarkeit — und gewinnt.</p>
+        <p>Der Mut zur Übermalung. Der Mut zum Stehenlassen. Das ist die eigentliche Technik.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNIK DES TAGES -->
+<section class="section" id="technik">
+  <div class="section-eyebrow">Technik des Tages</div>
+  <div class="technik-grid">
+    <div>
+      <img class="technik-img"
+        src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=85"
+        alt="Spachtelarbeit" />
+    </div>
+    <div>
+      <div class="technik-number">01</div>
+      <h2 class="technik-title">Sgraffito —<br />Das Freilegen<br />als Geste</h2>
+      <p class="technik-body">Du trägst Farbe auf — und kratzt sie wieder weg. Was darunter liegt entscheidet das Bild. Diese Spannung zwischen Aufbau und Zerstörung, zwischen Kontrolle und Zufall, ist das eigentliche Medium.</p>
+      <div class="steps">
+        <div class="step">
+          <span class="step-n">01</span>
+          <span class="step-text"><strong>Untermalungsschicht</strong> — Kräftige Basisfarbe auftragen und vollständig trocknen lassen. Bei Acryl: mindestens 1–2 Stunden.</span>
+        </div>
+        <div class="step">
+          <span class="step-n">02</span>
+          <span class="step-text"><strong>Deckschicht</strong> — Kontrastierende Farbe großzügig und noch nass auftragen. Nicht zu dünn — sie muss substanz haben.</span>
+        </div>
+        <div class="step">
+          <span class="step-n">03</span>
+          <span class="step-text"><strong>Die Geste</strong> — Mit Spachtel, Kammwerkzeug oder Fingernagel durch die nasse Schicht kratzen. Jede Linie ist endgültig.</span>
+        </div>
+        <div class="step">
+          <span class="step-n">04</span>
+          <span class="step-text"><strong>Nicht übermalen</strong> — Widersteh dem Impuls. Lass die Kratzer bestehen. Das ist der Witz.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUSSTELLUNGEN -->
+<section class="ausst-section" id="ausstellungen">
+  <div class="ausst-inner">
+    <div class="ausst-header">
+      <h2 class="ausst-title">Ausstellungen</h2>
+      <span class="ausst-region">Oldenburg & Bremen · April 2026</span>
+    </div>
+    <div class="ausst-grid">
+      <div class="ausst-card">
+        <img class="ausst-img"
+          src="https://images.unsplash.com/photo-1536924940846-227afb31e2a5?w=600&q=80"
+          alt="Ausstellung Oldenburg" />
+        <div class="ausst-body">
+          <div class="ausst-city">Oldenburg</div>
+          <h3 class="ausst-name">Farbe als Struktur</h3>
+          <p class="ausst-ort">Kunsthalle Oldenburg</p>
+          <p class="ausst-date">12. März – 18. Mai 2026</p>
+        </div>
+      </div>
+      <div class="ausst-card">
+        <img class="ausst-img"
+          src="https://images.unsplash.com/photo-1577083552431-6e5fd01988ec?w=600&q=80"
+          alt="Kunsthalle Bremen" />
+        <div class="ausst-body">
+          <div class="ausst-city">Bremen</div>
+          <h3 class="ausst-name">Neo-Expressionismus Revisited</h3>
+          <p class="ausst-ort">Kunsthalle Bremen</p>
+          <p class="ausst-date">1. April – 29. Juni 2026</p>
+        </div>
+      </div>
+      <div class="ausst-card">
+        <img class="ausst-img"
+          src="https://images.unsplash.com/photo-1571115764595-644a1f56a55c?w=600&q=80"
+          alt="Weserburg Bremen" />
+        <div class="ausst-body">
+          <div class="ausst-city">Bremen</div>
+          <h3 class="ausst-name">Abstraktion & Geste</h3>
+          <p class="ausst-ort">Weserburg — Museum für moderne Kunst</p>
+          <p class="ausst-date">5. April – 14. Juni 2026</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Inspiration</div>
+  <div class="footer-meta">
+    Ausgabe 01 · Montag, 6. April 2026<br />
+    Persönliches Kunstmagazin · Kuratiert von Claude · Für Felix Weckner
+  </div>
+</footer>
+
+</body>
+</html>

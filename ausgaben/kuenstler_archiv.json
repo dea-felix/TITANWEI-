@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "beschreibung": "Archiv aller Kuenstler/innen die bisher in TITANWEISS erschienen sind. Phase 1 liest diese Datei zuerst und schliesst alle gelisteten Kuenstler/innen aus.",
+  "ausgaben": [
+    {
+      "ausgabe_nr": 1,
+      "datum": "2026-04-06",
+      "kuenstler": [
+        "Cecily Brown",
+        "Jadé Fadojutimi",
+        "Otis Kwame Kye Quaicoe",
+        "Neo Rauch",
+        "Henry Taylor"
+      ],
+      "technik": "Expressionstransparenz — Glazur und Geste kombinieren"
+    }
+  ]
+}
