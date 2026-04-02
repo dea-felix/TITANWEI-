@@ -52,7 +52,16 @@ kunstmagazin/
 
 ---
 
-## Nächste geplante Aufgabe: WEBSITE + NEWSLETTER
+## Website & Infrastruktur
+
+- **GitHub Repo**: https://github.com/dea-felix/TITANWEI-
+- **Netlify URL**: https://titanweissmagazin.netlify.app
+- **Auto-Push Script**: `/Users/felixweckner/Desktop/kunstmagazin/auto-push.sh`
+- **Mac Cron-Job**: läuft Mo + Do um 7:30 Uhr → pusht neue Ausgabe zu GitHub → Netlify deployed automatisch
+
+---
+
+## Nächste geplante Aufgabe: NEWSLETTER
 
 Felix möchte eine öffentliche Website + Newsletter aufbauen. Entschieden:
 - **Öffentlich** (jeder mit dem Link kann lesen)
