@@ -75,6 +75,7 @@ if [ -n "$latest" ]; then
         -H "Authorization: Bearer ${BEEHIIV_API_KEY}" \
         -H "Content-Type: application/json" \
         -d "{
+            \"title\": \"TITANWEISS — Ausgabe No. $nummer\",
             \"subject\": \"TITANWEISS — Ausgabe No. $nummer\",
             \"preview_text\": \"Die neue Ausgabe ist da — Zeitgeist, Künstler, Atelier Studie, Ausstellungen.\",
             \"body\": $(echo "$EMAIL_BODY" | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))'),
