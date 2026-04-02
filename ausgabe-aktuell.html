@@ -608,8 +608,12 @@
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: #999;
+    text-decoration: none;
+    cursor: pointer;
     margin-bottom: clamp(48px, 7vh, 80px);
+    transition: opacity 0.2s;
   }
+  .issue-slogan:hover { opacity: 0.5; }
   .issue-kategorien {
     display: flex;
     flex-direction: column;
@@ -699,7 +703,7 @@
 </div>
 
 <section class="issue-landing">
-  <p class="issue-slogan">Was die Kunst weiß.</p>
+  <a href="index.html" class="issue-slogan">Was die Kunst weiß.</a>
   <ul class="issue-kategorien">
     <li><a href="#zeitgeist">Zeitgeist</a></li>
     <li><a href="#kuenstler">Künstler</a></li>
