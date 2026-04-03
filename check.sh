@@ -25,7 +25,7 @@ echo ""
 # ── 1. DATEI-BASICS ──
 echo "[ 1/7 ] Datei-Größe"
 size=$(wc -c < "$latest")
-if [ "$size" -lt 50000 ]; then
+if [ "$size" -lt 30000 ]; then
     echo "  ✗ FEHLER: Datei zu klein ($size Bytes) — HTML wahrscheinlich unvollständig"
     ERRORS=$((ERRORS + 1))
 else

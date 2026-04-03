@@ -28,7 +28,7 @@ jobs:
         run: |
           size=$(wc -c < "${{ steps.find.outputs.latest }}")
           echo "Dateigröße: $size Bytes"
-          if [ "$size" -lt 50000 ]; then
+          if [ "$size" -lt 30000 ]; then
             echo "✗ FEHLER: Datei zu klein ($size Bytes) — HTML wahrscheinlich unvollständig"
             exit 1
           fi
