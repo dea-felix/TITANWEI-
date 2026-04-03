@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TITANWEISS — Danke</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Inter:wght@300&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 24px;
+    }
+
+    .logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: clamp(40px, 9vw, 120px);
+      color: #111111;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    .slogan {
+      margin-top: 16px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: clamp(11px, 1.2vw, 13px);
+      color: #bbbbbb;
+      letter-spacing: 0.12em;
+    }
+
+    .divider {
+      width: 1px;
+      height: 48px;
+      background: #f0f0f0;
+      margin: 48px auto;
+    }
+
+    .danke-text {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: clamp(13px, 1.4vw, 16px);
+      color: #555555;
+      line-height: 1.8;
+      max-width: 400px;
+      letter-spacing: 0.01em;
+    }
+
+    .ausgabe-link {
+      margin-top: 48px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: clamp(11px, 1.2vw, 13px);
+      color: #FFD700;
+      text-decoration: none;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: opacity 0.2s;
+    }
+
+    .ausgabe-link:hover { opacity: 0.6; }
+  </style>
+</head>
+<body>
+  <a class="logo" href="index.html">TITANWEISS</a>
+  <p class="slogan">Was die Kunst weiß.</p>
+  <div class="divider"></div>
+  <p class="danke-text">Du bist dabei.<br>Jeden Montag und Donnerstag im Postfach.</p>
+  <a class="ausgabe-link" href="ausgabe-aktuell.html">Aktuelle Ausgabe lesen →</a>
+</body>
+</html>

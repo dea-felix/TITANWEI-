@@ -501,16 +501,16 @@
   }
   .exhibitions-inner { max-width: 1200px; margin: 0 auto; }
   .shows-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
     margin-top: 64px;
   }
   .show-card {
-    background: #fff;
-    border: 1px solid #eee;
-    padding: 36px 32px;
+    padding: 36px 0;
+    border-bottom: 1px solid #f0f0f0;
   }
+  .show-card:last-child { border-bottom: none; }
   .show-city {
     font-family: 'Montserrat', sans-serif;
     font-size: 0.6rem;
@@ -518,7 +518,7 @@
     letter-spacing: 0.25em;
     text-transform: uppercase;
     color: #ccc;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
   .show-institution {
     font-family: 'Montserrat', sans-serif;
@@ -527,7 +527,7 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: #888;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
   .show-title {
     font-family: 'Montserrat', sans-serif;
@@ -542,7 +542,7 @@
     font-size: 0.75rem;
     font-weight: 300;
     color: #aaa;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
     font-style: italic;
   }
   .show-status {
@@ -552,18 +552,17 @@
     font-weight: 700;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    padding: 3px 8px;
+    color: #FFD700;
     margin-bottom: 14px;
   }
-  .show-status.laufend { background: #f0fdf4; color: #16a34a; }
-  .show-status.upcoming { background: #fff7ed; color: #ea580c; }
   .show-text {
     font-family: 'Inter', sans-serif;
     font-size: 0.875rem;
     color: #444;
     line-height: 1.75;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     font-weight: 300;
+    max-width: 680px;
   }
   .show-links { display: flex; flex-direction: column; gap: 8px; }
   .show-link {
@@ -673,7 +672,7 @@
     .names-grid { grid-template-columns: 1fr; }
     .section-footer { padding: 40px 20px; }
     .section-footer-inner { grid-template-columns: 1fr; gap: 28px; }
-    .show-card { padding: 24px 20px; }
+    .show-card { padding: 28px 0; }
     .issue-landing { padding: 40px 24px; }
   }
 </style>
@@ -699,8 +698,9 @@
   </nav>
   <div class="landing-newsletter">
     <div class="landing-newsletter-label">Jeden Montag &amp; Donnerstag im Postfach</div>
-    <form class="landing-newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/titanweiss" method="post" target="_blank">
+    <form class="landing-newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/titanweiss" method="post" target="_self">
       <input type="email" name="email" placeholder="deine@email.de" required>
+      <input type="hidden" name="redirect" value="https://dea-felix.github.io/TITANWEI-/danke.html">
       <button type="submit">Abonnieren</button>
     </form>
   </div>
@@ -1073,7 +1073,6 @@
           <div class="show-institution">Oldenburger Kunstverein</div>
           <div class="show-title">Babette Semmer. Die Zähmung</div>
           <div class="show-date">20. Februar – 10. Mai 2026</div>
-          <span class="show-status laufend">Laufend</span>
           <div class="show-text">Erste große institutionelle Einzelausstellung der Malerin Babette Semmer (*1989 London, lebt Berlin). Ausgangspunkt: fotografisches Bild aus Jugendzeitschriften, Soaps, privaten Fotosammlungen — analysiert, dann auf Quarzsand-grundierte Leinwand übertragen. Fotorealistisch im Blick, fremd in der Substanz.</div>
           <div class="show-links">
             <a href="https://www.oldenburger-kunstverein.de/ausstellung/" target="_blank" rel="noopener" class="show-link">Zur Ausstellung →</a>
@@ -1086,7 +1085,7 @@
           <div class="show-institution">Landesmuseum für Kunst und Kulturgeschichte</div>
           <div class="show-title">Leyla Yenirce. Werdegang</div>
           <div class="show-date">18. April – 23. August 2026</div>
-          <span class="show-status upcoming">Eröffnung 18. April</span>
+          <span class="show-status">Eröffnung 18. April</span>
           <div class="show-text">Erste Museumsschau der Berliner Künstlerin, die als Kind jesidischer Geflüchteter in Oldenburg aufgewachsen ist. Gemälde, Installationen, Video. Im Zentrum: eine Serie von Frauenporträts als "Frauenchor" — Stimmen aus Kunst, Literatur, Politik.</div>
           <div class="show-links">
             <a href="https://www.landesmuseum-ol.de/ausstellungen/leyla-yenirce.html" target="_blank" rel="noopener" class="show-link">Zur Ausstellung →</a>
@@ -1099,7 +1098,6 @@
           <div class="show-institution">GAK Gesellschaft für Aktuelle Kunst</div>
           <div class="show-title">Mara Wohnhaas</div>
           <div class="show-date">31. Januar – 3. Mai 2026</div>
-          <span class="show-status laufend">Laufend</span>
           <div class="show-text">Die GAK fragt mit Mara Wohnhaas nach den Mechanismen der Verführung und des Begehrens in zeitgenössischer Kunst und visueller Kultur: Was wollen wir, das uns verführt? Eine konzeptionell angelegte Schau im wichtigsten Projektraum für aktuelle Kunst in Bremen.</div>
           <div class="show-links">
             <a href="https://gak-bremen.de/en/exhibitions/" target="_blank" rel="noopener" class="show-link">Zur Ausstellung →</a>
@@ -1112,7 +1110,7 @@
           <div class="show-institution">Weserburg Museum für moderne Kunst</div>
           <div class="show-title">Anys Reimann. Mirrorball</div>
           <div class="show-date">2. Mai – 4. Oktober 2026</div>
-          <span class="show-status upcoming">Eröffnung 2. Mai</span>
+          <span class="show-status">Eröffnung 2. Mai</span>
           <div class="show-text">Erste museale Einzelausstellung von Anys Reimann (*1965 Düsseldorf). Großformatige Collagemalerei, mysteriöse Lederskulpturen, Spiegelobjekte und Körperabgüsse. Spannungsfeld: Identität und Körper, kulturelle Zugehörigkeit, Repräsentation.</div>
           <div class="show-links">
             <a href="https://weserburg.de/ausstellung/anys-reimann-mirrorball/" target="_blank" rel="noopener" class="show-link">Zur Ausstellung →</a>
