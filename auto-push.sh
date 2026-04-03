@@ -1,9 +1,8 @@
 #!/bin/bash
 cd /Users/felixweckner/Desktop/kunstmagazin
 
-# ── Beehiiv Credentials ──
-BEEHIIV_API_KEY="ko18iibsDBPPPa4ru9uU8Z8ByBPC18x7PYkBkldFWUg4RbjDGnee0aYVMl9bGy6Q"
-BEEHIIV_PUB_ID="pub_527792c7-08af-42d6-8df5-453bdfc3c8e7"
+# ── Buttondown Credentials ──
+BUTTONDOWN_API_KEY="dc61a8d1-582b-4d4a-a511-0918b4928e7a"
 SITE_URL="https://titanweissmagazin.netlify.app"
 
 # ── Neueste Ausgabe finden ──
@@ -25,9 +24,9 @@ if [ -n "$latest" ]; then
     git commit -m "Auto: Ausgabe $nummer — $(date +%Y-%m-%d)"
     git push
 
-    echo "✓ Git push abgeschlossen"
+    echo "✓ Git push abgeschlossen — Netlify deployt in ~1 Minute"
 
-    # ── Newsletter via Beehiiv ──
+    # ── Newsletter via Buttondown ──
     EMAIL_BODY="<!DOCTYPE html>
 <html>
 <head>
@@ -70,22 +69,20 @@ if [ -n "$latest" ]; then
 </body>
 </html>"
 
-    RESPONSE=$(curl -s -o /tmp/beehiiv_response.json -w "%{http_code}" \
-        -X POST "https://api.beehiiv.com/v2/publications/${BEEHIIV_PUB_ID}/posts" \
-        -H "Authorization: Bearer ${BEEHIIV_API_KEY}" \
+    RESPONSE=$(curl -s -o /tmp/buttondown_response.json -w "%{http_code}" \
+        -X POST "https://api.buttondown.email/v1/emails" \
+        -H "Authorization: Token ${BUTTONDOWN_API_KEY}" \
         -H "Content-Type: application/json" \
         -d "{
-            \"title\": \"TITANWEISS — Ausgabe No. $nummer\",
             \"subject\": \"TITANWEISS — Ausgabe No. $nummer\",
-            \"preview_text\": \"Die neue Ausgabe ist da — Zeitgeist, Künstler, Atelier Studie, Ausstellungen.\",
             \"body\": $(echo "$EMAIL_BODY" | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))'),
-            \"status\": \"draft\"
+            \"status\": \"about_to_send\"
         }")
 
     if [ "$RESPONSE" = "201" ] || [ "$RESPONSE" = "200" ]; then
-        echo "✓ Newsletter-Entwurf erstellt — bitte in Beehiiv senden: https://app.beehiiv.com"
+        echo "✓ Newsletter wird jetzt gesendet — alle Abonnenten bekommen die Email"
     else
         echo "⚠ Newsletter-Fehler (HTTP $RESPONSE)"
-        cat /tmp/beehiiv_response.json
+        cat /tmp/buttondown_response.json
     fi
 fi
