@@ -23,6 +23,67 @@ jobs:
           echo "nummer=$nummer" >> $GITHUB_OUTPUT
           echo "datum=$datum" >> $GITHUB_OUTPUT
 
+      # ── HEALTH CHECK (Tier 1: Automatische Verifikation) ──
+      - name: Health Check — Datei-Größe
+        run: |
+          size=$(wc -c < "${{ steps.find.outputs.latest }}")
+          echo "Dateigröße: $size Bytes"
+          if [ "$size" -lt 50000 ]; then
+            echo "✗ FEHLER: Datei zu klein ($size Bytes) — HTML wahrscheinlich unvollständig"
+            exit 1
+          fi
+          echo "✓ Dateigröße OK"
+
+      - name: Health Check — Pflichtstruktur & Verbote
+        run: |
+          FILE="${{ steps.find.outputs.latest }}"
+          ERRORS=0
+          for check in "TITANWEISS" "Zeitgeist" "Künstler" "Atelier" "Ausstellung" "FFD700"; do
+            if ! grep -q "$check" "$FILE"; then
+              echo "✗ FEHLER: '$check' fehlt im HTML"
+              ERRORS=$((ERRORS + 1))
+            fi
+          done
+          if grep -qi "Kunsthalle Oldenburg" "$FILE"; then
+            echo "✗ FEHLER: 'Kunsthalle Oldenburg' gefunden — existiert nicht!"
+            ERRORS=$((ERRORS + 1))
+          fi
+          for banned in "unsplash" "pexels" "pixabay" "shutterstock" "gettyimages"; do
+            if grep -qi "$banned" "$FILE"; then
+              echo "✗ FEHLER: Stockfoto-URL gefunden ($banned)"
+              ERRORS=$((ERRORS + 1))
+            fi
+          done
+          if [ "$ERRORS" -gt 0 ]; then
+            echo "✗ $ERRORS Fehler gefunden — Publish abgebrochen"
+            exit 1
+          fi
+          echo "✓ Pflichtstruktur OK, keine Verbote verletzt"
+
+      - name: Health Check — Wortanzahl
+        run: |
+          words=$(cat "${{ steps.find.outputs.latest }}" | sed 's/<[^>]*>//g' | wc -w)
+          echo "Wortanzahl: $words"
+          if [ "$words" -lt 1500 ]; then
+            echo "✗ FEHLER: Zu wenige Wörter ($words) — Ausgabe wahrscheinlich unvollständig"
+            exit 1
+          fi
+          echo "✓ Wortanzahl OK ($words Wörter)"
+
+      - name: Health Check — Buttondown API Key
+        env:
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+        run: |
+          status=$(curl -s -o /dev/null -w "%{http_code}" \
+            -H "Authorization: Token ${BUTTONDOWN_API_KEY}" \
+            "https://api.buttondown.email/v1/subscribers?count=1")
+          if [ "$status" != "200" ]; then
+            echo "✗ FEHLER: Buttondown API Key ungültig (HTTP $status) — Newsletter kann nicht gesendet werden"
+            exit 1
+          fi
+          echo "✓ Buttondown API Key gültig"
+
+      # ── DEPLOY ──
       - name: ausgabe-aktuell.html aktualisieren
         run: cp "${{ steps.find.outputs.latest }}" ausgabe-aktuell.html
 
@@ -37,6 +98,7 @@ jobs:
           git diff --staged --quiet || git commit -m "Auto: Ausgabe ${{ steps.find.outputs.nummer }} — $(date +%Y-%m-%d)"
           git push
 
+      # ── NEWSLETTER (mit Monitoring) ──
       - name: Newsletter senden (außer wenn pausiert)
         if: ${{ !hashFiles('newsletter-pause') }}
         env:
@@ -46,7 +108,8 @@ jobs:
         run: |
           EMAIL_BODY="<!DOCTYPE html><html><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'></head><body style='margin:0;padding:0;background:#ffffff;font-family:Inter,Helvetica,sans-serif;'><table width='100%' cellpadding='0' cellspacing='0' style='max-width:560px;margin:0 auto;padding:48px 32px;'><tr><td style='padding-bottom:40px;border-bottom:1px solid #f0f0f0;'><span style='font-family:Georgia,serif;font-size:11px;font-weight:700;letter-spacing:0.35em;text-transform:uppercase;color:#111;'>TITANWEISS</span></td></tr><tr><td style='padding:40px 0 24px;'><span style='font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#aaa;'>Ausgabe No. $NUMMER &nbsp;—&nbsp; $DATUM</span></td></tr><tr><td style='padding-bottom:32px;'><p style='font-size:22px;font-weight:700;line-height:1.3;color:#111;margin:0;'>Die neue Ausgabe ist da.</p></td></tr><tr><td style='padding-bottom:48px;'><p style='font-size:15px;color:#555;line-height:1.7;margin:0;'>Zeitgeist, Künstler, Atelier Studie, Ausstellungen — alles frisch recherchiert und aufbereitet.</p></td></tr><tr><td><a href='https://titanweissmagazin.netlify.app/ausgabe-aktuell.html' style='font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#FFD700;text-decoration:none;'>Ausgabe lesen →</a></td></tr><tr><td style='padding-top:48px;border-top:1px solid #f0f0f0;margin-top:48px;'><span style='font-size:11px;color:#ccc;letter-spacing:0.1em;text-transform:uppercase;'>Was die Kunst weiß.</span></td></tr></table></body></html>"
 
-          curl -s -X POST "https://api.buttondown.email/v1/emails" \
+          RESPONSE=$(curl -s -w "\n%{http_code}" \
+            -X POST "https://api.buttondown.email/v1/emails" \
             -H "Authorization: Token ${BUTTONDOWN_API_KEY}" \
             -H "Content-Type: application/json" \
             -H "X-Buttondown-Live-Dangerously: true" \
@@ -54,6 +117,20 @@ jobs:
               \"subject\": \"TITANWEISS — Ausgabe No. $NUMMER\",
               \"body\": $(echo "$EMAIL_BODY" | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))'),
               \"status\": \"about_to_send\"
-            }"
+            }")
 
-          echo "✓ Newsletter gesendet — Ausgabe No. $NUMMER"
+          HTTP_STATUS=$(echo "$RESPONSE" | tail -1)
+          BODY=$(echo "$RESPONSE" | head -1)
+
+          if [ "$HTTP_STATUS" = "201" ] || [ "$HTTP_STATUS" = "200" ]; then
+            echo "✓ Newsletter erfolgreich gesendet — Ausgabe No. $NUMMER"
+            echo "✓ HTTP Status: $HTTP_STATUS"
+          else
+            echo "✗ FEHLER: Newsletter nicht gesendet (HTTP $HTTP_STATUS)"
+            echo "Response: $BODY"
+            exit 1
+          fi
+
+      - name: Newsletter pausiert (Info)
+        if: ${{ hashFiles('newsletter-pause') }}
+        run: echo "ℹ Newsletter pausiert — 'newsletter-pause' Datei gefunden. Ausgabe wurde trotzdem deployed."
