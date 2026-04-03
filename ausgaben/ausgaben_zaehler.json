@@ -1,6 +1,6 @@
 {
   "version": 1,
   "beschreibung": "Einfacher Zaehler fuer Ausgaben-Nummern. Phase 7 liest diesen Wert, erhoet ihn um 1 und schreibt ihn zurueck. Verhindert falsche Berechnungen durch Weekday-Logic.",
-  "letzte_ausgabe_nr": 1,
-  "letzte_ausgabe_datum": "2026-04-06"
+  "letzte_ausgabe_nr": 2,
+  "letzte_ausgabe_datum": "2026-04-03"
 }
