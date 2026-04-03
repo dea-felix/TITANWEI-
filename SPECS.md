@@ -81,15 +81,30 @@ index.html (Startseite)
 - Kein Header, kein Footer
 
 ### ausgabe-aktuell.html (Kategorie-Seite)
-- Kein Header
-- Slogan "Was die Kunst weiß." oben — klickbar → `index.html`
-- 4 Kategorien in Akzentfarbe mittig untereinander
-- Newsletter-Signup unten
-- Hash-basiertes JavaScript für Show/Hide (kein Reload)
+- **Kein Header auf der Landing** — nur sichtbar wenn Kategorie geöffnet
+- Slogan `"Was die Kunst weiß."` zentriert, groß — klickbar → `index.html`
+- `"No. XX · Monat YYYY"` als kleiner grauer Untertitel
+- 4 Kategorielinks zentriert, vertikal gestapelt, Montserrat 700 uppercase, Gold-Underline-Hover
+- Newsletter-Link ganz unten, klein, dezent
+- Hash-basiertes JavaScript für Show/Hide (kein Reload, kein Scrollen)
 
-### Artikel-Ansicht
-- Fixierter Header: Logo links → `index.html`, "← Kategorien" rechts → `goBack()`
+### Artikel-Ansicht (beim Öffnen einer Kategorie)
+- Fixierter Header erscheint: Logo `TITANWEISS` links → `index.html`, `"← Kategorien"` rechts → `goBack()`
+- Header: Glaseffekt (`backdrop-filter: blur(12px)`), `border-bottom: 1px solid #FFD700`
+- Jede Kategorie hat eigene Sektion mit `id="section-zeitgeist"` etc.
+- Jede Sektion endet mit eigenem Footer inkl. `"← Alle Kategorien"` Link
 - JavaScript-Regeln: `var` statt `const` (Safari-Kompatibilität), `DOMContentLoaded` statt `load`
+- Funktionen: `showSection(name)`, `goBack()`, `history.pushState`, `popstate`-Listener
+
+### HTML-Struktur (ausgabe-aktuell.html)
+```html
+<header class="article-header" id="article-header">  <!-- sticky, hidden on landing -->
+<div class="issue-landing" id="landing">              <!-- zentrierte Kategorie-Übersicht -->
+<div class="article-section" id="section-zeitgeist">  <!-- hidden by default -->
+<div class="article-section" id="section-kuenstler">
+<div class="article-section" id="section-atelier">
+<div class="article-section" id="section-ausstellungen">
+```
 
 ---
 
@@ -368,7 +383,7 @@ Prüfe ob PDF erstellt wurde und mindestens 50KB groß ist.
 | Dienst | Zweck | Details |
 |---|---|---|
 | GitHub | Versionskontrolle, Trigger | github.com/dea-felix/TITANWEI- |
-| Netlify | Hosting, Auto-Deploy | titanweissmagazin.netlify.app |
+| GitHub Pages | Hosting, Auto-Deploy | dea-felix.github.io/TITANWEI- |
 | Buttondown | Newsletter | buttondown.com/titanweiss |
 | GitHub Actions | Vollautomatische Pipeline | `.github/workflows/publish.yml` |
 | Scheduled Task | KI-Inhaltserstellung | `inspiration-kunstmagazin`, Mo+Do 7:10 Uhr |
