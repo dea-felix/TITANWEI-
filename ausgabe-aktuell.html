@@ -29,74 +29,98 @@
     padding: 60px 40px;
     text-align: center;
   }
-  .landing-slogan {
+  .landing-issue-name {
     font-family: 'Montserrat', sans-serif;
-    font-weight: 900;
-    font-size: clamp(1.8rem, 4vw, 3rem);
-    letter-spacing: -0.02em;
-    color: #111111;
+    font-weight: 700;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #bbbbbb;
+    margin-bottom: 16px;
+  }
+  .landing-slogan {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    color: #999999;
     text-decoration: none;
     display: block;
-    margin-bottom: 12px;
+    margin-bottom: 56px;
     transition: opacity 0.2s;
   }
-  .landing-slogan:hover { opacity: 0.6; }
-  .landing-issue {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 300;
-    color: #999;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-bottom: 72px;
-  }
+  .landing-slogan:hover { opacity: 0.5; }
   .category-menu {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0;
+    margin-bottom: 64px;
   }
   .category-menu a {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    font-size: clamp(0.85rem, 2vw, 1rem);
-    letter-spacing: 0.25em;
+    font-size: 0.8rem;
+    letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: #111111;
-    text-decoration: none;
-    padding: 18px 0;
-    cursor: pointer;
-    position: relative;
-    transition: color 0.2s;
-  }
-  .category-menu a::after {
-    content: '';
-    position: absolute;
-    bottom: 14px;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: #FFD700;
-    transform: scaleX(0);
-    transition: transform 0.2s ease;
-    transform-origin: left;
-  }
-  .category-menu a:hover { color: #FFD700; }
-  .category-menu a:hover::after { transform: scaleX(1); }
-  .landing-newsletter {
-    margin-top: 72px;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 300;
-    color: #bbb;
-    letter-spacing: 0.05em;
-  }
-  .landing-newsletter a {
     color: #FFD700;
     text-decoration: none;
-    font-weight: 500;
+    padding: 14px 0;
+    cursor: pointer;
+    transition: opacity 0.2s;
   }
-  .landing-newsletter a:hover { text-decoration: underline; }
+  .category-menu a:hover { opacity: 0.6; }
+
+  /* ─── NEWSLETTER FORM ─── */
+  .landing-newsletter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .landing-newsletter-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 300;
+    color: #cccccc;
+    letter-spacing: 0.05em;
+  }
+  .landing-newsletter-form {
+    display: flex;
+    gap: 0;
+    width: 320px;
+    max-width: 100%;
+  }
+  .landing-newsletter-form input {
+    flex: 1;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: #111;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-right: none;
+    padding: 10px 14px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .landing-newsletter-form input:focus { border-color: #FFD700; }
+  .landing-newsletter-form input::placeholder { color: #bbb; }
+  .landing-newsletter-form button {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #111;
+    background: #FFD700;
+    border: none;
+    padding: 10px 16px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+  }
+  .landing-newsletter-form button:hover { opacity: 0.8; }
 
   /* ─── ARTICLE HEADER (hidden on landing) ─── */
   .article-header {
@@ -659,8 +683,8 @@
 
 <!-- ═══ LANDING ═══ -->
 <div class="issue-landing" id="landing">
+  <div class="landing-issue-name">No. 02 · April 2026</div>
   <a href="index.html" class="landing-slogan">Was die Kunst weiß.</a>
-  <div class="landing-issue">No. 02 · April 2026</div>
   <nav class="category-menu">
     <a onclick="showSection('zeitgeist')">Zeitgeist</a>
     <a onclick="showSection('kuenstler')">Künstler</a>
@@ -668,7 +692,11 @@
     <a onclick="showSection('ausstellungen')">Ausstellungen</a>
   </nav>
   <div class="landing-newsletter">
-    Jeden Montag &amp; Donnerstag — <a href="https://buttondown.com/titanweiss/subscribe" target="_blank">Newsletter abonnieren</a>
+    <div class="landing-newsletter-label">Jeden Montag &amp; Donnerstag im Postfach</div>
+    <form class="landing-newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/titanweiss" method="post" target="_blank">
+      <input type="email" name="email" placeholder="deine@email.de" required>
+      <button type="submit">Abonnieren</button>
+    </form>
   </div>
 </div>
 
