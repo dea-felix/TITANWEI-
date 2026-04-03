@@ -36,6 +36,31 @@ Minimalistisch, clean, Apple-Style. Keine Boxen, keine Kästen, keine überflüs
 | Montserrat | 400, 700, 900 | Logo, Überschriften, Labels |
 | Inter | 300, 400, 500 | Fließtext, Metainfos |
 
+### Logo — verbindliche Definition
+Das Logo ist immer identisch — nie abweichen:
+
+| Eigenschaft | Wert |
+|---|---|
+| Text | `TITANWEISS` (immer Großbuchstaben) |
+| Schrift Website | Montserrat 900 |
+| Schrift Email | `'Montserrat', 'Trebuchet MS', Arial, sans-serif` (Montserrat via @import wenn möglich, sonst Fallback) |
+| Farbe | `#111111` (schwarz) |
+| Letter-spacing | `0.35em` |
+| Text-transform | `uppercase` |
+| Font-size Website | `1.1rem` (Header), größer auf Landing/Footer je nach Kontext |
+| Font-size Email | `28px` |
+
+**Slogan** (gehört immer zum Logo-Block):
+- Text: `Was die Kunst weiß.` (Website) / `WAS DIE KUNST WEISS.` (Email, uppercase)
+- Schrift: Inter 300 (Website) / Arial (Email)
+- Farbe: `#999999` (Website) / `#bbbbbb` (Email)
+- Letter-spacing: `0.08em` (Website) / `3px` (Email)
+
+**Ausgaben-Label** (über dem Logo):
+- Format: `No. XX` (Landing) oder `No. XX · Monat YYYY` (Kontext-abhängig)
+- Farbe: `#FFD700` Gold
+- Schrift: Montserrat 700, uppercase, winzig (`0.55rem` / `10px`)
+
 ### Design-Regeln
 - **Hintergrund überall: `#ffffff` (reines Weiß — "Titanweiß")** — keine grauen Sections, kein `#f8f8f8`, kein `#fafafa`, auch Footer weiß
 - **Keine Kästen, keine Cards, keine Borders** — Zeitgeist "Im Kommen" als saubere Liste mit `border-bottom: 1px solid #f0f0f0` als Trennlinie, kein Rahmen
@@ -45,6 +70,15 @@ Minimalistisch, clean, Apple-Style. Keine Boxen, keine Kästen, keine überflüs
 - Abstände großzügig (min. 40px)
 - Labels: Montserrat 700, uppercase, `letter-spacing: 0.2em+`
 - Keine gelbe Linie im Header (`border-bottom: none`)
+
+### Responsive — Pflichtanforderung
+- **Die Website muss auf allen Geräten funktionieren** — kein Überschneiden, kein Abschneiden, kein horizontales Scrollen
+- Breakpoints: Desktop 1120px+ / Tablet 600–1119px / Mobile < 600px
+- Auf Mobile: alle Grids auf 1-spaltig, Padding reduziert (mind. 20px seitlich), Schriftgrößen angepasst
+- Artist-Sections: auf Tablet/Mobile einspaltiger Stack (Text oben, Werk-Links unten), kein `direction: rtl`
+- Header: auf Mobile Padding 20px, Logo kleiner, Höhe 60px
+- Kategorie-Menü: auf Mobile volle Breite, Abstände bleiben erhalten
+- Footer: auf Mobile 1-spaltig
 
 ### Artikel-Header (exakt so — nie ändern)
 3-spaltiges Layout: Zurück-Link | Logo mittig (absolut zentriert) | Ausgabennummer
@@ -63,10 +97,18 @@ Minimalistisch, clean, Apple-Style. Keine Boxen, keine Kästen, keine überflüs
 
 ### Landing-Seite (ausgabe-aktuell.html, Kategorie-Übersicht)
 Reihenfolge von oben nach unten:
-1. `NO. XX · MONAT YYYY` — Montserrat 700, grau, uppercase, tiny
-2. `Was die Kunst weiß.` — Inter 300, klein, grau, klickbar → index.html
+1. `NO. XX` — Montserrat 700, Gold, uppercase, winzig
+2. `Was die Kunst weiß.` — Montserrat 700, grau, uppercase
 3. Kategorielinks: ZEITGEIST / KÜNSTLER:INNEN / ATELIER STUDIE / AUSSTELLUNGEN — Gold, Montserrat 700, uppercase
-4. Newsletter-Signup: Label + Email-Input + Button (Buttondown embed)
+4. `Archiv` — Gold, winzig, dezent (opacity 0.7), → archiv.html
+5. Newsletter-Signup: Label + Email-Input + Button (Buttondown embed)
+
+### Archiv
+- `archiv.html` — weiße Seite, kein Logo, kleiner `← Zurück`-Link oben links → index.html
+- Ausgaben als Liste zentriert: `No. 01`, `No. 02` etc. — Gold, Montserrat 700, mit border-bottom Trennlinie
+- Jede Ausgabe verlinkt auf `archiv/no-XX/index.html`
+- **Beim Abschluss jeder Ausgabe:** `ausgabe-aktuell.html` kopieren nach `archiv/no-XX/index.html` und neuen Eintrag in `archiv.html` ergänzen
+- PDFs werden nicht mehr benötigt — HTML-Snapshot im archiv/-Ordner reicht
 
 ### Footer (innerhalb jeder Kategorie)
 - Hintergrund: `#ffffff` — weiß wie alles andere
@@ -159,7 +201,13 @@ index.html (Startseite)
 - Link 1: spezifischstes Werk / Galerie-Seite
 - Link 2: andere Institution / alternatives Werk / Museumseite
 
-### Ausstellungen
+### Ausstellungen — Design-Regeln
+- **Keine Kästen, keine Cards, keine Borders** — saubere Liste mit `border-bottom: 1px solid #f0f0f0`
+- **Kein "Laufend"-Status** — wird nicht angezeigt
+- **Nur "Eröffnung [Datum]"** wenn die Ausstellung noch nicht begonnen hat — in grau (`#999999`), Montserrat 700 uppercase, kein Hintergrund, kein Kasten
+- Jede Ausstellung: Stadt → Institution → Titel → Datum → (optional: Eröffnungshinweis) → Text → Links
+
+### Ausstellungen — Inhalt
 - **NUR Oldenburg + Bremen**
 - **NIEMALS "Kunsthalle Oldenburg" — die existiert nicht!**
 - Oldenburg: Horst-Janssen-Museum, Edith-Russ-Haus, Landesmuseum, Oldenburger Kunstverein, Stadtmuseum
@@ -474,6 +522,18 @@ cp ausgabe-aktuell.html "ausgaben/April 2026/No. 01 - 04.2026/TITANWEISS_Ausgabe
 - **Signup-URL:** `https://buttondown.com/titanweiss/subscribe`
 - **GitHub Secret:** `BUTTONDOWN_API_KEY` → Repo Settings → Secrets
 
+### Buttondown Branding — Pflichtregeln
+- **Kein echter Name** — nirgendwo "Felix Weckner" sichtbar ✅
+- Username: `titanweiss` → URL: `buttondown.com/titanweiss` ✅
+- Newsletter name: `TITANWEISS` ✅
+- Author name: `TITANWEISS` (From-Feld in der Mail) ✅
+- Header/Footer Editor: **Markdown mode** (nicht "Fancy mode" — "Naked mode"/HTML ist Paid-only)
+- Logo im Header: PNG `https://dea-felix.github.io/TITANWEI-/titanweiss-logo-email.png` ✅
+- Footer-Block (Settings → Design → Email → Footer toggle): TITANWEISS + Slogan + Link ✅
+- **Großer Titel oben ("TITANWEISS")** — automatisch von Buttondown, Free Plan → nicht entfernbar, bleibt so
+- **"Powered by Buttondown"** — nur mit Paid Plan ($9/Mo) entfernbar → bleibt vorerst
+- Unsubscribe-Links im Footer — gesetzlich Pflicht, immer drin lassen
+
 ---
 
 ## 9. Künstler-Archiv (gesperrt — keine Wiederholung)
@@ -505,7 +565,7 @@ cp ausgabe-aktuell.html "ausgaben/April 2026/No. 01 - 04.2026/TITANWEISS_Ausgabe
 - [ ] Buttondown-Branding einrichten (Tint-Farbe Gold, Description, Absender-Name)
 - [ ] Custom Domain überlegen (z.B. titanweiss.de oder titanweiss.art)
 - [ ] Echter Inhalt für Ausgabe No. 1 (aktuell Beispielinhalt auf der Website)
-- [ ] Mobile-Optimierung prüfen
+- [x] Mobile-Optimierung — Responsive-Regeln in Abschnitt 2 festgehalten
 - [ ] Meta-Tags / SEO (og:title, og:description, og:image)
 - [ ] KI-Pipeline direkt mit GitHub Actions verbinden (Scheduled Task → Auto-Push ohne Terminal)
 

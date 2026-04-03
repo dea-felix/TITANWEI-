@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TITANWEISS — Archiv</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Inter:wght@300&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #ffffff;
+      min-height: 100vh;
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .back {
+      position: fixed;
+      top: 28px;
+      left: 32px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #bbbbbb;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .back:hover { color: #111; }
+
+    .content {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 24px;
+    }
+
+    .archiv-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    .archiv-item {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: #FFD700;
+      text-decoration: none;
+      padding: 16px 0;
+      border-bottom: 1px solid #f0f0f0;
+      width: 200px;
+      text-align: center;
+      transition: opacity 0.2s;
+    }
+    .archiv-item:last-child { border-bottom: none; }
+    .archiv-item:hover { opacity: 0.5; }
+  </style>
+</head>
+<body>
+
+  <a class="back" href="index.html">← Zurück</a>
+
+  <div class="content">
+    <div class="archiv-list">
+      <a class="archiv-item" href="archiv/no-01/index.html">No. 01</a>
+    </div>
+  </div>
+
+</body>
+</html>
