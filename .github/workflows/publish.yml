@@ -1,0 +1,59 @@
+name: TITANWEISS Ausgabe veröffentlichen
+
+on:
+  push:
+    paths:
+      - 'ausgaben/**/*.html'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repository laden
+        uses: actions/checkout@v4
+
+      - name: Neueste Ausgabe finden
+        id: find
+        run: |
+          latest=$(find ausgaben -name "TITANWEISS_Ausgabe_*.html" | sort | tail -1)
+          nummer=$(echo "$latest" | grep -oE 'Ausgabe_([0-9]+)' | grep -oE '[0-9]+' | sed 's/^0*//')
+          datum=$(date +"%d. %B %Y")
+          echo "latest=$latest" >> $GITHUB_OUTPUT
+          echo "nummer=$nummer" >> $GITHUB_OUTPUT
+          echo "datum=$datum" >> $GITHUB_OUTPUT
+
+      - name: ausgabe-aktuell.html aktualisieren
+        run: cp "${{ steps.find.outputs.latest }}" ausgabe-aktuell.html
+
+      - name: Nummer in index.html aktualisieren
+        run: sed -i "s/No\. [0-9]*/No. ${{ steps.find.outputs.nummer }}/" index.html
+
+      - name: Änderungen committen und pushen
+        run: |
+          git config user.name "TITANWEISS Bot"
+          git config user.email "noreply@titanweiss.com"
+          git add ausgabe-aktuell.html index.html
+          git diff --staged --quiet || git commit -m "Auto: Ausgabe ${{ steps.find.outputs.nummer }} — $(date +%Y-%m-%d)"
+          git push
+
+      - name: Newsletter senden (außer wenn pausiert)
+        if: ${{ !hashFiles('newsletter-pause') }}
+        env:
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+          NUMMER: ${{ steps.find.outputs.nummer }}
+          DATUM: ${{ steps.find.outputs.datum }}
+        run: |
+          EMAIL_BODY="<!DOCTYPE html><html><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'></head><body style='margin:0;padding:0;background:#ffffff;font-family:Inter,Helvetica,sans-serif;'><table width='100%' cellpadding='0' cellspacing='0' style='max-width:560px;margin:0 auto;padding:48px 32px;'><tr><td style='padding-bottom:40px;border-bottom:1px solid #f0f0f0;'><span style='font-family:Georgia,serif;font-size:11px;font-weight:700;letter-spacing:0.35em;text-transform:uppercase;color:#111;'>TITANWEISS</span></td></tr><tr><td style='padding:40px 0 24px;'><span style='font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#aaa;'>Ausgabe No. $NUMMER &nbsp;—&nbsp; $DATUM</span></td></tr><tr><td style='padding-bottom:32px;'><p style='font-size:22px;font-weight:700;line-height:1.3;color:#111;margin:0;'>Die neue Ausgabe ist da.</p></td></tr><tr><td style='padding-bottom:48px;'><p style='font-size:15px;color:#555;line-height:1.7;margin:0;'>Zeitgeist, Künstler, Atelier Studie, Ausstellungen — alles frisch recherchiert und aufbereitet.</p></td></tr><tr><td><a href='https://titanweissmagazin.netlify.app/ausgabe-aktuell.html' style='font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#FFD700;text-decoration:none;'>Ausgabe lesen →</a></td></tr><tr><td style='padding-top:48px;border-top:1px solid #f0f0f0;margin-top:48px;'><span style='font-size:11px;color:#ccc;letter-spacing:0.1em;text-transform:uppercase;'>Was die Kunst weiß.</span></td></tr></table></body></html>"
+
+          curl -s -X POST "https://api.buttondown.email/v1/emails" \
+            -H "Authorization: Token ${BUTTONDOWN_API_KEY}" \
+            -H "Content-Type: application/json" \
+            -H "X-Buttondown-Live-Dangerously: true" \
+            -d "{
+              \"subject\": \"TITANWEISS — Ausgabe No. $NUMMER\",
+              \"body\": $(echo "$EMAIL_BODY" | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))'),
+              \"status\": \"about_to_send\"
+            }"
+
+          echo "✓ Newsletter gesendet — Ausgabe No. $NUMMER"
