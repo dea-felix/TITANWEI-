@@ -1,1084 +1,941 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TITANWEISS — Ausgabe 01, 6. April 2026</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-  /* ─── RESET & BASE ─── */
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { font-size: 16px; scroll-behavior: smooth; }
-  body {
-    background: #ffffff;
-    color: #111111;
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
-    line-height: 1.7;
-    -webkit-font-smoothing: antialiased;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TITANWEISS — Ausgabe 02 / 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  /* ─── TYPOGRAPHY ─── */
-  h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
-  h2 { font-weight: 900; }
-  h3 { font-weight: 700; }
-
-  /* ─── STICKY HEADER ─── */
-  header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid #FFD700;
-    padding: 0 48px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 72px;
-  }
-  .logo {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 900;
-    font-size: 1.35rem;
-    letter-spacing: 0.35em;
-    color: #111111;
-    text-decoration: none;
-    text-transform: uppercase;
-  }
-  .issue-meta {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 300;
-    color: #999;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  /* ─── HERO ─── */
-  .hero {
-    padding: 96px 48px 80px;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-  .hero-label {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: #FFD700;
-    margin-bottom: 24px;
-  }
-  .hero h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 900;
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    line-height: 1.08;
-    color: #111111;
-    letter-spacing: -0.02em;
-    margin-bottom: 32px;
-  }
-  .hero p {
-    font-family: 'Inter', sans-serif;
-    font-weight: 300;
-    font-size: 1.1rem;
-    color: #555;
-    max-width: 620px;
-    line-height: 1.8;
-  }
-  .hero {
-    min-height: 82vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  /* ─── CATEGORY NAV ─── */
-  .category-nav {
-    padding: 0 48px 80px;
-    max-width: 900px;
-    margin: 0 auto;
-    display: flex;
-    gap: 48px;
-    flex-wrap: wrap;
-    border-top: 1px solid #f0f0f0;
-    padding-top: 40px;
-  }
-  .category-nav a {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 0.68rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: #FFD700;
-    text-decoration: none;
-    padding-bottom: 3px;
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.2s;
-  }
-  .category-nav a:hover {
-    border-bottom-color: #FFD700;
-  }
-
-  /* ─── SECTION WRAPPERS ─── */
-  .section-wrapper {
-    padding: 0 48px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  .section-divider {
-    border: none;
-    border-top: 1px solid #eeeeee;
-    margin: 64px 0;
-  }
-  .section-heading {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 900;
-    font-size: 0.65rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: #bbbbbb;
-    margin-bottom: 64px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid #f0f0f0;
-  }
-
-  /* ─── ARTIST SECTIONS ─── */
-  .artist-section {
-    display: block;
-    margin-bottom: 96px;
-  }
-
-  /* ─── WERK-LINKS ─── */
-  .artist-links {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    margin-top: 16px;
-  }
-  .artist-link {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.82rem;
-    font-weight: 400;
-    color: #FFD700;
-    text-decoration: none;
-    letter-spacing: 0.03em;
-    transition: opacity 0.2s;
-  }
-  .artist-link:hover { opacity: 0.55; }
-  .artist-text {}
-  .artist-level {
-    display: inline-block;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: #FFD700;
-    margin-bottom: 12px;
-  }
-  .artist-name {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 900;
-    font-size: 2rem;
-    line-height: 1.1;
-    color: #111111;
-    margin-bottom: 6px;
-    letter-spacing: -0.01em;
-  }
-  .artist-sub {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 300;
-    color: #999;
-    margin-bottom: 24px;
-    letter-spacing: 0.05em;
-  }
-  .artist-body {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 400;
-    color: #333333;
-    line-height: 1.8;
-  }
-  .artist-body strong {
-    font-weight: 500;
-    color: #111111;
-  }
-  .artist-works-label {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: #999;
-    margin-top: 28px;
-    margin-bottom: 12px;
-  }
-
-  /* ─── WERK-BLÖCKE ─── */
-  .artist-works {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  /* Link-Block (kein Wikimedia-Bild) */
-  .werk-link-block {
-    display: block;
-    background: #1a1a1a;
-    text-decoration: none;
-    aspect-ratio: 3/2;
-    position: relative;
-    overflow: hidden;
-    transition: opacity 0.2s ease;
-  }
-  .werk-link-block:hover { opacity: 0.85; }
-  .werk-link-inner {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 24px;
-    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 60%, transparent 100%);
-  }
-  .werk-artist-name {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.6);
-    margin-bottom: 4px;
-  }
-  .werk-title {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 400;
-    color: rgba(255,255,255,0.9);
-    margin-bottom: 10px;
-    font-style: italic;
-  }
-  .werk-cta {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #FFD700;
-  }
-
-  /* ─── ATELIER STUDIE ─── */
-  .technique-section {
-    background: #ffffff;
-    padding: 80px 48px;
-    margin: 0;
-  }
-  .technique-inner {
-    max-width: 720px;
-    margin: 0 auto;
-  }
-  .technique-header {
-    margin-bottom: 64px;
-  }
-  .technique-title {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 900;
-    font-size: clamp(1.6rem, 3vw, 2.4rem);
-    line-height: 1.1;
-    color: #111111;
-    letter-spacing: -0.02em;
-    margin-bottom: 24px;
-  }
-  .technique-intro {
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
-    color: #666;
-    line-height: 1.8;
-  }
-
-  /* Material-Liste */
-  .material-block {
-    background: none;
-    border: none;
-    padding: 0;
-    margin-bottom: 64px;
-  }
-  .material-block h4 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 0.62rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: #aaa;
-    margin-bottom: 20px;
-  }
-  .material-list {
-    list-style: none;
-    columns: 2;
-    gap: 0 48px;
-  }
-  .material-list li {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.88rem;
-    color: #444;
-    padding: 10px 0 10px 18px;
-    border-bottom: 1px solid #f5f5f5;
-    position: relative;
-    break-inside: avoid;
-  }
-  .material-list li::before {
-    content: '—';
-    position: absolute;
-    left: 0;
-    color: #FFD700;
-    font-size: 0.75rem;
-  }
-
-  /* Schritte */
-  .steps-grid {
-    display: flex;
-    flex-direction: column;
-  }
-  .step-card {
-    display: grid;
-    grid-template-columns: 40px 1fr;
-    column-gap: 28px;
-    padding: 28px 0;
-    border-top: 1px solid #f2f2f2;
-    background: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: none;
-  }
-  .step-number {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 900;
-    font-size: 0.7rem;
-    color: #FFD700;
-    letter-spacing: 0.08em;
-    grid-column: 1;
-    grid-row: 1 / span 2;
-    padding-top: 3px;
-  }
-  .step-title {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 0.78rem;
-    letter-spacing: 0.12em;
-    color: #111111;
-    margin-bottom: 8px;
-    text-transform: uppercase;
-    grid-column: 2;
-    grid-row: 1;
-  }
-  .step-text {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.9rem;
-    color: #555;
-    line-height: 1.75;
-    grid-column: 2;
-    grid-row: 2;
-  }
-
-  /* ─── AUSSTELLUNGEN ─── */
-  .exhibitions-section {
-    padding: 80px 48px;
-  }
-  .exhibitions-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  .shows-grid {
-    display: flex;
-    flex-direction: column;
-    margin-top: 64px;
-  }
-  .show-card {
-    background: none;
-    border: none;
-    border-top: 1px solid #f2f2f2;
-    padding: 40px 0;
-  }
-  .show-city {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.6rem;
-    font-weight: 700;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: #cccccc;
-    margin-bottom: 8px;
-  }
-  .show-institution {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #888;
-    margin-bottom: 12px;
-  }
-  .show-title {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 900;
-    font-size: 1.2rem;
-    line-height: 1.2;
-    color: #111111;
-    margin-bottom: 6px;
-  }
-  .show-date {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 300;
-    color: #aaa;
-    margin-bottom: 18px;
-    font-style: italic;
-  }
-  .show-text {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.875rem;
-    color: #444;
-    line-height: 1.75;
-    margin-bottom: 24px;
-  }
-  .show-links {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .show-link {
-    display: inline-block;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #FFD700;
-    text-decoration: none;
-    transition: opacity 0.2s;
-  }
-  .show-link:hover { opacity: 0.7; }
-
-  /* ─── BADGE ─── */
-  .preview-badge {
-    display: inline-block;
-    background: #FFD700;
-    color: #111111;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.55rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding: 3px 8px;
-    margin-left: 8px;
-    vertical-align: middle;
-  }
-
-  /* ─── FOOTER ─── */
-  footer {
-    background: #ffffff;
-    color: #111111;
-    padding: 56px 48px;
-    margin-top: 0;
-    border-top: 1px solid #eeeeee;
-  }
-  .footer-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 48px;
-    align-items: start;
-  }
-  .footer-logo {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 900;
-    font-size: 1.1rem;
-    letter-spacing: 0.35em;
-    color: #111111;
-    display: block;
-    margin-bottom: 12px;
-    text-decoration: none;
-  }
-  .footer-tagline {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 300;
-    color: #666;
-    line-height: 1.6;
-  }
-  .footer-label {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.6rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: #FFD700;
-    margin-bottom: 12px;
-    display: block;
-  }
-  .footer-text {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.75rem;
-    color: #666;
-    line-height: 1.7;
-  }
-
-  /* ─── ANIMATIONS ─── */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  .fade-in.visible {
-    opacity: 1;
-    transform: none;
-  }
-
-  /* ─── ARTICLE SECTIONS (versteckt bis Klick) ─── */
-  .article-section {
-    display: none;
-    padding-top: 64px;
-  }
-
-  /* ─── ARTIKEL HEADER ─── */
-  .article-header {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 200;
-    height: 64px;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-  }
-  .article-header-logo {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 900;
-    font-size: 1rem;
-    letter-spacing: 0.35em;
-    color: #111111;
-    text-transform: uppercase;
-  }
-
-  /* ─── BACK BUTTON ─── */
-  .back-btn {
-    display: inline-block;
-    position: fixed;
-    top: 20px;
-    left: 48px;
-    font-family: 'Inter', sans-serif;
-    font-weight: 300;
-    font-size: 0.72rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: #999;
-    text-decoration: none;
-    cursor: pointer;
-    background: none;
-    border: none;
-    padding: 0;
-    z-index: 300;
-    transition: color 0.2s;
-  }
-  .back-btn:hover { color: #FFD700; }
-
-  /* ─── ISSUE LANDING ─── */
-  .issue-landing {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-  }
-  .issue-slogan {
-    font-family: 'Inter', sans-serif;
-    font-weight: 300;
-    font-size: clamp(11px, 1.3vw, 14px);
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: #999;
-    text-decoration: none;
-    cursor: pointer;
-    margin-bottom: clamp(48px, 7vh, 80px);
-    transition: opacity 0.2s;
-  }
-  .issue-slogan:hover { opacity: 0.5; }
-  .issue-kategorien {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: clamp(20px, 3.5vh, 36px);
-    list-style: none;
-  }
-  .issue-kategorien a {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 900;
-    font-size: clamp(22px, 4vw, 52px);
-    color: #FFD700;
-    text-decoration: none;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    transition: opacity 0.2s ease, letter-spacing 0.3s ease;
-  }
-  .issue-kategorien a:hover {
-    opacity: 0.5;
-    letter-spacing: 0.12em;
-  }
-
-  /* ─── NEWSLETTER SIGNUP ─── */
-  .newsletter-signup {
-    margin-top: clamp(48px, 7vh, 72px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 14px;
-  }
-  .newsletter-signup form {
-    display: flex;
-    gap: 0;
-  }
-  .newsletter-signup input[type="email"] {
-    font-family: 'Inter', sans-serif;
-    font-weight: 300;
-    font-size: 0.8rem;
-    letter-spacing: 0.08em;
-    color: #111;
-    background: none;
-    border: none;
-    border-bottom: 1px solid #ccc;
-    padding: 8px 0;
-    width: 220px;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-  .newsletter-signup input[type="email"]::placeholder { color: #bbb; }
-  .newsletter-signup input[type="email"]:focus { border-color: #111; }
-  .newsletter-signup button {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 0.62rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: #FFD700;
-    background: none;
-    border: none;
-    padding: 8px 0 8px 20px;
-    cursor: pointer;
-    transition: opacity 0.2s;
-  }
-  .newsletter-signup button:hover { opacity: 0.6; }
-  .newsletter-label {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.68rem;
-    font-weight: 300;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #ccc;
-  }
-
-  /* ─── RESPONSIVE: TABLET ─── */
-  @media (max-width: 1119px) {
-    header { padding: 0 32px; }
-    .hero { padding: 72px 32px 64px; }
-    .section-wrapper { padding: 0 32px; }
-    .artist-section {
-      grid-template-columns: 1fr;
-      gap: 40px;
-      direction: ltr !important;
+    :root {
+      --gold: #FFD700;
+      --black: #111111;
+      --white: #ffffff;
+      --gray-text: #666666;
+      --gray-bg: #f8f8f8;
+      --dark: #1a1a1a;
     }
-    .technique-section { padding: 64px 32px; }
-    .technique-header { grid-template-columns: 1fr; gap: 24px; }
-    .material-list { grid-template-columns: 1fr; }
-    .steps-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-    .exhibitions-section { padding: 64px 32px; }
-    .exhibitions-inner { max-width: 720px; }
-    footer { padding: 48px 32px; }
-    .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
-  }
 
-  /* ─── RESPONSIVE: MOBILE ─── */
-  @media (max-width: 599px) {
-    header { padding: 0 20px; height: 60px; }
-    .logo { font-size: 1rem; }
-    .hero { padding: 48px 20px 48px; }
-    .hero h1 { font-size: 2rem; }
-    .section-wrapper { padding: 0 20px; }
-    .artist-section { gap: 32px; }
-    .artist-name { font-size: 1.5rem; }
-    .technique-section { padding: 48px 20px; }
-    .steps-grid { grid-template-columns: 1fr; }
-    .exhibitions-section { padding: 48px 20px; }
-    .show-card { padding: 28px 0; }
-    footer { padding: 40px 20px; }
-    .footer-inner { grid-template-columns: 1fr; gap: 32px; }
-  }
+    html { scroll-behavior: smooth; }
 
-  /* ─── PRINT ─── */
-  @page { margin: 2cm; size: A4; }
-  @media print {
-    header { position: static; backdrop-filter: none; -webkit-backdrop-filter: none; }
-    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    .artist-section:not(:first-of-type),
-    .technique-section,
-    .exhibitions-section { page-break-before: always; }
-    .show-card,
-    .werk-link-block,
-    .step-card { page-break-inside: avoid; }
-    a[href]::after { content: " (" attr(href) ")"; font-size: .75em; color: #666; }
-    .fade-in { opacity: 1 !important; transform: none !important; }
-    * { box-shadow: none !important; animation: none !important; }
-  }
-</style>
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--black);
+      background: var(--white);
+      font-size: 17px;
+      line-height: 1.72;
+    }
+
+    /* ─── HEADER ─── */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 2px solid var(--black);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 60px;
+    }
+    .header-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 1.35rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+    }
+    .header-issue {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      color: var(--gray-text);
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 82vh;
+      background: var(--dark);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 80px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at 70% 40%, rgba(255,215,0,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+    }
+    .hero-quote {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      line-height: 1.12;
+      color: var(--white);
+      max-width: 900px;
+      margin-bottom: 32px;
+    }
+    .hero-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.55);
+      max-width: 560px;
+    }
+    .hero-date {
+      position: absolute;
+      bottom: 30px;
+      right: 60px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ─── CATEGORY NAV ─── */
+    .category-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      background: var(--white);
+    }
+    .category-nav a {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--black);
+      padding: 18px 36px;
+      border-right: 1px solid #ddd;
+      transition: color 0.2s, background 0.2s;
+    }
+    .category-nav a:first-child { border-left: 1px solid #ddd; }
+    .category-nav a:hover { color: var(--gold); background: var(--gray-bg); }
+
+    /* ─── SECTIONS GENERAL ─── */
+    .section-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 60px;
+    }
+    .section-heading {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gray-text);
+      margin-bottom: 56px;
+      padding-top: 80px;
+    }
+
+    /* ─── ZEITGEIST ─── */
+    .zeitgeist-section {
+      background: var(--gray-bg);
+      border-top: 4px solid var(--gold);
+      padding-bottom: 80px;
+    }
+    .zeitgeist-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 60px;
+    }
+    .zeitgeist-block {
+      border-left: 4px solid var(--gold);
+      padding-left: 36px;
+      margin-bottom: 72px;
+    }
+    .zeitgeist-label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+    .zeitgeist-block p {
+      max-width: 720px;
+      margin-bottom: 1.1em;
+      color: var(--black);
+    }
+    .zeitgeist-block p:last-child { margin-bottom: 0; }
+
+    /* Names to Watch Cards */
+    .names-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      max-width: 100%;
+    }
+    .name-card {
+      background: var(--white);
+      border: 1px solid #e0e0e0;
+      border-top: 3px solid var(--gold);
+      padding: 28px 24px;
+    }
+    .name-card-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+    .name-card-meta {
+      font-size: 0.82rem;
+      color: var(--gray-text);
+      margin-bottom: 12px;
+    }
+    .name-card p {
+      font-size: 0.9rem;
+      line-height: 1.62;
+      color: var(--black);
+    }
+
+    /* Essay Pull-Quote */
+    .essay-pullquote {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1.55rem;
+      line-height: 1.35;
+      color: var(--black);
+      max-width: 680px;
+      margin-bottom: 36px;
+    }
+
+    /* ─── KÜNSTLER ─── */
+    .kuenstler-section {
+      background: var(--white);
+      padding-bottom: 80px;
+    }
+    .artist-spotlight {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+      margin-bottom: 80px;
+      padding-bottom: 80px;
+      border-bottom: 1px solid #e8e8e8;
+    }
+    .artist-spotlight:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .artist-spotlight.reverse {
+      direction: rtl;
+    }
+    .artist-spotlight.reverse > * {
+      direction: ltr;
+    }
+    .artist-works {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .work-block {
+      background: var(--dark);
+      padding: 36px 28px;
+      text-decoration: none;
+      display: block;
+      transition: opacity 0.2s;
+    }
+    .work-block:hover { opacity: 0.85; }
+    .work-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--white);
+      margin-bottom: 8px;
+      display: block;
+    }
+    .work-year {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 12px;
+      display: block;
+    }
+    .work-link-label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+    }
+    .artist-info {}
+    .artist-level {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--black);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      margin-bottom: 16px;
+    }
+    .artist-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 2rem;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+    .artist-meta {
+      font-size: 0.88rem;
+      color: var(--gray-text);
+      margin-bottom: 20px;
+    }
+    .artist-text p {
+      margin-bottom: 1em;
+      font-size: 0.97rem;
+    }
+
+    /* ─── TECHNIK ─── */
+    .technik-section {
+      background: var(--white);
+      padding-bottom: 80px;
+      border-top: 1px solid #e8e8e8;
+    }
+    .technik-intro {
+      background: var(--dark);
+      padding: 56px 60px;
+      max-width: 100%;
+      margin-bottom: 60px;
+    }
+    .technik-intro-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+    .technik-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 1.9rem;
+      color: var(--white);
+      margin-bottom: 16px;
+      max-width: 680px;
+      line-height: 1.2;
+    }
+    .technik-subtitle {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.6);
+      max-width: 560px;
+    }
+    .technik-body {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 60px;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 60px;
+    }
+    .material-list h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .material-list ul {
+      list-style: none;
+      padding: 0;
+    }
+    .material-list li {
+      font-size: 0.88rem;
+      padding: 8px 0;
+      border-bottom: 1px solid #e8e8e8;
+      color: var(--black);
+    }
+    .material-list li:last-child { border-bottom: none; }
+    .steps {}
+    .step {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 32px;
+      align-items: flex-start;
+    }
+    .step-number {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 0.9rem;
+    }
+    .step-content h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+    }
+    .step-content p {
+      font-size: 0.92rem;
+      color: #444;
+    }
+
+    /* ─── AUSSTELLUNGEN ─── */
+    .ausstellungen-section {
+      background: var(--gray-bg);
+      padding-bottom: 80px;
+      border-top: 1px solid #ddd;
+    }
+    .exhibitions-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+    .exhibition-card {
+      background: var(--white);
+      border: 1px solid #e0e0e0;
+      padding: 32px 28px;
+    }
+    .exhibition-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+    .status-dot.laufend { background: #22c55e; }
+    .status-dot.upcoming { background: #f97316; }
+    .status-label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-text);
+    }
+    .exhibition-city {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .exhibition-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      margin-bottom: 4px;
+      line-height: 1.25;
+    }
+    .exhibition-institution {
+      font-size: 0.85rem;
+      color: var(--gray-text);
+      margin-bottom: 4px;
+    }
+    .exhibition-dates {
+      font-size: 0.8rem;
+      color: var(--gray-text);
+      margin-bottom: 16px;
+    }
+    .exhibition-text {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .exhibition-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .exhibition-link {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--black);
+      border: 1.5px solid var(--gold);
+      padding: 8px 16px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .exhibition-link:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--dark);
+      padding: 32px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 1.1rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+    .footer-issue {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1119px) {
+      .site-header { padding: 16px 32px; }
+      .hero { padding: 60px 32px; }
+      .hero-date { right: 32px; }
+      .section-inner { padding: 0 32px; }
+      .zeitgeist-inner { padding: 0 32px; }
+      .names-grid { grid-template-columns: repeat(2, 1fr); }
+      .artist-spotlight { grid-template-columns: 1fr; gap: 32px; }
+      .artist-spotlight.reverse { direction: ltr; }
+      .technik-body { padding: 0 32px; }
+      .technik-intro { padding: 40px 32px; }
+      footer { padding: 28px 32px; }
+      .exhibitions-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 767px) {
+      .site-header { padding: 14px 20px; }
+      .hero { padding: 40px 20px; }
+      .hero-date { right: 20px; bottom: 20px; }
+      .section-inner, .zeitgeist-inner, .technik-body { padding: 0 20px; }
+      .section-heading { padding-top: 48px; margin-bottom: 36px; }
+      .names-grid { grid-template-columns: 1fr; }
+      .category-nav { overflow-x: auto; justify-content: flex-start; }
+      .category-nav a { padding: 14px 20px; font-size: 0.65rem; }
+      .technik-body { grid-template-columns: 1fr; }
+      .technik-intro { padding: 32px 20px; }
+      footer { padding: 24px 20px; }
+      .artist-name { font-size: 1.6rem; }
+      .essay-pullquote { font-size: 1.2rem; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════
-     ISSUE LANDING
-════════════════════════════════════════ -->
-<!-- ARTIKEL HEADER (nur beim Lesen sichtbar) -->
-<div id="article-header" class="article-header">
-  <span class="article-header-logo">TITANWEISS</span>
-</div>
+<!-- ═══ HEADER ═══ -->
+<header class="site-header">
+  <a class="header-logo">TITANWEISS</a>
+  <span class="header-issue">02 / 2026</span>
+</header>
 
-<section class="issue-landing">
-  <a href="index.html" class="issue-slogan">Was die Kunst weiß.</a>
-  <ul class="issue-kategorien">
-    <li><a href="#zeitgeist">Zeitgeist</a></li>
-    <li><a href="#kuenstler">Künstler</a></li>
-    <li><a href="#technik">Atelier Studie</a></li>
-    <li><a href="#ausstellungen">Ausstellungen</a></li>
-  </ul>
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-label">Das Kunstmagazin für Felix Weckner · Ausgabe 02</div>
+  <h1 class="hero-quote">Der Riss als Methode.</h1>
+  <p class="hero-sub">Malerei 2026: Markt, Monochromie und die Rückkehr des Handabdrucks. Fünf Positionen, vier Zeitgeist-Blöcke, eine Technik — Payne's Grey und Zink.</p>
+  <div class="hero-date">April 2026</div>
+</section>
 
-  <div class="newsletter-signup">
-    <span class="newsletter-label">Jeden Montag &amp; Donnerstag</span>
-    <form action="https://buttondown.com/titanweiss/subscribe" method="POST" target="_blank">
-      <input type="email" name="email" placeholder="Deine Email-Adresse" required>
-      <button type="submit">Abonnieren →</button>
-    </form>
+<!-- ═══ CATEGORY NAV ═══ -->
+<nav class="category-nav">
+  <a href="#zeitgeist">Zeitgeist</a>
+  <a href="#kuenstler">Künstler</a>
+  <a href="#technik">Technik</a>
+  <a href="#ausstellungen">Ausstellungen</a>
+</nav>
+
+<!-- ═══ ZEITGEIST ═══ -->
+<section id="zeitgeist" class="zeitgeist-section">
+  <div class="zeitgeist-inner">
+    <div class="section-heading">Zeitgeist</div>
+
+    <!-- Block 1: Markt & Preise -->
+    <div class="zeitgeist-block">
+      <div class="zeitgeist-label">Markt &amp; Preise</div>
+      <p>Der globale Kunstmarkt hat sich in 2025 leise erholt: USD 59,6 Milliarden Gesamtumsatz — ein Plus von vier Prozent gegenüber dem Vorjahr, wie der Art Basel/UBS Global Art Market Report 2026 belegt. Die Erholung ist moderat, der Marktpeak von 2022 bleibt unerreicht. Und doch: Die Stimmung kippt gerade spürbar ins Positive.</p>
+      <p>Das Ereignis der Saison spielte sich bereits im November 2025 ab, als Sotheby's sein renoviertes Breuer-Gebäude in New York einweihte. Das Eröffnungs-Highlight: Gustav Klimts <em>Portrait of Elisabeth Lederer</em> (1914–16) aus der Sammlung des verstorbenen Leonard Lauder erzielte USD 236,4 Millionen — der höchste je für ein Werk moderner Kunst erzielte Auktionspreis und das zweitteuerste Kunstwerk der Auktionsgeschichte überhaupt. In einer einzigen Abendveranstaltung erreichte Sotheby's einen Gesamtumsatz von USD 1,17 Milliarden — der höchste Serienwert seit 2021.</p>
+      <p>Hongkong bewies im März 2026, dass die asiatischen Märkte nicht bloß mitschwingen, sondern eigene Akzente setzen. Christie's und Sotheby's meldeten beide White-Glove-Verkäufe, alle Lose fanden Käufer. Der Gesamterlös der drei Häuser übertraf USD 164,9 Millionen (+18% ggü. 2025). Vier neue Künstlerrekorde in einer einzigen Sitzung: Lenz Geerk (<em>Couple on a Fresco</em>, 2019, HKD 2,1 Mio. / ca. USD 275.000), Atsushi Kaga sowie die niederländischen Alten Walter Spies und Johannes Goedaert — ein ungewöhnlicher Mix, der die Breite der Nachfrage nach sorgfältiger Figurenmalerei quer durch die Jahrhunderte illustriert.</p>
+      <p>Yoshitomo Naras <em>Nothing about it</em> erzielte am 31. März 2026 bei Seoul Auction 15 Milliarden Won (ca. USD 10,5 Mio.) — neuer Rekord für südkoreanische Auktionen. Joan Mitchell überstieg bei Sotheby's Hongkong in einer einzigen Session USD 70 Millionen bei 54 Losen, alle verkauft: Die Abstract Expressionistin avanciert zur meistbezahlten weiblichen Künstlerin im Asien-Auktionsmarkt.</p>
+      <p>Strukturell dominiert Malerei weiterhin: 59% des Händlerumsatzes, 67% der vermögenden Sammler kauften Gemälde. Online-Verkäufe sanken auf USD 9,2 Milliarden — tiefstes Niveau seit 2019. Käufer wollen wieder in den Raum, in die Nähe zum Werk, den Handabdruck auf dem Rahmen spüren.</p>
+    </div>
+
+    <!-- Block 2: Im Kommen -->
+    <div class="zeitgeist-block">
+      <div class="zeitgeist-label">Im Kommen — Names to Watch</div>
+      <div class="names-grid">
+        <div class="name-card">
+          <div class="name-card-name">Lenz Geerk</div>
+          <div class="name-card-meta">geb. 1988 Basel · lebt Düsseldorf · Roberts Projects / MASSIMODECARLO / Nicola Vassell</div>
+          <p>Figurenmalerei aus Schlaflosigkeit: keine Fotos, keine Modelle, nur die innere Beobachtung. Gedämpfte Monochromen, psychologische Dichte. Christie's Hongkong März 2026: Künstlerrekord für <em>Couple on a Fresco</em> (2019), HKD 2,1 Mio. Der Markt hat entschieden, bevor der Kritikerdiskurs eingeholt hat.</p>
+        </div>
+        <div class="name-card">
+          <div class="name-card-name">Mohammed Sami</div>
+          <div class="name-card-meta">geb. 1984 Bagdad · lebt London · Luhring Augustine / Modern Art</div>
+          <p>Turner-Prize-Shortlist 2025. MoMA-Ankauf <em>The Execution Room</em> (2022). Atmosphärische Bilder, in denen Alltagsobjekte Trauma tragen ohne es zu zeigen. Derzeit im Bowes Museum ("Rebel. Storyteller. Visionary", bis Sept. 2026).</p>
+        </div>
+        <div class="name-card">
+          <div class="name-card-name">Kamrooz Aram</div>
+          <div class="name-card-meta">geb. 1978 Schiras/Iran · lebt Brooklyn · Alexander Gray Associates</div>
+          <p>Whitney Biennial 2026 (ab März). Gleichzeitig Einzelausstellung "Infrequencies" bei Alexander Gray (bis April 2026). Persisch-islamische Arabesken kollidieren mit westlicher Abstraktion — produktiv, unversöhnlich, präzise.</p>
+        </div>
+        <div class="name-card">
+          <div class="name-card-name">Giulia Andreani</div>
+          <div class="name-card-meta">geb. 1981 Venedig · lebt Paris · Galerie Max Hetzler</div>
+          <p>Erste institutionelle Einzelschau in Deutschland: "Sabotage" am Hamburger Bahnhof (bis Sept. 2026). Malt ausschließlich in Payne's Grey, ausschließlich aus Archiven. Das Vergessen als Bildinhalt — das Grau als politisches Medium.</p>
+        </div>
+        <div class="name-card">
+          <div class="name-card-name">Atsushi Kaga</div>
+          <div class="name-card-meta">geb. Dublin/Japan · lebt zwischen Irland und Japan · Mother's Tankstation</div>
+          <p>Neuer Auktionsrekord Christie's Hongkong März 2026. Irish Times "Artist to watch 2026". Großformatige Bilder der vier Jahreszeiten als narrative Bühne: japanische Feinheit kreuzt westliche Groteske zu Figuren zwischen Fabel und Albtraum.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Block 3: Stil & Material -->
+    <div class="zeitgeist-block">
+      <div class="zeitgeist-label">Stil &amp; Material</div>
+      <p>Die aktuelle Saison ist eine Saison des Widerstands. Gegen die Glätte. Gegen die digitale Simulation von Pinselstrichen. Gegen das, was auf Instagram-Größe optimiert ist und in Wirklichkeit nicht existiert.</p>
+      <p>Das beherrschende Prinzip ist, was man im angelsächsischen Diskurs zunehmend <em>Chaoticism</em> nennt: nicht Unordnung als Formlosigkeit, sondern Energie als Formsprache. Ausufernde Pinselspuren, Kratzer, rauer Auftrag — Impasto nicht als Manierismus, sondern als Bekenntnis zum Handwerk. Der Art Basel/UBS-Report 2026 bestätigt: Sammler suchen gerade aktiv nach Werken, die den Beweis liefern, dass ein Mensch daran war. Nicht ein Algorithmus, nicht eine Airbrush-Pistole. Eine Hand.</p>
+      <p>Auf dem Vormarsch ist die Verbindung von neo-expressiver Geste und atmosphärischer Figuration — Arbeiten, die weder reine Abstraktion noch reine Narration bedienen, sondern zwischen beiden Registern operieren. Mohammed Sami zeigt, wie figurativer Realismus zur Stille kippen kann. Lenz Geerk beweist, dass Monochromie kein Reduktionismus ist, sondern ein Maximum an Bedeutungskonzentration. Hurvin Anderson übersetzt karibische Erinnerung in tropische Farbpunkte, die sich ins Englische einschreiben.</p>
+      <p><strong>Materialien im Aufschwung:</strong> Rohleinen ungrundiert als Gegenentwurf zur sterilen Grundierung — das Gewebe ist sichtbar, die Spannung zwischen Farbe und Träger produktiv. Ölstick und Ölkreide in Kombination mit Ölfarbe erlauben die direkte Geste ohne Pinselabstand. Schellack als Finish erzeugt jene Tiefe und Leuchtkraft, die Lackoberflächen nachahmen, ohne sie zu imitieren. Kaolin und andere Erden als Texturzusätze erlauben die Aufhärtung von Farbschichten zu fast skulpturalen Reliefs. Hinweis: Importzölle auf Canvas und Leinen (bis 41% in einzelnen Regionen) treiben Materialkosten — Rohleinen als verfügbare Alternative.</p>
+      <p><strong>Farbpaletten:</strong> Die Saison gehört dem Grau. Payne's Grey — die Farbe des archivierten Bildes, der Fotokopie, des Vergessens — dominiert bei Andreani und Sami. Daneben Erdtöne (Umbra, Ocker, Rost) als Material-Echo auf die Rückkehr zur physischen Substanz. Und der Gegenakkord: Juwelfarben — Smaragd, Tiefblau, Magenta — als neo-romantisches Signal. Hurvin Anderson setzt Neonakzente, die die tropische Erinnerung ins englische Zimmer entleeren. <strong>Was out ist:</strong> hyperkontrollierte Minimalismusflächen ohne Spur und jede Malerei, die primär für den Feed gemacht wurde.</p>
+    </div>
+
+    <!-- Block 4: Essay -->
+    <div class="zeitgeist-block zeitgeist-essay">
+      <div class="zeitgeist-label">Der Zeitgeist</div>
+      <p class="essay-pullquote">Es ist kein Zufall, dass Giulia Andreani ihre Berliner Einzelausstellung <em>Sabotage</em> nennt.</p>
+      <p>Sabotage — nicht Zerstörung, sondern gezielte Unterbrechung, das Einschleusen des Fremdkörpers in den reibungslosen Betrieb. Die Malerei von heute ist mehrheitlich damit beschäftigt, genau das zu tun: Risse in Oberflächen zu legen, die zu reibungslos wären.</p>
+      <p>Der Riss hat viele Formen. Bei Andreani ist er historisch — sie malt die Archivfotografie so, dass das Übersehene sichtbar wird: die Frauen, die Täter hinter dem freundlichen Gesicht, die Körper, die offiziell nicht existierten. Bei Mohammed Sami ist der Riss unsichtbar und doch allgegenwärtig: kein Blut, kein Gewehr, nur das stille Zimmer nach dem Geschehen. Bei Kamrooz Aram verläuft der Riss zwischen Kulturen — zwischen der persischen Ornamentik seiner Kindheit und dem westlichen Abstraktionsvokabular seiner Ausbildung, ein Riss, den er nicht schließt, sondern besiedelt.</p>
+      <p>Diese drei Positionen markieren etwas Wesentliches über den kulturellen Moment: Die Malerei wird wieder <em>politisch</em>, ohne propagandistisch zu sein. Politisch im Sinne von: Sie macht den Zusammenhang zwischen privater Erfahrung und kollektiver Geschichte sichtbar. Hurvin Anderson verbindet Birmingham mit Jamaika, Großbritannien mit der Karibik, diasporische Körper mit dem englischen Landschaftsbild. Das sind keine ornamentalen Gesten — das sind Interventionen.</p>
+      <p>Gleichzeitig ist der Markt heißgelaufen genug, um diese Interventionen zu absorbieren. USD 59,6 Milliarden Jahresumsatz, White-Glove-Verkäufe in Hongkong, Auktionsrekorde für Klimt und Joan Mitchell — die Kunstwelt hat sich nach zwei harten Jahren erholt, und der Appetit auf Malerei ist ungebrochen groß. 59 Prozent des Händlerumsatzes entfallen auf Gemälde. Die Frage ist, welche Malerei das ist.</p>
+      <p>Die Antwort, die sich in dieser Ausgabe abzeichnet: Malerei mit Widerstandspotenzial. Malerei, die dem Kauf widersteht, ohne unverkäuflich zu sein. Malerei, die schmerzt, ohne zu schreien. Lenz Geerks schlaflose Figuren, die nichts sagen wollen und trotzdem alles zeigen. Giulia Andreanis Archive, die das Vergessen nicht zulassen. Mohammed Samis Stille, die lauter ist als jede Parole.</p>
+      <p>Was die nächsten 12 bis 18 Monate bringen werden: eine weitere Ausdifferenzierung dieses Feldes. Der Neo-Expressionismus wird nicht verschwinden, aber er wird präziser — weniger wild um seiner selbst willen, mehr kontrollierte Energie mit Richtung. Das Impasto wird dicker, aber nicht willkürlicher. Die Figuration wird nicht kapitulieren, aber sie wird sich weiterhin mit der Abstraktion infizieren lassen. Und die Geschichte — die jüngste, die postkoloniale, die persönliche — wird nicht aufhören, sich in die Leinwand einzuschreiben.</p>
+      <p><strong>Der Riss als Methode. Das ist der Zeitgeist April 2026.</strong></p>
+    </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════
-     ARTIKEL: ZEITGEIST
-════════════════════════════════════════ -->
-<div class="article-section" data-section="zeitgeist">
-  <button class="back-btn" onclick="goBack()">← Kategorien</button>
-  <section id="zeitgeist" class="hero fade-in">
-    <div class="section-heading">Zeitgeist</div>
-    <h1>Fünf Positionen,<br>die man kennen sollte.</h1>
-    <p>
-      Von Cecily Browns sinnlicher Malerei im Herzen von Kensington Gardens bis zu Otis Kwame Kye Quaicoes Porträts, die das textile Erbe Ghanas in die Leinwandstruktur einschreiben — diese Ausgabe kartiert Positionen zwischen Institution und Entdeckung, zwischen Geste und Tiefe.
-    </p>
-  </section>
-</div>
+<!-- ═══ KÜNSTLER ═══ -->
+<section id="kuenstler" class="kuenstler-section">
+  <div class="section-inner">
+    <div class="section-heading">Künstler &amp; Werke</div>
 
-<!-- ═══════════════════════════════════════
-     ARTIKEL: KÜNSTLER
-════════════════════════════════════════ -->
-<div class="article-section" data-section="kuenstler">
-  <button class="back-btn" onclick="goBack()">← Kategorien</button>
-<div id="kuenstler" class="section-wrapper">
-  <div class="section-heading">Künstler</div>
-
-  <!-- ── CECILY BROWN ── -->
-  <div class="artist-section fade-in">
-    <div class="artist-text">
-      <span class="artist-level">INSTITUTION</span>
-      <div class="artist-name">Cecily Brown</div>
-      <div class="artist-sub">geb. 1969 · London · Gagosian / Paula Cooper Gallery</div>
-      <div class="artist-body">
-        Cecily Brown malt wie jemand, der gleichzeitig vergisst und erinnert. Die in London geborene, in New York lebende Malerin hat ein Werk entwickelt, das sich jeder Fixierung entzieht: Figuren tauchen auf, lösen sich auf, kehren zurück — nie als narrative Gewissheit, immer als malerische Frage. Browns Leinwände vibrieren zwischen Fleisch und Pinselstrich, zwischen Rubens' sinnlicher Üppigkeit und de Koonings gestischer Kühnheit, ohne dass man je sagen könnte, wo die Figur endet und die Geste beginnt.
-        <br><br>
-        Ihre frühen Arbeiten — darunter das ikonische <em>The Fugitive Kind</em> (2000) — etablierten Brown als Schlüsselfigur der figurativen Malerei: eine Malerei, die das Körperliche nie abbildet, sondern es erschöpft, bis die Leinwand selbst zu atmen beginnt. Aktuell zeigt die Serpentine Gallery London <strong>Picture Making</strong> (27. März – 6. September 2026) — ihre erste grosse UK-Einzelschau seit über zwei Jahrzehnten. Neue Werkgruppen antworten auf Kensington Gardens; umgestürzte Baumstämme als Motiv, das Brown in unterschiedlichsten Grössen und Paletten durcharbeitet, als wäre Wiederholung die einzig ehrliche Form der Malerei.
-        <div class="artist-works-label">Ausgewählte Werke</div>
+    <!-- 1. Giulia Andreani -->
+    <div class="artist-spotlight">
+      <div class="artist-works">
+        <a href="https://www.maxhetzler.com/artists/giulia-andreani/selected-works" target="_blank" rel="noopener" class="work-block">
+          <span class="work-title">Crépuscule (L'abri)</span>
+          <span class="work-year">2012 · Öl auf Leinwand</span>
+          <span class="work-link-label">Werk ansehen →</span>
+        </a>
+        <a href="https://www.smb.museum/en/exhibitions/detail/giulia-andreani/" target="_blank" rel="noopener" class="work-block">
+          <span class="work-title">Deadlier than the male gaze</span>
+          <span class="work-year">2025 · Öl auf Leinwand · Hamburger Bahnhof</span>
+          <span class="work-link-label">Werk ansehen →</span>
+        </a>
+      </div>
+      <div class="artist-info">
+        <span class="artist-level">Institution · Top-Galerie</span>
+        <h2 class="artist-name">Giulia Andreani</h2>
+        <p class="artist-meta">geb. 1981 Venedig · lebt Paris · Galerie Max Hetzler</p>
+        <div class="artist-text">
+          <p>Wer in den kommenden Monaten nach Berlin kommt, sollte Zeit einplanen für eine Begegnung der eigentümlichen Art: nicht mit Bildern, die einen anbrüllen, sondern mit Bildern, die schweigen und dabei mehr sagen als jedes Manifest. <em>Sabotage</em> am Hamburger Bahnhof, Nationalgalerie der Gegenwart (27. Februar bis 13. September 2026) — das mutigste Ausstellungsereignis der deutschen Saison.</p>
+          <p>Andreanis Medium ist das Archivfoto — aber kein digitales, kein zufällig gefundenes. Familienalben, staatliche Archive, Bildwerke des kulturellen Gedächtnisses. Was dort unbemerkt geschlummert hat, zieht sie heraus und malt es in einem einzigen Ton: Payne's Grey — dem Farbton der Fotoreproduktion, des Verblassens, des archivierten Gedächtnisses.</p>
+          <p><em>Crépuscule (L'abri)</em> (2012) zeigt Schutzräume im Zwielicht: kein Spektakel, nur das leise Gewissen der Geschichte. <em>Deadlier than the male gaze</em> (2025) ist eine direkte Aussage über die Machtstruktur des Blickes — in derselben verhaltenen Graupalette, die paradoxerweise alles zeigt, indem sie die Farbe verweigert.</p>
+          <p>Sammlungen: Centre Pompidou, Fondazione Sandretto Re Rebaudengo, MASI Lugano, MASP São Paulo.</p>
+        </div>
       </div>
     </div>
-    <div class="artist-links">
-      <a href="https://www.serpentinegalleries.org/whats-on/cecily-brown-picture-making/" target="_blank" rel="noopener" class="artist-link">The Fugitive Kind, 2000 →</a>
-      <a href="https://www.serpentinegalleries.org/whats-on/cecily-brown-picture-making/" target="_blank" rel="noopener" class="artist-link">Picture Making – Nature Walk, Serpentine London 2026 →</a>
-    </div>
-  </div>
 
-  <hr class="section-divider">
-
-  <!-- ── JADÉ FADOJUTIMI ── -->
-  <div class="artist-section reverse fade-in">
-    <div class="artist-text">
-      <span class="artist-level">TOP-GALERIE · NEUENTDECKUNG</span>
-      <div class="artist-name">Jadé Fadojutimi</div>
-      <div class="artist-sub">geb. 1993 · London · Gagosian / Galerie Gisela Capitain, Köln</div>
-      <div class="artist-body">
-        Jadé Fadojutimi ist 32 Jahre alt und bereits die jüngste Künstlerin in der Sammlung der Tate. Das klingt nach Karrierenachricht. Es ist tatsächlich Programm. Die in London geborene und ausgebildete Malerin — Slade, dann Royal College of Art — versteht ihre grossformatigen abstrakten Leinwände als epistemologische Instrumente: Versuche, Identität und Schönheit als unlösbar verflochtene Begriffe zu begreifen.
-        <br><br>
-        In <em>DWELVE: A Goosebump in Memory</em>, ihrer ersten Soloschau bei Gagosian New York (November – Dezember 2024), präsentierte Fadojutimi einundzwanzig Leinwände unter einem Titel, der »dwell« und »delve« zusammendenkt — häusliche Vertrautheit und Tiefenbefragung. Ihre Farbpalette oszilliert zwischen südasiatischen Festivalstimmungen und kühlen atmosphärischen Feldern; die Linie tanzt über die Leinwand wie ein Bewusstseinsstrom. Bei Galerie <strong>Gisela Capitain in Köln</strong> ist sie co-vertreten — ein Hinweis für alle, die in Deutschland noch nicht aufmerksam geworden sind.
-        <div class="artist-works-label">Ausgewählte Werke</div>
+    <!-- 2. Hurvin Anderson -->
+    <div class="artist-spotlight reverse">
+      <div class="artist-works">
+        <a href="https://www.tate.org.uk/whats-on/tate-britain/hurvin-anderson" target="_blank" rel="noopener" class="work-block">
+          <span class="work-title">Afrosheen</span>
+          <span class="work-year">2009 · Öl auf Leinwand · Barbershop-Serie</span>
+          <span class="work-link-label">Werk ansehen →</span>
+        </a>
+        <a href="https://www.tate.org.uk/whats-on/tate-britain/hurvin-anderson" target="_blank" rel="noopener" class="work-block">
+          <span class="work-title">Hollywood Boulevard</span>
+          <span class="work-year">1997 · Öl auf Leinwand · Tate Britain Retrospektive</span>
+          <span class="work-link-label">Werk ansehen →</span>
+        </a>
+      </div>
+      <div class="artist-info">
+        <span class="artist-level">Institution</span>
+        <h2 class="artist-name">Hurvin Anderson</h2>
+        <p class="artist-meta">geb. 1965 Birmingham · lebt London · Thomas Dane Gallery · RA</p>
+        <div class="artist-text">
+          <p>Hurvin Anderson ist einer der wichtigsten lebenden britischen Maler — ein Satz, den man in London schon lange weiß und der jetzt durch seine erste große Retrospektive an der Tate Britain (26. März bis 23. August 2026) für alle sichtbar gemacht wird: rund 80 Werke aus drei Jahrzehnten.</p>
+          <p>Was er malt, klingt zunächst unspektakulär: Schwimmbäder, Barbershops, karibische Landschaften, britische Vororte. Was er damit macht, ist alles andere als das. Anderson überschreibt die eine Geografie mit der anderen — die Tropen dringen ins englische Zimmer. Die Barbershop-Serie (2006–2023, 18 Jahre lang) ist sein konzentriertestes Werk: <em>Afrosheen</em> (2009) zeigt eine Ablage mit Haarprodukten und Spiegeln, niemanden im Bild. Die Abwesenheit spricht.</p>
+          <p><em>Hollywood Boulevard</em> (1997) zeigt Anderson als Kind neben seinem Vater: kein Familienporträt im bürgerlichen Sinne, sondern ein Bild über Migration, über das, was man mit sich trägt.</p>
+          <p>Für die eigene Praxis relevant: Anderson zeigt, wie Figuration und Abstraktion keine Gegner sein müssen — beide Tendenzen wirken gleichzeitig, ohne dass eine geopfert wird.</p>
+        </div>
       </div>
     </div>
-    <div class="artist-links">
-      <a href="https://gagosian.com/artists/jade-fadojutimi/" target="_blank" rel="noopener" class="artist-link">Untitled No. 4 (DWELVE), 2024 →</a>
-      <a href="https://gagosian.com/artists/jade-fadojutimi/" target="_blank" rel="noopener" class="artist-link">Untitled No. 8 (DWELVE), 2024 →</a>
-    </div>
-  </div>
 
-  <hr class="section-divider">
-
-  <!-- ── OTIS KWAME KYE QUAICOE ── -->
-  <div class="artist-section fade-in">
-    <div class="artist-text">
-      <span class="artist-level">EMERGING · NEUENTDECKUNG</span>
-      <div class="artist-name">Otis Kwame<br>Kye Quaicoe</div>
-      <div class="artist-sub">geb. 1988 · Accra, Ghana · Roberts Projects LA</div>
-      <div class="artist-body">
-        Es gibt Maler, die Geschichte malen, und es gibt Maler, die Geschichte bewohnen. Otis Kwame Kye Quaicoe — 1988 in Accra, Ghana geboren, heute in Portland, Oregon lebend — gehört zur zweiten Gruppe. Seine Porträtmalerei verhandelt Schwarze Würde und ghanaisches Erbe auf einer physischen Ebene, die über das Optische hinausgeht: charakteristisch ist die Integration von Stoff-Applikation in die Leinwandstruktur — textile Materialkultur Ghanas, eingeschrieben als körperliches Argument.
-        <br><br>
-        <em>Hall of Fame</em> (Roberts Projects LA, 2024) widmete sich dem ghanaischen Boxsport als Erinnerungsarchiv. Das monumentale Porträt <strong>Thomas Nii Quansah Sackey</strong> (274 × 213 cm) huldigt dem Boxer mit einer Würde, die Heroisierung vermeidet. <em>Encounter by Pool</em> zeigt zwei Figuren in konzentrierter Begegnung — das Wasser schimmert, der Stoff leuchtet. Artforum Critic's Pick. 2025 war Quaicoe Teil von <em>When We See Us: A Century of Black Figuration in Painting</em> am Centre for Fine Arts BOZAR, Brüssel.
-        <div class="artist-works-label">Ausgewählte Werke</div>
+    <!-- 3. Mohammed Sami -->
+    <div class="artist-spotlight">
+      <div class="artist-works">
+        <a href="https://www.luhringaugustine.com/exhibitions/mohammed-sami" target="_blank" rel="noopener" class="work-block">
+          <span class="work-title">One Thousand and One Nights</span>
+          <span class="work-year">2022 · Öl auf Leinwand · Luhring Augustine</span>
+          <span class="work-link-label">Werk ansehen →</span>
+        </a>
+        <a href="https://www.moma.org/audio/playlist/298/4596" target="_blank" rel="noopener" class="work-block">
+          <span class="work-title">The Execution Room</span>
+          <span class="work-year">2022 · Öl auf Leinwand · MoMA Collection</span>
+          <span class="work-link-label">Werk ansehen →</span>
+        </a>
+      </div>
+      <div class="artist-info">
+        <span class="artist-level">Top-Galerie</span>
+        <h2 class="artist-name">Mohammed Sami</h2>
+        <p class="artist-meta">geb. 1984 Bagdad · lebt London · Luhring Augustine / Modern Art</p>
+        <div class="artist-text">
+          <p>Wenn ein Stuhl zu viel sagen kann, wenn ein Vorhang in einem leeren Zimmer eine Katastrophe beschreibt, die nie zu sehen sein wird — dann malt Mohammed Sami. Der irakisch-britische Künstler gehört zu den wichtigsten Entdeckungen der letzten fünf Jahre: Luhring Augustine (NY/LA), Turner-Prize-Shortlist 2025, MoMA-Ankauf.</p>
+          <p>Samis Malerei ist eine Malerei der Leerstelle. Keine Körper, keine Gesichter, keine expliziten Verweise auf das Traumatische. Stattdessen: Objekte in Räumen, die gerade eben noch bewohnt waren. <em>One Thousand and One Nights</em> (2022) zeigt den Bagdader Nachthimmel — prächtig und bedrohlich zugleich, schwebend zwischen Märchen und Realität. <em>The Execution Room</em> (2022) hängt im MoMA: ein Raum, nichts weiter, alles weiter.</p>
+          <p>Die Verbindung zur eigenen Arbeit liegt im expressiven Aufladungsmechanismus: Inhalt durch Form, nicht durch Abbildung — das ist die Schule von Baselitz und Richter, angewandt auf das Bagdad des 21. Jahrhunderts.</p>
+        </div>
       </div>
     </div>
-    <div class="artist-links">
-      <a href="https://www.robertsprojectsla.com/artists/otis-kwame-kye-quaicoe" target="_blank" rel="noopener" class="artist-link">Thomas Nii Quansah Sackey, 2024 →</a>
-      <a href="https://www.robertsprojectsla.com/artists/otis-kwame-kye-quaicoe" target="_blank" rel="noopener" class="artist-link">Encounter by Pool, 2024 →</a>
-    </div>
-  </div>
 
-  <hr class="section-divider">
-
-  <!-- ── NEO RAUCH ── -->
-  <div class="artist-section reverse fade-in">
-    <div class="artist-text">
-      <span class="artist-level">INSTITUTION</span>
-      <div class="artist-name">Neo Rauch</div>
-      <div class="artist-sub">geb. 1960 · Leipzig · David Zwirner / Galerie EIGEN+ART</div>
-      <div class="artist-body">
-        Neo Rauch ist der grosse Schweiger der deutschen Malerei — nicht weil er nichts zu sagen hätte, sondern weil er jede Vereinnahmung verweigert: nicht surrealistisch, nicht sozialistisch-realistisch, nicht Ost, nicht West. Und doch alles davon, mit einem malerischen Raffinement, das seinesgleichen sucht.
-        <br><br>
-        Der 1960 in Leipzig geborene Rauch, Hauptfigur der Neuen Leipziger Schule, entwickelte an Galerie EIGEN+ART und später David Zwirner eine Bildsprache, die de Chiricos metaphysische Stille mit dem Personal der sozialistischen Arbeitswelt kreuzt. Figuren in unklaren Szenarien, rätselhafte Zeichen, Handlungen ohne Kontext. Das Werk <strong>Feldzeichen</strong> (2023, 200 × 250 cm), gezeigt in <em>Field Signs</em> bei David Zwirner Hongkong, ist paradigmatisch: eine Landschaft als psychisches Terrain. Die Ausstellung <em>Verwobene Sphären</em> (2024) brachte Rauchs Werk in Dialog mit dem seiner Partnerin Rosa Loy — ein seltener Einblick in fast drei Jahrzehnte komplementärer Bildarbeit.
-        <div class="artist-works-label">Ausgewählte Werke</div>
+    <!-- 4. Kamrooz Aram -->
+    <div class="artist-spotlight reverse">
+      <div class="artist-works">
+        <a href="https://whitney.org/artists/21803" target="_blank" rel="noopener" class="work-block">
+          <span class="work-title">Arabesque Composition (Archipelago)</span>
+          <span class="work-year">2025 · Whitney Biennial 2026</span>
+          <span class="work-link-label">Werk ansehen →</span>
+        </a>
+        <a href="https://www.alexandergray.com/exhibitions/889-kamrooz-aram-infrequencies/" target="_blank" rel="noopener" class="work-block">
+          <span class="work-title">Beneath the Ruins</span>
+          <span class="work-year">2024 · Alexander Gray Associates, New York</span>
+          <span class="work-link-label">Werk ansehen →</span>
+        </a>
+      </div>
+      <div class="artist-info">
+        <span class="artist-level">Institution</span>
+        <h2 class="artist-name">Kamrooz Aram</h2>
+        <p class="artist-meta">geb. 1978 Schiras/Iran · lebt Brooklyn · Alexander Gray Associates</p>
+        <div class="artist-text">
+          <p>Kamrooz Aram ist einer der wenigen Maler, die das Zusammentreffen zweier Kunsttraditionen nicht als Problem, sondern als Methode verstehen. Seit seinem MFA an der Columbia University bewegt er sich im Spannungsfeld zwischen der persisch-islamischen Ornamentik seiner Herkunft und der westlichen Abstraktion des 20. Jahrhunderts — und schlüpft durch alle Raster.</p>
+          <p>Die 82. Whitney Biennial (ab März 2026) ist die wichtigste Bühne für zeitgenössische amerikanische Kunst, und Aram ist dabei. Zeitgleich zeigt er "Infrequencies" bei Alexander Gray Associates — die Wende markierend: weg vom strengen Gitter früherer Arbeiten, hin zu offeneren, gestischen Bildräumen.</p>
+          <p><em>Arabesque Composition (Archipelago)</em> (2025): Arabesken, die sich auflösen in Geste — Muster, das ins Bild kippt. Was Basquiat mit Graffiti-Schrift und Oehlen mit dem Bild-im-Bild machen, macht Aram mit dem interkulturellen Ornament. Nicht weniger radikal.</p>
+        </div>
       </div>
     </div>
-    <div class="artist-links">
-      <a href="https://www.davidzwirner.com/artists/neo-rauch/survey" target="_blank" rel="noopener" class="artist-link">Feldzeichen, 2023 →</a>
-      <a href="https://www.davidzwirner.com/artists/neo-rauch/survey" target="_blank" rel="noopener" class="artist-link">Verwobene Sphären, 2024 →</a>
-    </div>
-  </div>
 
-  <hr class="section-divider">
-
-  <!-- ── HENRY TAYLOR ── -->
-  <div class="artist-section fade-in">
-    <div class="artist-text">
-      <span class="artist-level">TOP-GALERIE</span>
-      <div class="artist-name">Henry Taylor</div>
-      <div class="artist-sub">geb. 1958 · Oxnard, CA · Hauser &amp; Wirth</div>
-      <div class="artist-body">
-        Henry Taylor hat das Leben der schwarzen amerikanischen Arbeiterklasse nicht dokumentiert. Er hat es bewohnt — mit einem Pinsel, der keine Distanz kennt. Der 1958 in Oxnard, Kalifornien geborene Maler arbeitet in Los Angeles und hat Hauser & Wirth zu seiner Galerie gemacht, ohne dass sein Werk das Geringste an Unmittelbarkeit eingebüsst hätte.
-        <br><br>
-        Taylors Acrylmalerei ist schnell, direkt, ohne akademische Kältebeschichtung: Familienmitglieder, Nachbarn, historische Figuren der afroamerikanischen Geschichte werden auf der Leinwand zu gleichwertigen Akteuren neben dem Malgrund. <em>Gathering Wool</em> (Hauser & Wirth New York, November 2025 – April 2026) zeigt, wie Taylor Gemeinschaft und Erinnerung als malerische Substanz begreift. <strong>Sometimes a Straight Line Has to be Crooked</strong> (Hauser & Wirth Los Angeles, 2025) stellte seine Arbeit erstmals in Dialog mit der seines Lehrers James Jarvaise — eine Geste der Danksagung, die zugleich eine Genealogie der Malerei erzählt.
-        <div class="artist-works-label">Ausgewählte Werke</div>
+    <!-- 5. Lenz Geerk -->
+    <div class="artist-spotlight">
+      <div class="artist-works">
+        <a href="https://www.nicolavassell.com/artists/60-lenz-geerk/" target="_blank" rel="noopener" class="work-block">
+          <span class="work-title">Couple on a Fresco</span>
+          <span class="work-year">2019 · Christie's HK Rekord · HKD 2,1 Mio.</span>
+          <span class="work-link-label">Werk ansehen →</span>
+        </a>
+        <a href="https://massimodecarlo.com/artists/lenz-geerk" target="_blank" rel="noopener" class="work-block">
+          <span class="work-title">Woman Holding the Night Sky II</span>
+          <span class="work-year">2024 · Öl auf Leinwand · MASSIMODECARLO</span>
+          <span class="work-link-label">Werk ansehen →</span>
+        </a>
+      </div>
+      <div class="artist-info">
+        <span class="artist-level">Emerging</span>
+        <h2 class="artist-name">Lenz Geerk</h2>
+        <p class="artist-meta">geb. 1988 Basel · lebt Düsseldorf · Roberts Projects / MASSIMODECARLO / Nicola Vassell</p>
+        <div class="artist-text">
+          <p>Lenz Geerk malt das, was man träumt, bevor man einschläft — oder nicht einschlafen kann. Der an der Kunstakademie Düsseldorf ausgebildete Schweizer ist bei Roberts Projects (L.A.), MASSIMODECARLO (Milan/London) und Nicola Vassell Gallery (New York) vertreten — ein Trio internationaler Positionen, das für eine Karriere im Auftrieb steht.</p>
+          <p>Im März 2026 setzte Christie's Hongkong den öffentlichen Beweis: <em>Couple on a Fresco</em> (2019) erzielte HKD 2,1 Millionen und damit einen neuen Künstlerrekord. Der Markt hat entschieden, bevor der kritische Diskurs vollständig eingeholt hat — das ist bei den Besten oft so.</p>
+          <p>Was Geerk malt, ist auf den ersten Blick introvertiert: Figuren in gedämpften Monochromen, fast schlafend, fast außer Zeit. <em>Woman Holding the Night Sky II</em> (2024): eine Figur, die das Dunkel hält, als wäre es ein Kind. Was Jonathan Meese mit expressiver Gewalt macht, macht Geerk mit expressiver Stille. Beide verweigern die Beruhigung.</p>
+        </div>
       </div>
     </div>
-    <div class="artist-links">
-      <a href="https://www.hauserwirth.com/artists/27465-henry-taylor/" target="_blank" rel="noopener" class="artist-link">Gathering Wool, 2025/26 →</a>
-      <a href="https://www.hauserwirth.com/hauser-wirth-exhibitions/james-jarvaise-henry-taylor-2025/" target="_blank" rel="noopener" class="artist-link">Sometimes a Straight Line Has to be Crooked, 2025 →</a>
+
+  </div>
+</section>
+
+<!-- ═══ TECHNIK ═══ -->
+<section id="technik" class="technik-section">
+  <div class="technik-intro">
+    <div class="technik-intro-inner">
+      <h2 class="technik-title">Payne's Grey und Zink — Die Kunst des monochromen Untertons</h2>
+      <p class="technik-subtitle">Angeregt durch die Saison-Dominanz von Payne's Grey bei Giulia Andreani und Mohammed Sami. Eine professionelle Technik für atmosphärische Tiefe ohne Farbkompromisse.</p>
     </div>
   </div>
-</div><!-- /section-wrapper -->
-</div><!-- /article-section kuenstler -->
-
-<!-- ═══════════════════════════════════════
-     ARTIKEL: TECHNIK
-════════════════════════════════════════ -->
-<div class="article-section" data-section="technik">
-  <button class="back-btn" onclick="goBack()">← Kategorien</button>
-<section id="technik" class="technique-section fade-in">
-  <div class="technique-inner">
-    <div class="section-heading">Atelier Studie</div>
-    <div class="technique-header">
-      <h2 class="technique-title">Expressionstransparenz:<br>Glazur und Geste kombinieren</h2>
-      <p class="technique-intro">
-        Grossformatig malen heisst: mit dem ganzen Körper denken. Diese Atelier-Studie verbindet die gestische Direktheit von Henry Taylor und Jadé Fadojutimi mit der lasierenden Tiefe von Neo Rauch — und zeigt, wie beide Pole in einer Arbeit aktiviert werden können.
-      </p>
-    </div>
-
-    <div class="material-block">
-      <h4>Material</h4>
-      <ul class="material-list">
-        <li>Acryl: Titanweiss, Kadmiumrot medium, Ultramarin, Gelber Ocker, Elfenbeinschwarz</li>
-        <li>Öl: Transparentoxidrot, Smalte oder Preussischblau, Titanweiss</li>
-        <li>Grundierung: Acrylgesso, 2–3 Schichten</li>
-        <li>Leinwand: mind. 120 × 150 cm (Keilrahmen, 38 mm)</li>
-        <li>Malmittel Öl: Leinöl + Terpentin 1:3 (Untermalung), 2:1 (Abschluss)</li>
-        <li>Grosse Borstenpinsel (Flachpinsel Gr. 20–30), Palettenmesser, Haushaltslappen</li>
+  <div class="technik-body">
+    <div class="material-list">
+      <h3>Materialliste</h3>
+      <ul>
+        <li>Payne's Grey (Öl, z.B. Williamsburg / Old Holland / Schmincke)</li>
+        <li>Zinkweiß (halbtransparent — nicht Titanweiß)</li>
+        <li>Knochenleinöl als Verdünner</li>
+        <li>Rohleinen / feinkörnige Grundierung</li>
+        <li>Borstenpinsel flach + rund, Gr. 4–14</li>
+        <li>Malmesser für Impasto-Partien</li>
+        <li>Schwarzer Ölstick</li>
       </ul>
     </div>
-
-    <div class="steps-grid">
-      <div class="step-card">
-        <div class="step-number">01</div>
-        <div class="step-title">Aktive Grundlage</div>
-        <div class="step-text">Auf die trockene Gesso-Grundierung breite Acrylfelder in 2–3 Farben auftragen, nass-in-nass verlaufen lassen. Nicht vollständig decken — der weisse Grund muss atmen. Trocknungszeit: 20–30 Minuten.</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h4>Tonwertuntersuchung</h4>
+          <p>Payne's Grey pur und in 25%, 50%, 75% Zinkweiß mischen. Diese vier Töne bilden die gesamte Palette. Verstehen, wo das Grau ins Kühle kippt (viel Zinkweiß) und wo es ins Dunkle zieht (wenig Weiß).</p>
+        </div>
       </div>
-      <div class="step-card">
-        <div class="step-number">02</div>
-        <div class="step-title">Erste Geste</div>
-        <div class="step-text">Mit grossen Borstenpinseln oder dem Palettenmesser: energische Spuren in komplementären Tönen. Das Ziel ist kein Bild, sondern ein Energiefeld. Fehler sind erwünscht — sie sind der Rohstoff.</div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h4>Erste Lage — Toning</h4>
+          <p>Leinwand dünn mit einem Wash in der mittleren Ton-Mischung einreiben. Kein Detail, nur Atmosphäre. Gut trocknen lassen — Payne's Grey braucht 24–48 Stunden.</p>
+        </div>
       </div>
-      <div class="step-card">
-        <div class="step-number">03</div>
-        <div class="step-title">Figur als Anker</div>
-        <div class="step-text">Optional: eine Figur oder ein Motiv mit Kohle oder dünner Acrylfarbe markieren. Nicht ausarbeiten. Nur setzen, als Gravitationspunkt für die nachfolgenden Schichten.</div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h4>Struktur-Aufbau</h4>
+          <p>Mit Payne's Grey pur die strukturgebenden Elemente einzeichnen — Figur, Raum, Horizont. Nicht illustrieren, sondern die Energie der Form suchen. Pinsel oder Malmesser.</p>
+        </div>
       </div>
-      <div class="step-card">
-        <div class="step-number">04</div>
-        <div class="step-title">Erste Ölglaziur</div>
-        <div class="step-text">Nach vollständiger Trocknung (mind. 24 h): stark verdünnte Ölfarbe — fast transparent — über ausgewählte Partien legen. Das schafft Tiefe, ohne die Energie der Geste zu überschreiben.</div>
+      <div class="step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h4>Lichter mit Zinkweiß</h4>
+          <p>Sehr sparsam aufsetzen. Zinkweiß erzeugt milchige Tiefe — keine harte Weiße. Das ist die Qualität des Payne's-Grey-Bildes. Titanweiß würde aus der Fläche springen und den Charakter zerstören.</p>
+        </div>
       </div>
-      <div class="step-card">
-        <div class="step-number">05</div>
-        <div class="step-title">Verdichtung</div>
-        <div class="step-text">Ausgewählte Stellen mit deckendem Weiss oder einem hellen Ton herausarbeiten. Der Kontrast zwischen transparenter Tiefe und opaker Oberfläche erzeugt die Spannung, die das Bild trägt.</div>
+      <div class="step">
+        <div class="step-number">5</div>
+        <div class="step-content">
+          <h4>Ölstick-Intervention</h4>
+          <p>Mit schwarzem Ölstick direkt ins noch feuchte Bild: Linie, Geste, Widerspruch. Der Ölstick lässt sich in die Ölfarbe reiben und erzeugt eine Fusion zwischen gezeichneter Spur und malerischer Fläche — ein direkter, körperlicher Eingriff.</p>
+        </div>
       </div>
-      <div class="step-card">
-        <div class="step-number">06</div>
-        <div class="step-title">Stehenlassen</div>
-        <div class="step-text">Nicht fertigstellen. Das Bild braucht offene Stellen, Atem, Zweifel. Resistenz gegen Vollständigkeit ist das schwerste Handwerk — und das ehrlichste Ergebnis.</div>
+      <div class="step">
+        <div class="step-number">6</div>
+        <div class="step-content">
+          <h4>Finales Lesen</h4>
+          <p>Bild aus drei Metern Abstand lesen. Payne's Grey verändert sich im Seitenlicht stark — im Atelierlicht cool, im Galerielicht warm. Gezielt nacharbeiten oder lassen. Das Bild entscheidet mit.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
-</div><!-- /article-section technik -->
 
-<!-- ═══════════════════════════════════════
-     ARTIKEL: AUSSTELLUNGEN
-════════════════════════════════════════ -->
-<div class="article-section" data-section="ausstellungen">
-  <button class="back-btn" onclick="goBack()">← Kategorien</button>
-<section id="ausstellungen" class="exhibitions-section fade-in">
-  <div class="exhibitions-inner">
-    <div class="section-heading">Ausstellungen</div>
-    <div class="shows-grid">
+<!-- ═══ AUSSTELLUNGEN ═══ -->
+<section id="ausstellungen" class="ausstellungen-section">
+  <div class="section-inner">
+    <div class="section-heading">Ausstellungen · Oldenburg &amp; Bremen</div>
+    <div class="exhibitions-grid">
 
-      <!-- SHOW 1: OKV -->
-      <div class="show-card">
-        <div class="show-city">Oldenburg</div>
-        <div class="show-institution">Oldenburger Kunstverein</div>
-        <div class="show-title">Babette Semmer –<br>Die Zähmung</div>
-        <div class="show-date">20. Feb. – 10. Mai 2026</div>
-        <div class="show-text">
-          Die Berliner Malerin (*1989) zeigt im OKV ihre erste grosse institutionelle Einzelausstellung. »Die Zähmung« ist ein Titel, der so viel wie sein Gegenteil verspricht: Semmer appropriiert Bildmaterial aus Jugendzeitschriften, Seifenopern und Internetforen, transferiert es auf mit Quarzsand grundierte Leinwand und befragt dabei Mechanismen von Unterwerfung und Begehren in der visuellen Alltagskultur. Ihre Malerei — altmeisterlich in der Technik, subversiv im Gegenstand — oszilliert zwischen Fotorealismus und impressionistischer Auflösung.
+      <!-- 1. Babette Semmer -->
+      <div class="exhibition-card">
+        <div class="exhibition-status">
+          <span class="status-dot laufend"></span>
+          <span class="status-label">Laufend</span>
         </div>
-        <div class="show-links">
-          <a href="https://www.oldenburger-kunstverein.de/ausstellung/" target="_blank" rel="noopener" class="show-link">Zur Ausstellung →</a>
-          <a href="https://babettesemmer.com/" target="_blank" rel="noopener" class="show-link">Babette Semmer →</a>
+        <div class="exhibition-city">Oldenburg</div>
+        <h3 class="exhibition-title">Babette Semmer. Die Zähmung</h3>
+        <p class="exhibition-institution">Oldenburger Kunstverein</p>
+        <p class="exhibition-dates">20. Februar – 10. Mai 2026</p>
+        <p class="exhibition-text">Erste große institutionelle Einzelausstellung der Malerin Babette Semmer (*1989 London, lebt Berlin). Ausgangspunkt: fotografisches Bild aus Jugendzeitschriften, Soaps, privaten Fotosammlungen, KI-Generiertem — analysiert, dann auf Quarzsand-grundierte Leinwand übertragen. Fotorealistisch im Blick, fremd in der Substanz.</p>
+        <div class="exhibition-links">
+          <a href="https://www.oldenburger-kunstverein.de/ausstellung/" target="_blank" rel="noopener" class="exhibition-link">Ausstellung →</a>
+          <a href="https://babettesemmer.com/" target="_blank" rel="noopener" class="exhibition-link">Künstlerin →</a>
         </div>
       </div>
 
-      <!-- SHOW 2: PMB -->
-      <div class="show-card">
-        <div class="show-city">Bremen</div>
-        <div class="show-institution">Paula Modersohn-Becker Museum</div>
-        <div class="show-title">Becoming Paula</div>
-        <div class="show-date">8. Feb. – 13. Sep. 2026</div>
-        <div class="show-text">
-          Zum 150. Geburtstag von Paula Modersohn-Becker (8. Februar 1876) versammelt das ihr gewidmete Museum 80 Werke — Aktmalereien und Porträts, Landschaftsbilder und Stillleben, Zeichnungen und Aquarelle. Die Ausstellung erzählt von Modersohn-Beckers Lebensstationen: Berlin, London, Worpswede, Paris. Dass das Haus, das erste Museum weltweit für eine einzelne Künstlerin, 2027 seinen hundertsten Geburtstag feiert, gibt der Schau eine doppelte historische Dringlichkeit. Ein Pflichtbesuch.
+      <!-- 2. Leyla Yenirce -->
+      <div class="exhibition-card">
+        <div class="exhibition-status">
+          <span class="status-dot upcoming"></span>
+          <span class="status-label">Eröffnung 18. April</span>
         </div>
-        <div class="show-links">
-          <a href="https://www.museen-boettcherstrasse.de/ausstellungen/150-100/" target="_blank" rel="noopener" class="show-link">Zur Ausstellung →</a>
+        <div class="exhibition-city">Oldenburg</div>
+        <h3 class="exhibition-title">Leyla Yenirce. Werdegang</h3>
+        <p class="exhibition-institution">Landesmuseum für Kunst und Kulturgeschichte</p>
+        <p class="exhibition-dates">18. April – 23. August 2026</p>
+        <p class="exhibition-text">Erste Museumsschau der Berliner Künstlerin, die als Kind jesidischer Geflüchteter in Oldenburg aufgewachsen ist. Gemälde, Installationen, Video. Im Zentrum: eine Serie von Frauenporträts als "Frauenchor" — Stimmen aus Kunst, Literatur, Politik. Finkenwerder-Förderpreis der HFBK Hamburg 2026.</p>
+        <div class="exhibition-links">
+          <a href="https://www.landesmuseum-ol.de/ausstellungen/leyla-yenirce.html" target="_blank" rel="noopener" class="exhibition-link">Ausstellung →</a>
+          <a href="https://www.capitainpetzel.de/artists/179-leyla-yenirce/" target="_blank" rel="noopener" class="exhibition-link">Künstlerin →</a>
         </div>
       </div>
 
-      <!-- SHOW 3: WESERBURG (Vorschau) -->
-      <div class="show-card">
-        <div class="show-city">Bremen</div>
-        <div class="show-institution">Weserburg Museum für moderne Kunst</div>
-        <div class="show-title">Anys Reimann –<br>Mirrorball <span class="preview-badge">Vorschau</span></div>
-        <div class="show-date">2. Mai – 4. Okt. 2026 · Eröffnung: 30. Mai</div>
-        <div class="show-text">
-          Die erste Museumseinzelausstellung der 1965 in Düsseldorf geborenen Anys Reimann ist ein Ereignis, das man jetzt vormerken sollte. Reimanns grossformatige Collagengemälde, Lederskulpturen und Spiegelobjekte verhandeln Schwarze Weiblichkeit und Identität in einer Bildsprache, die Komplexität über Eindeutigkeit stellt. Herzstück: ein begehbarer schwarzer Garten — eine Installation aus ausschliesslich schwarzblühenden Pflanzen, mit Duftstoffen angereichert.
+      <!-- 3. Mara Wohnhaas -->
+      <div class="exhibition-card">
+        <div class="exhibition-status">
+          <span class="status-dot laufend"></span>
+          <span class="status-label">Laufend</span>
         </div>
-        <div class="show-links">
-          <a href="https://weserburg.de/ausstellung/anys-reimann-mirrorball/" target="_blank" rel="noopener" class="show-link">Zur Ausstellung →</a>
-          <a href="http://anysreimann.com/shows/" target="_blank" rel="noopener" class="show-link">Anys Reimann →</a>
+        <div class="exhibition-city">Bremen</div>
+        <h3 class="exhibition-title">Mara Wohnhaas</h3>
+        <p class="exhibition-institution">GAK Gesellschaft für Aktuelle Kunst</p>
+        <p class="exhibition-dates">31. Januar – 3. Mai 2026</p>
+        <p class="exhibition-text">Die GAK fragt mit Mara Wohnhaas nach den Mechanismen der Verführung und des Begehrens in zeitgenössischer Kunst und visueller Kultur: Was wollen wir, das uns verführt? Eine konzeptionell angelegte Schau im wichtigsten Projektraum für aktuelle Kunst in Bremen.</p>
+        <div class="exhibition-links">
+          <a href="https://gak-bremen.de/en/exhibitions/" target="_blank" rel="noopener" class="exhibition-link">Ausstellung →</a>
+          <a href="https://gak-bremen.de/en/exhibitions/" target="_blank" rel="noopener" class="exhibition-link">Künstlerin →</a>
+        </div>
+      </div>
+
+      <!-- 4. Anys Reimann -->
+      <div class="exhibition-card">
+        <div class="exhibition-status">
+          <span class="status-dot upcoming"></span>
+          <span class="status-label">Eröffnung 2. Mai</span>
+        </div>
+        <div class="exhibition-city">Bremen</div>
+        <h3 class="exhibition-title">Anys Reimann. Mirrorball</h3>
+        <p class="exhibition-institution">Weserburg Museum für moderne Kunst</p>
+        <p class="exhibition-dates">2. Mai – 4. Oktober 2026</p>
+        <p class="exhibition-text">Erste museale Einzelausstellung von Anys Reimann (*1965 Düsseldorf). Großformatige Collagemalerei, mysteriöse Lederskulpturen, Spiegelobjekte und Körperabgüsse mit geballten Fäusten. Spannungsfeld: Identität und Körper, kulturelle Zugehörigkeit, Repräsentation.</p>
+        <div class="exhibition-links">
+          <a href="https://weserburg.de/ausstellung/anys-reimann-mirrorball/" target="_blank" rel="noopener" class="exhibition-link">Ausstellung →</a>
+          <a href="http://anysreimann.com/" target="_blank" rel="noopener" class="exhibition-link">Künstlerin →</a>
         </div>
       </div>
 
     </div>
   </div>
 </section>
-</div><!-- /article-section ausstellungen -->
 
-<!-- ═══════════════════════════════════════
-     FOOTER
-════════════════════════════════════════ -->
+<!-- ═══ FOOTER ═══ -->
 <footer>
-  <div class="footer-inner">
-    <div>
-      <span class="footer-logo">TITANWEISS</span>
-      <p class="footer-tagline">Kunstmagazin.<br>Montag und Donnerstag.</p>
-    </div>
-    <div>
-      <span class="footer-label">Diese Ausgabe</span>
-      <p class="footer-text">Nr. 01 — 6. April 2026<br>Künstler: Cecily Brown, Jadé Fadojutimi, Otis Kwame Kye Quaicoe, Neo Rauch, Henry Taylor<br>Technik: Expressionstransparenz<br>Ausstellungen: Oldenburg + Bremen</p>
-    </div>
-    <div>
-      <p class="footer-text" style="font-style: italic; font-size: 0.85rem; color: #aaa; letter-spacing: 0.05em;">Was die Kunst weiß.</p>
-    </div>
-  </div>
+  <span class="footer-logo">TITANWEISS</span>
+  <span class="footer-issue">02 / 2026</span>
 </footer>
 
-<!-- ─── NAVIGATION + SCROLL ANIMATIONS ─── -->
-<script>
-  // ── Scroll Animations (zuerst definieren) ──
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
-    });
-  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-
-  // ── Show/Hide Logik ──
-  function showSection(hash) {
-    var landing = document.querySelector('.issue-landing');
-    var sections = document.querySelectorAll('.article-section');
-    var header = document.getElementById('article-header');
-    var target = hash ? hash.replace('#', '') : '';
-
-    if (!target) {
-      landing.style.display = 'flex';
-      sections.forEach(function(s) { s.style.display = 'none'; });
-      header.style.display = 'none';
-    } else {
-      landing.style.display = 'none';
-      header.style.display = 'flex';
-      sections.forEach(function(s) {
-        s.style.display = (s.dataset.section === target) ? 'block' : 'none';
-      });
-      window.scrollTo(0, 0);
-      document.querySelectorAll('.article-section[data-section="' + target + '"] .fade-in')
-        .forEach(function(el) { observer.observe(el); });
-    }
-  }
-
-  function goBack() {
-    history.pushState('', document.title, window.location.pathname);
-    showSection('');
-  }
-
-  window.addEventListener('hashchange', function() { showSection(location.hash); });
-
-  document.addEventListener('DOMContentLoaded', function() {
-    showSection(location.hash);
-  });
-</script>
 </body>
 </html>
