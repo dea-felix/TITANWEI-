@@ -245,25 +245,29 @@
   .zeitgeist-text em { font-style: italic; }
   .zeitgeist-text strong { font-weight: 500; color: #111; }
 
-  /* Names to Watch */
+  /* Names to Watch — kein Kasten, clean list */
   .names-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
   }
   .name-card {
-    background: #ffffff;
-    border: 1px solid #eeeeee;
-    border-top: 2px solid #FFD700;
-    padding: 24px 20px;
+    padding: 28px 0;
+    border-bottom: 1px solid #f0f0f0;
   }
+  .name-card:last-child { border-bottom: none; }
   .name-card-name {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 0.9rem;
     color: #111;
     margin-bottom: 4px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    transition: color 0.2s;
   }
+  .name-card-name:hover { color: #FFD700; }
   .name-card-meta {
     font-family: 'Inter', sans-serif;
     font-size: 0.72rem;
@@ -274,10 +278,11 @@
   }
   .name-card p {
     font-family: 'Inter', sans-serif;
-    font-size: 0.82rem;
-    color: #444;
-    line-height: 1.7;
+    font-size: 0.88rem;
+    color: #555;
+    line-height: 1.75;
     font-weight: 300;
+    max-width: 680px;
   }
   .name-card p em { font-style: italic; }
 
@@ -591,9 +596,10 @@
 
   /* ─── SECTION FOOTER ─── */
   .section-footer {
-    background: #111;
-    color: #fff;
-    padding: 56px 48px;
+    background: #ffffff;
+    color: #111;
+    padding: 64px 48px;
+    border-top: 1px solid #f0f0f0;
   }
   .section-footer-inner {
     max-width: 1200px;
@@ -607,7 +613,7 @@
     font-weight: 900;
     font-size: 1.1rem;
     letter-spacing: 0.35em;
-    color: #fff;
+    color: #111;
     display: block;
     margin-bottom: 12px;
     text-decoration: none;
@@ -616,7 +622,7 @@
     font-family: 'Inter', sans-serif;
     font-size: 0.75rem;
     font-weight: 300;
-    color: #666;
+    color: #999;
     line-height: 1.6;
   }
   .footer-label {
@@ -625,31 +631,31 @@
     font-weight: 700;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: #FFD700;
+    color: #bbbbbb;
     margin-bottom: 12px;
     display: block;
   }
   .footer-text {
     font-family: 'Inter', sans-serif;
     font-size: 0.75rem;
-    color: #666;
+    color: #999;
     line-height: 1.7;
     font-weight: 300;
   }
   .footer-back {
     font-family: 'Montserrat', sans-serif;
-    font-size: 0.68rem;
+    font-size: 0.65rem;
     font-weight: 700;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: #FFD700;
+    color: #bbbbbb;
     cursor: pointer;
     text-decoration: none;
     margin-top: 16px;
     display: inline-block;
-    transition: opacity 0.2s;
+    transition: color 0.2s;
   }
-  .footer-back:hover { opacity: 0.7; }
+  .footer-back:hover { color: #111; }
 
   /* ─── RESPONSIVE ─── */
   @media (max-width: 1119px) {
@@ -742,27 +748,27 @@
         <span class="zeitgeist-label">Im Kommen — Names to Watch</span>
         <div class="names-grid">
           <div class="name-card">
-            <div class="name-card-name">Lenz Geerk</div>
+            <a class="name-card-name" onclick="showSection('kuenstler')">Lenz Geerk →</a>
             <div class="name-card-meta">geb. 1988 Basel · Düsseldorf · Roberts Projects / MASSIMODECARLO / Nicola Vassell</div>
             <p>Figurenmalerei aus Schlaflosigkeit. Christie's Hongkong März 2026: Künstlerrekord für <em>Couple on a Fresco</em> (2019), HKD 2,1 Mio. Der Markt hat entschieden, bevor der Kritikerdiskurs eingeholt hat.</p>
           </div>
           <div class="name-card">
-            <div class="name-card-name">Mohammed Sami</div>
+            <a class="name-card-name" onclick="showSection('kuenstler')">Mohammed Sami →</a>
             <div class="name-card-meta">geb. 1984 Bagdad · London · Luhring Augustine / Modern Art</div>
             <p>Turner-Prize-Shortlist 2025. MoMA-Ankauf <em>The Execution Room</em> (2022). Atmosphärische Bilder, in denen Alltagsobjekte Trauma tragen ohne es zu zeigen.</p>
           </div>
           <div class="name-card">
-            <div class="name-card-name">Kamrooz Aram</div>
+            <a class="name-card-name" onclick="showSection('kuenstler')">Kamrooz Aram →</a>
             <div class="name-card-meta">geb. 1978 Schiras/Iran · Brooklyn · Alexander Gray Associates</div>
             <p>Whitney Biennial 2026. Persisch-islamische Arabesken kollidieren mit westlicher Abstraktion — produktiv, unversöhnlich, präzise.</p>
           </div>
           <div class="name-card">
-            <div class="name-card-name">Giulia Andreani</div>
+            <a class="name-card-name" onclick="showSection('kuenstler')">Giulia Andreani →</a>
             <div class="name-card-meta">geb. 1981 Venedig · Paris · Galerie Max Hetzler</div>
             <p>"Sabotage" am Hamburger Bahnhof (bis Sept. 2026). Malt ausschließlich in Payne's Grey, ausschließlich aus Archiven. Das Vergessen als Bildinhalt.</p>
           </div>
           <div class="name-card">
-            <div class="name-card-name">Atsushi Kaga</div>
+            <a class="name-card-name" onclick="showSection('kuenstler')">Atsushi Kaga →</a>
             <div class="name-card-meta">geb. Dublin/Japan · Mother's Tankstation</div>
             <p>Neuer Auktionsrekord Christie's Hongkong März 2026. Großformatige Bilder der vier Jahreszeiten: japanische Feinheit kreuzt westliche Groteske.</p>
           </div>

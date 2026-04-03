@@ -37,8 +37,9 @@ Minimalistisch, clean, Apple-Style. Keine Boxen, keine Kästen, keine überflüs
 | Inter | 300, 400, 500 | Fließtext, Metainfos |
 
 ### Design-Regeln
-- **Hintergrund überall: `#ffffff` (reines Weiß — "Titanweiß")** — keine grauen Sections, kein `#f8f8f8`, kein `#fafafa`
-- Keine schwarzen Blöcke, keine Card-Schatten, keine Kästen
+- **Hintergrund überall: `#ffffff` (reines Weiß — "Titanweiß")** — keine grauen Sections, kein `#f8f8f8`, kein `#fafafa`, auch Footer weiß
+- **Keine Kästen, keine Cards, keine Borders** — Zeitgeist "Im Kommen" als saubere Liste mit `border-bottom: 1px solid #f0f0f0` als Trennlinie, kein Rahmen
+- Keine schwarzen Blöcke, keine Card-Schatten
 - Kategorielinks auf Landing: `#FFD700` Gold, Montserrat 700, uppercase
 - Trennlinien: `1px solid #f0f0f0`
 - Abstände großzügig (min. 40px)
@@ -68,15 +69,18 @@ Reihenfolge von oben nach unten:
 4. Newsletter-Signup: Label + Email-Input + Button (Buttondown embed)
 
 ### Footer (innerhalb jeder Kategorie)
-```html
-<footer class="section-footer">
-  <span class="footer-logo">TITANWEISS</span>
-  <!-- + Ausgabeninfos + Newsletter -->
-  <a class="footer-back" onclick="goBack()">← Alle Kategorien</a>
-</footer>
-```
-- Hintergrund: `#111111` (dunkel) — einzige Ausnahme vom Weiß-Gebot
-- Footer-Logo: weiß, Montserrat 900
+- Hintergrund: `#ffffff` — weiß wie alles andere
+- `border-top: 1px solid #f0f0f0` als dezente Trennung
+- Logo: `#111111`, Montserrat 900
+- Labels: `#bbbbbb` grau (nicht Gold)
+- `← Alle Kategorien` Link: grau, hover → schwarz
+- 3-spaltig: TITANWEISS + Tagline | Ausgabeninfo | Newsletter-Link
+
+### "Im Kommen" — Names to Watch
+- **Keine Cards, keine Boxen** — saubere vertikale Liste
+- Jeder Eintrag: Name als klickbarer Link (`→`) → öffnet Künstler-Kategorie via `showSection('kuenstler')`
+- Trennung zwischen Einträgen: `border-bottom: 1px solid #f0f0f0`
+- Name: Montserrat 700, hover → `#FFD700`
 
 ---
 
