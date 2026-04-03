@@ -65,7 +65,7 @@ Minimalistisch, clean, Apple-Style. Keine Boxen, keine Kästen, keine überflüs
 Reihenfolge von oben nach unten:
 1. `NO. XX · MONAT YYYY` — Montserrat 700, grau, uppercase, tiny
 2. `Was die Kunst weiß.` — Inter 300, klein, grau, klickbar → index.html
-3. Kategorielinks: ZEITGEIST / KÜNSTLER / ATELIER STUDIE / AUSSTELLUNGEN — Gold, Montserrat 700, uppercase
+3. Kategorielinks: ZEITGEIST / KÜNSTLER:INNEN / ATELIER STUDIE / AUSSTELLUNGEN — Gold, Montserrat 700, uppercase
 4. Newsletter-Signup: Label + Email-Input + Button (Buttondown embed)
 
 ### Footer (innerhalb jeder Kategorie)
@@ -78,7 +78,8 @@ Reihenfolge von oben nach unten:
 
 ### "Im Kommen" — Names to Watch
 - **Keine Cards, keine Boxen** — saubere vertikale Liste
-- Jeder Eintrag: Name als klickbarer Link (`→`) → öffnet Künstler-Kategorie via `showSection('kuenstler')`
+- Jeder Eintrag: Name als klickbarer Extern-Link (`→`) → direkt zur Galerie/Institution des Künstlers/der Künstlerin (kein `showSection` — das führt zu Verwirrung)
+- **Im Kommen enthält IMMER andere Künstler:innen als die Künstler:innen-Sektion** — keine Überschneidungen
 - Trennung zwischen Einträgen: `border-bottom: 1px solid #f0f0f0`
 - Name: Montserrat 700, hover → `#FFD700`
 
@@ -134,7 +135,7 @@ index.html (Startseite)
 **Immer in dieser Reihenfolge — nie abweichen:**
 
 1. **Zeitgeist** — 4 Unterrubriken, 1.200–1.800 Wörter gesamt
-2. **Künstler** — 5 Künstler:innen, je 2 Werke, 200–300 Wörter pro Person
+2. **Künstler:innen** — 5 Künstler:innen, je 2 Werke, 200–300 Wörter pro Person (Kategorie heißt **Künstler:innen**, nicht "Künstler")
 3. **Atelier Studie** — 1 professionelle Maltechnik, 250–350 Wörter, 4–6 Schritte
 4. **Ausstellungen** — Oldenburg & Bremen, je mit URL + Künstler-Link
 
@@ -150,10 +151,13 @@ index.html (Startseite)
 - Keine Wiederholungen — Künstler-Archiv beachten (Abschnitt 9)
 - Kein NFT, keine Deko-Malerei, kein Social-Media-only
 
-### Bilder (Drei-Stufen-Regel)
-1. Wikimedia Commons → `<img loading="lazy">`
-2. Nur Link → dunkler Block (#1a1a1a), Künstler + Titel + "Werk ansehen →" in Gold
-3. Weder noch → Werk weglassen
+### Werke — Verlinkung in Künstler:innen-Sektion
+- **Keine dunklen Blöcke, keine schwarzen Kästen** (`.werk-link-block` mit `background: #1a1a1a` ist VERBOTEN)
+- Jedes Werk wird als sauberer Text-Link dargestellt: Titel kursiv + Galerie/Institution als "→"-Link in Gold
+- CSS-Klasse: `.werk-text-link` — weißer Hintergrund, `border-bottom: 1px solid #f0f0f0`, kein Box-Aspekt
+- **Beide Links pro Künstler:in müssen unterschiedliche URLs haben** — nie zweimal dieselbe URL
+- Link 1: spezifischstes Werk / Galerie-Seite
+- Link 2: andere Institution / alternatives Werk / Museumseite
 
 ### Ausstellungen
 - **NUR Oldenburg + Bremen**

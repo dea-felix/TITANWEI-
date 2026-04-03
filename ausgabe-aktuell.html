@@ -370,49 +370,32 @@
   .artist-works {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 0;
+    padding-top: 4px;
   }
-  .werk-link-block {
+  .werk-text-link {
     display: block;
-    background: #1a1a1a;
     text-decoration: none;
-    aspect-ratio: 3/2;
-    position: relative;
-    overflow: hidden;
-    transition: opacity 0.2s ease;
+    padding: 22px 0;
+    border-bottom: 1px solid #f0f0f0;
+    transition: opacity 0.2s;
   }
-  .werk-link-block:hover { opacity: 0.85; }
-  .werk-link-inner {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 24px;
-    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);
-  }
-  .werk-artist-name {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.6rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.5);
-    margin-bottom: 4px;
-  }
+  .werk-text-link:last-child { border-bottom: none; }
+  .werk-text-link:hover { opacity: 0.65; }
   .werk-title {
     font-family: 'Inter', sans-serif;
-    font-size: 0.82rem;
-    color: rgba(255,255,255,0.85);
-    margin-bottom: 10px;
+    font-size: 0.88rem;
+    color: #444;
     font-style: italic;
     font-weight: 300;
+    margin-bottom: 8px;
+    line-height: 1.5;
   }
   .werk-cta {
     font-family: 'Montserrat', sans-serif;
-    font-size: 0.65rem;
+    font-size: 0.62rem;
     font-weight: 700;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: #FFD700;
   }
@@ -707,7 +690,7 @@
   <a href="index.html" class="landing-slogan">Was die Kunst weiß.</a>
   <nav class="category-menu">
     <a onclick="showSection('zeitgeist')">Zeitgeist</a>
-    <a onclick="showSection('kuenstler')">Künstler</a>
+    <a onclick="showSection('kuenstler')">Künstler:innen</a>
     <a onclick="showSection('atelier')">Atelier Studie</a>
     <a onclick="showSection('ausstellungen')">Ausstellungen</a>
   </nav>
@@ -748,29 +731,29 @@
         <span class="zeitgeist-label">Im Kommen — Names to Watch</span>
         <div class="names-grid">
           <div class="name-card">
-            <a class="name-card-name" onclick="showSection('kuenstler')">Lenz Geerk →</a>
-            <div class="name-card-meta">geb. 1988 Basel · Düsseldorf · Roberts Projects / MASSIMODECARLO / Nicola Vassell</div>
-            <p>Figurenmalerei aus Schlaflosigkeit. Christie's Hongkong März 2026: Künstlerrekord für <em>Couple on a Fresco</em> (2019), HKD 2,1 Mio. Der Markt hat entschieden, bevor der Kritikerdiskurs eingeholt hat.</p>
+            <a class="name-card-name" href="https://www.hauserwirth.com/artists/29830-flora-yukhnovich" target="_blank" rel="noopener">Flora Yukhnovich →</a>
+            <div class="name-card-meta">geb. 1990 Bath · London · Hauser &amp; Wirth</div>
+            <p>Neo-Rokoko-Abstraktion als ernstes Programm. Watteau und Fragonard durch den Filter des 21. Jahrhunderts: pastose Geste, leuchtende Palette, formale Kontrolle unter dem Schein der Leichtigkeit. Auktionsrekorde 2023–25.</p>
           </div>
           <div class="name-card">
-            <a class="name-card-name" onclick="showSection('kuenstler')">Mohammed Sami →</a>
-            <div class="name-card-meta">geb. 1984 Bagdad · London · Luhring Augustine / Modern Art</div>
-            <p>Turner-Prize-Shortlist 2025. MoMA-Ankauf <em>The Execution Room</em> (2022). Atmosphärische Bilder, in denen Alltagsobjekte Trauma tragen ohne es zu zeigen.</p>
+            <a class="name-card-name" href="https://www.regenprojects.com/artists/christina-quarles" target="_blank" rel="noopener">Christina Quarles →</a>
+            <div class="name-card-meta">geb. 1985 Chicago · Los Angeles · Regen Projects / Hauser &amp; Wirth</div>
+            <p>Whitney Biennial 2019 und 2022. Körper, die sich in Flächen auflösen — Figuration und Abstraktion als zwei Namen für dasselbe Phänomen. Identität ist bei Quarles nie eindeutig, immer im Werden.</p>
           </div>
           <div class="name-card">
-            <a class="name-card-name" onclick="showSection('kuenstler')">Kamrooz Aram →</a>
-            <div class="name-card-meta">geb. 1978 Schiras/Iran · Brooklyn · Alexander Gray Associates</div>
-            <p>Whitney Biennial 2026. Persisch-islamische Arabesken kollidieren mit westlicher Abstraktion — produktiv, unversöhnlich, präzise.</p>
+            <a class="name-card-name" href="https://www.pilar-corrias.com/artists/tschabalala-self" target="_blank" rel="noopener">Tschabalala Self →</a>
+            <div class="name-card-meta">geb. 1990 Harlem · New York · Pilar Corrias / Galerie Eva Presenhuber</div>
+            <p>Malt, collagiert, näht. Schwarze Frauenkörper — monumental, vergnügt, politisch — aus Stoff, Farbe und Papier gebaut. Körper als Konstrukt, als Behauptung, als Feier. Ihres ist eine der aufregendsten Handschriften der Gegenwart.</p>
           </div>
           <div class="name-card">
-            <a class="name-card-name" onclick="showSection('kuenstler')">Giulia Andreani →</a>
-            <div class="name-card-meta">geb. 1981 Venedig · Paris · Galerie Max Hetzler</div>
-            <p>"Sabotage" am Hamburger Bahnhof (bis Sept. 2026). Malt ausschließlich in Payne's Grey, ausschließlich aus Archiven. Das Vergessen als Bildinhalt.</p>
+            <a class="name-card-name" href="https://pippy-houldsworth.com/artists/jade-fadojutimi" target="_blank" rel="noopener">Jadé Fadojutimi →</a>
+            <div class="name-card-meta">geb. 1993 London · Pippy Houldsworth Gallery / Pace</div>
+            <p>Jüngste Künstlerin in der permanenten Sammlung des V&amp;A London. Abstrakte Malerei als emotionale Partitur — Farbe, Linie, Tempo. Was Cy Twombly mit klassischer Bildung macht, macht Fadojutimi aus roher Gegenwart.</p>
           </div>
           <div class="name-card">
-            <a class="name-card-name" onclick="showSection('kuenstler')">Atsushi Kaga →</a>
-            <div class="name-card-meta">geb. Dublin/Japan · Mother's Tankstation</div>
-            <p>Neuer Auktionsrekord Christie's Hongkong März 2026. Großformatige Bilder der vier Jahreszeiten: japanische Feinheit kreuzt westliche Groteske.</p>
+            <a class="name-card-name" href="https://www.galerie-neu.de/artists/jana-euler" target="_blank" rel="noopener">Jana Euler →</a>
+            <div class="name-card-meta">geb. 1982 Leonberg · lebt Dublin / London · Galerie Neu / Gió Marconi</div>
+            <p>Malerei als Befragung ihrer eigenen Bedingungen. Augen auf Leinwand, Raum als Bild des Raumes — Euler denkt Konzeptkunst und Malerei nicht als Gegensatz. Staatliche Kunsthalle Baden-Baden 2026.</p>
           </div>
         </div>
       </div>
@@ -825,13 +808,13 @@
 <div class="article-section" id="section-kuenstler">
 
   <div class="section-hero">
-    <span class="section-hero-label">Künstler &amp; Werke — Ausgabe 02</span>
+    <span class="section-hero-label">Künstler:innen &amp; Werke — Ausgabe 02</span>
     <h1>Fünf Positionen.</h1>
     <p>Institution, Top-Galerie, Emerging — ein Mix aus etablierten Namen und neuen Entdeckungen. Alle mit direktem Bezug zur eigenen Malerei.</p>
   </div>
 
   <div class="section-wrapper">
-    <div class="section-heading">Teil 1 — Künstler &amp; Werke</div>
+    <div class="section-heading">Teil 1 — Künstler:innen &amp; Werke</div>
 
     <!-- 1. Giulia Andreani -->
     <div class="artist-section">
@@ -846,19 +829,13 @@
         </div>
       </div>
       <div class="artist-works">
-        <a href="https://www.maxhetzler.com/artists/giulia-andreani/selected-works" target="_blank" rel="noopener" class="werk-link-block">
-          <div class="werk-link-inner">
-            <div class="werk-artist-name">Giulia Andreani</div>
-            <div class="werk-title">Crépuscule (L'abri), 2012 · Öl auf Leinwand</div>
-            <div class="werk-cta">Werk ansehen →</div>
-          </div>
+        <a href="https://www.maxhetzler.com/artists/giulia-andreani/selected-works" target="_blank" rel="noopener" class="werk-text-link">
+          <div class="werk-title">Crépuscule (L'abri), 2012 · Öl auf Leinwand</div>
+          <div class="werk-cta">Galerie Max Hetzler →</div>
         </a>
-        <a href="https://www.smb.museum/en/exhibitions/detail/giulia-andreani/" target="_blank" rel="noopener" class="werk-link-block">
-          <div class="werk-link-inner">
-            <div class="werk-artist-name">Giulia Andreani</div>
-            <div class="werk-title">Deadlier than the male gaze, 2025 · Hamburger Bahnhof</div>
-            <div class="werk-cta">Werk ansehen →</div>
-          </div>
+        <a href="https://www.smb.museum/en/exhibitions/detail/giulia-andreani/" target="_blank" rel="noopener" class="werk-text-link">
+          <div class="werk-title">Sabotage — Hamburger Bahnhof, Berlin 2026</div>
+          <div class="werk-cta">Zur Ausstellung →</div>
         </a>
       </div>
     </div>
@@ -878,19 +855,13 @@
         </div>
       </div>
       <div class="artist-works">
-        <a href="https://www.tate.org.uk/whats-on/tate-britain/hurvin-anderson" target="_blank" rel="noopener" class="werk-link-block">
-          <div class="werk-link-inner">
-            <div class="werk-artist-name">Hurvin Anderson</div>
-            <div class="werk-title">Afrosheen, 2009 · Öl auf Leinwand · Barbershop-Serie</div>
-            <div class="werk-cta">Werk ansehen →</div>
-          </div>
+        <a href="https://www.tate.org.uk/whats-on/tate-britain/hurvin-anderson" target="_blank" rel="noopener" class="werk-text-link">
+          <div class="werk-title">Retrospektive — Tate Britain, London 2026 (ca. 80 Werke)</div>
+          <div class="werk-cta">Tate Britain →</div>
         </a>
-        <a href="https://www.tate.org.uk/whats-on/tate-britain/hurvin-anderson" target="_blank" rel="noopener" class="werk-link-block">
-          <div class="werk-link-inner">
-            <div class="werk-artist-name">Hurvin Anderson</div>
-            <div class="werk-title">Hollywood Boulevard, 1997 · Tate Britain Retrospektive</div>
-            <div class="werk-cta">Werk ansehen →</div>
-          </div>
+        <a href="https://www.thomasdanegallery.com/artists/hurvin-anderson" target="_blank" rel="noopener" class="werk-text-link">
+          <div class="werk-title">Afrosheen, 2009 · Barbershop-Serie · Thomas Dane Gallery</div>
+          <div class="werk-cta">Thomas Dane Gallery →</div>
         </a>
       </div>
     </div>
@@ -910,19 +881,13 @@
         </div>
       </div>
       <div class="artist-works">
-        <a href="https://www.luhringaugustine.com/exhibitions/mohammed-sami" target="_blank" rel="noopener" class="werk-link-block">
-          <div class="werk-link-inner">
-            <div class="werk-artist-name">Mohammed Sami</div>
-            <div class="werk-title">One Thousand and One Nights, 2022 · Öl auf Leinwand</div>
-            <div class="werk-cta">Werk ansehen →</div>
-          </div>
+        <a href="https://www.luhringaugustine.com/exhibitions/mohammed-sami" target="_blank" rel="noopener" class="werk-text-link">
+          <div class="werk-title">One Thousand and One Nights, 2022 · Öl auf Leinwand</div>
+          <div class="werk-cta">Luhring Augustine →</div>
         </a>
-        <a href="https://www.moma.org/audio/playlist/298/4596" target="_blank" rel="noopener" class="werk-link-block">
-          <div class="werk-link-inner">
-            <div class="werk-artist-name">Mohammed Sami</div>
-            <div class="werk-title">The Execution Room, 2022 · MoMA Collection</div>
-            <div class="werk-cta">Werk ansehen →</div>
-          </div>
+        <a href="https://www.moma.org/audio/playlist/298/4596" target="_blank" rel="noopener" class="werk-text-link">
+          <div class="werk-title">The Execution Room, 2022 · MoMA Collection, New York</div>
+          <div class="werk-cta">MoMA →</div>
         </a>
       </div>
     </div>
@@ -941,19 +906,13 @@
         </div>
       </div>
       <div class="artist-works">
-        <a href="https://whitney.org/artists/21803" target="_blank" rel="noopener" class="werk-link-block">
-          <div class="werk-link-inner">
-            <div class="werk-artist-name">Kamrooz Aram</div>
-            <div class="werk-title">Arabesque Composition (Archipelago), 2025 · Whitney Biennial</div>
-            <div class="werk-cta">Werk ansehen →</div>
-          </div>
+        <a href="https://whitney.org/artists/21803" target="_blank" rel="noopener" class="werk-text-link">
+          <div class="werk-title">Arabesque Composition (Archipelago), 2025 · Whitney Biennial 2026</div>
+          <div class="werk-cta">Whitney Museum →</div>
         </a>
-        <a href="https://www.alexandergray.com/exhibitions/889-kamrooz-aram-infrequencies/" target="_blank" rel="noopener" class="werk-link-block">
-          <div class="werk-link-inner">
-            <div class="werk-artist-name">Kamrooz Aram</div>
-            <div class="werk-title">Beneath the Ruins, 2024 · Alexander Gray Associates</div>
-            <div class="werk-cta">Werk ansehen →</div>
-          </div>
+        <a href="https://www.alexandergray.com/exhibitions/889-kamrooz-aram-infrequencies/" target="_blank" rel="noopener" class="werk-text-link">
+          <div class="werk-title">Beneath the Ruins, 2024 · Alexander Gray Associates</div>
+          <div class="werk-cta">Alexander Gray Associates →</div>
         </a>
       </div>
     </div>
@@ -972,19 +931,13 @@
         </div>
       </div>
       <div class="artist-works">
-        <a href="https://www.nicolavassell.com/artists/60-lenz-geerk/" target="_blank" rel="noopener" class="werk-link-block">
-          <div class="werk-link-inner">
-            <div class="werk-artist-name">Lenz Geerk</div>
-            <div class="werk-title">Couple on a Fresco, 2019 · Christie's HK Rekord</div>
-            <div class="werk-cta">Werk ansehen →</div>
-          </div>
+        <a href="https://www.nicolavassell.com/artists/60-lenz-geerk/" target="_blank" rel="noopener" class="werk-text-link">
+          <div class="werk-title">Couple on a Fresco, 2019 · Christie's Hongkong Rekord HKD 2,1 Mio.</div>
+          <div class="werk-cta">Nicola Vassell Gallery →</div>
         </a>
-        <a href="https://massimodecarlo.com/artists/lenz-geerk" target="_blank" rel="noopener" class="werk-link-block">
-          <div class="werk-link-inner">
-            <div class="werk-artist-name">Lenz Geerk</div>
-            <div class="werk-title">Woman Holding the Night Sky II, 2024 · MASSIMODECARLO</div>
-            <div class="werk-cta">Werk ansehen →</div>
-          </div>
+        <a href="https://massimodecarlo.com/artists/lenz-geerk" target="_blank" rel="noopener" class="werk-text-link">
+          <div class="werk-title">Woman Holding the Night Sky II, 2024 · MASSIMODECARLO</div>
+          <div class="werk-cta">MASSIMODECARLO →</div>
         </a>
       </div>
     </div>
