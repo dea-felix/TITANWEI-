@@ -73,6 +73,7 @@ if [ -n "$latest" ]; then
         -X POST "https://api.buttondown.email/v1/emails" \
         -H "Authorization: Token ${BUTTONDOWN_API_KEY}" \
         -H "Content-Type: application/json" \
+        -H "X-Buttondown-Live-Dangerously: true" \
         -d "{
             \"subject\": \"TITANWEISS — Ausgabe No. $nummer\",
             \"body\": $(echo "$EMAIL_BODY" | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))'),
