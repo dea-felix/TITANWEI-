@@ -37,29 +37,46 @@ Minimalistisch, clean, Apple-Style. Keine Boxen, keine Kästen, keine überflüs
 | Inter | 300, 400, 500 | Fließtext, Metainfos |
 
 ### Design-Regeln
+- **Hintergrund überall: `#ffffff` (reines Weiß — "Titanweiß")** — keine grauen Sections, kein `#f8f8f8`, kein `#fafafa`
 - Keine schwarzen Blöcke, keine Card-Schatten, keine Kästen
-- Links immer `#FFD700`, nie unterstrichen
+- Kategorielinks auf Landing: `#FFD700` Gold, Montserrat 700, uppercase
 - Trennlinien: `1px solid #f0f0f0`
 - Abstände großzügig (min. 40px)
 - Labels: Montserrat 700, uppercase, `letter-spacing: 0.2em+`
+- Keine gelbe Linie im Header (`border-bottom: none`)
 
-### Header & Footer (exakt so — nie ändern)
+### Artikel-Header (exakt so — nie ändern)
+3-spaltiges Layout: Zurück-Link | Logo mittig (absolut zentriert) | Ausgabennummer
 ```html
-<!-- Header -->
-<header class="site-header">
-  <a class="header-logo">TITANWEISS</a>
-  <span class="header-issue">01 / 2026</span>
+<header class="article-header" id="article-header">
+  <a class="header-back" onclick="goBack()">← Kategorien</a>
+  <a href="index.html" class="header-logo">TITANWEISS</a>
+  <span class="header-issue">02 / 2026</span>
 </header>
+```
+- **Kein** `border-bottom` — kein gelber Strich
+- Logo: absolut zentriert via `position: absolute; left: 50%; transform: translateX(-50%)`
+- Links: `← Kategorien`, grau (`#bbbbbb`), Montserrat 700 uppercase
+- Rechts: `XX / YYYY`, Inter 300, grau (`#bbbbbb`)
+- Höhe: 64px, Hintergrund: `rgba(255,255,255,0.95)` + backdrop-filter blur
 
-<!-- Footer -->
-<footer>
+### Landing-Seite (ausgabe-aktuell.html, Kategorie-Übersicht)
+Reihenfolge von oben nach unten:
+1. `NO. XX · MONAT YYYY` — Montserrat 700, grau, uppercase, tiny
+2. `Was die Kunst weiß.` — Inter 300, klein, grau, klickbar → index.html
+3. Kategorielinks: ZEITGEIST / KÜNSTLER / ATELIER STUDIE / AUSSTELLUNGEN — Gold, Montserrat 700, uppercase
+4. Newsletter-Signup: Label + Email-Input + Button (Buttondown embed)
+
+### Footer (innerhalb jeder Kategorie)
+```html
+<footer class="section-footer">
   <span class="footer-logo">TITANWEISS</span>
-  <span class="footer-issue">01 / 2026</span>
+  <!-- + Ausgabeninfos + Newsletter -->
+  <a class="footer-back" onclick="goBack()">← Alle Kategorien</a>
 </footer>
 ```
-- Logo: TITANWEISS all-black, kein farbiges I
-- Header rechts: nur "XX / YYYY" — kein Datum, kein "Ausgabe"
-- Footer: nur TITANWEISS + Nummer, nichts sonst
+- Hintergrund: `#111111` (dunkel) — einzige Ausnahme vom Weiß-Gebot
+- Footer-Logo: weiß, Montserrat 900
 
 ---
 

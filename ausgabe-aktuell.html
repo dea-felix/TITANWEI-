@@ -128,37 +128,50 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(255, 255, 255, 0.92);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid #FFD700;
+    border-bottom: none;
     padding: 0 48px;
     align-items: center;
     justify-content: space-between;
-    height: 72px;
+    height: 64px;
   }
   .article-header.visible { display: flex; }
+  .header-back {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #bbbbbb;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.2s;
+    width: 120px;
+  }
+  .header-back:hover { color: #111; }
   .header-logo {
     font-family: 'Montserrat', sans-serif;
     font-weight: 900;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     letter-spacing: 0.35em;
     color: #111111;
     text-decoration: none;
     text-transform: uppercase;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
-  .header-back {
-    font-family: 'Montserrat', sans-serif;
+  .header-issue {
+    font-family: 'Inter', sans-serif;
     font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: #999;
-    cursor: pointer;
-    text-decoration: none;
-    transition: color 0.2s;
+    font-weight: 300;
+    color: #bbbbbb;
+    letter-spacing: 0.1em;
+    width: 120px;
+    text-align: right;
   }
-  .header-back:hover { color: #FFD700; }
 
   /* ─── SECTIONS (hidden by default) ─── */
   .article-section { display: none; }
@@ -169,7 +182,7 @@
     padding: 80px 48px 64px;
     max-width: 820px;
     margin: 0 auto;
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: none;
   }
   .section-hero-label {
     font-family: 'Montserrat', sans-serif;
@@ -202,7 +215,7 @@
   /* ─── ZEITGEIST SECTION ─── */
   .zeitgeist-body-section {
     padding: 0 48px 80px;
-    background: #f8f8f6;
+    background: #ffffff;
   }
   .zeitgeist-inner {
     max-width: 820px;
@@ -401,9 +414,9 @@
 
   /* ─── TECHNIK ─── */
   .technique-section {
-    background: #fafafa;
+    background: #ffffff;
     padding: 80px 48px;
-    border-top: 1px solid #eeeeee;
+    border-top: none;
   }
   .technique-inner { max-width: 1200px; margin: 0 auto; }
   .technique-header {
@@ -429,8 +442,8 @@
     font-weight: 300;
   }
   .material-block {
-    background: #fff;
-    border: 1px solid #eee;
+    background: #ffffff;
+    border: 1px solid #f0f0f0;
     padding: 32px;
     margin-bottom: 48px;
   }
@@ -464,8 +477,8 @@
     gap: 24px;
   }
   .step-card {
-    background: #fff;
-    border: 1px solid #eee;
+    background: #ffffff;
+    border: 1px solid #f0f0f0;
     padding: 28px;
   }
   .step-number {
@@ -677,8 +690,9 @@
 
 <!-- ═══ ARTICLE HEADER (nur sichtbar wenn Kategorie offen) ═══ -->
 <header class="article-header" id="article-header">
-  <a href="index.html" class="header-logo">TITANWEISS</a>
   <a class="header-back" onclick="goBack()">← Kategorien</a>
+  <a href="index.html" class="header-logo">TITANWEISS</a>
+  <span class="header-issue">02 / 2026</span>
 </header>
 
 <!-- ═══ LANDING ═══ -->
