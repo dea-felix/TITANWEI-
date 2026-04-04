@@ -2,6 +2,7 @@
 
 > Dieses Dokument ist die einzige Wahrheit für das TITANWEISS Kunstmagazin.
 > **Bitte am Anfang jeder Session als erstes lesen.**
+> Der Scheduled Task (`inspiration-kunstmagazin`) lädt diese Datei automatisch von GitHub und folgt Section 5 (KI-Pipeline). Änderungen hier wirken sich beim nächsten Run automatisch aus.
 
 ---
 
@@ -381,6 +382,40 @@ Speichere in: `/tmp/phase5_design.md`
 
 ---
 
+### PHASE 5a: LATERALDENKER — Plausibilitätscheck
+
+Tritt einen Schritt zurück. Lies `/tmp/phase4_texte.md` und prüfe folgendes:
+
+- Stimmt die inhaltliche Struktur? (Zeitgeist → Künstler → Atelier → Ausstellungen)
+- Gibt es inhaltliche Widersprüche oder Inkonsistenzen?
+- Wirken Künstler:innen-Beschreibungen plausibel oder verdächtig generisch?
+- Gibt es Sätze die klingen als wären sie erfunden? ("Der Künstler ist bekannt für...")
+- Passen Stil-Einschätzungen zu den verlinkten Werken?
+- Gibt es Überschneidungen mit dem Künstler-Archiv (Wiederholungen)?
+
+Schreibe alle KRITISCH-Befunde explizit auf. Ein offener KRITISCH-Befund blockiert Phase 7.
+
+Speichere in: `/tmp/phase5a_lateral.md`
+
+---
+
+### PHASE 5b: EMERGENZ REVIEW AGENT — Tech & Design Check
+
+Technischer und rechtlicher Qualitätscheck. Prüfe:
+
+- Lokale Fonts: `<link rel="stylesheet" href="fonts/fonts.css">` vorhanden? Kein Google Fonts CDN?
+- Farben: Nur `#FFD700` — kein `#c9a227`, kein anderes Gold?
+- Responsive: Mobile-Breakpoints vorhanden? Kein horizontales Scrollen?
+- Rechtlich: Links zu `impressum.html` und `datenschutz.html` im Footer?
+- Sicherheit: Alle externen Links mit `target="_blank" rel="noopener"`?
+- Keine offenen KRITISCH-Befunde aus Phase 5a?
+
+Schreibe alle KRITISCH-Befunde explizit auf. Ein offener KRITISCH-Befund blockiert Phase 7.
+
+Speichere in: `/tmp/phase5b_review.md`
+
+---
+
 ### PHASE 6: REVIEW AGENT — Anti-Halluzinations-Checkliste
 
 Arbeite jeden Punkt einzeln ab wie ein Pilot. Erst wenn ALLE bestehen: weiter zu Phase 7.
@@ -453,6 +488,31 @@ HTML(filename=html_file).write_pdf(pdf_file)
 ```
 
 Prüfe ob PDF erstellt wurde und mindestens 50KB groß ist.
+
+---
+
+### PHASE 9: AUTO-PUBLISH
+
+Rufe `auto-push.sh` auf. Das Script erledigt alles weitere automatisch:
+
+```python
+import subprocess, glob
+
+# Pfad zum Repo dynamisch ermitteln
+paths = glob.glob("/sessions/*/mnt/kunstmagazin/")
+repo = paths[0] if paths else None
+
+if repo:
+    result = subprocess.run(
+        ["bash", repo + "auto-push.sh"],
+        capture_output=True, text=True, cwd=repo
+    )
+    print(result.stdout)
+    if result.returncode != 0:
+        print("FEHLER:", result.stderr)
+```
+
+`auto-push.sh` übernimmt: check.sh Gate → ausgabe-aktuell.html überschreiben → index.html updaten → Archiv-Snapshot → archiv.html Eintrag → Git Push → Newsletter via Buttondown API.
 
 ---
 
