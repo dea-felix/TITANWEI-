@@ -4,6 +4,8 @@
 > **Bitte am Anfang jeder Session als erstes lesen.**
 > Der Scheduled Task (`inspiration-kunstmagazin`) lädt diese Datei automatisch von GitHub und folgt Section 5 (KI-Pipeline). Änderungen hier wirken sich beim nächsten Run automatisch aus.
 
+> **⚠️ NULLTOLERANZ FÜR HALLUZINATIONEN:** Kein einziger Fakt darf erfunden sein. Jedes Geburtsjahr, jeder Geburtsort, jede Galerie, jede Ausstellung, jeder Preis, jede Sammlung muss per WebSearch gefunden UND per WebFetch auf der Zielseite bestätigt sein. Was nicht verifiziert ist, wird nicht verwendet. Keine Ausnahmen. Ein Magazin das unter einem echten Namen erscheint, darf keine erfundenen Informationen enthalten.
+
 ---
 
 ## 1. Was ist TITANWEISS?
@@ -297,23 +299,40 @@ Wenn kein Wikimedia-Bild: URL zur Werk-Seite auf Galerie- oder Museum-Website no
 
 **Technik:** Eine fundamentale Maltechnik für professionelle Maler. Keine Hobby-Tipps.
 
-**VERIFY-FIRST PFLICHT — Faktenblatt pro Künstler:in:**
+**NULL-HALLUZINATIONS-GARANTIE — Faktenblatt pro Künstler:in:**
 
-Für jede:n der 5 finalen Künstler:innen MUSS ein Faktenblatt erstellt werden BEVOR Texte geschrieben werden. Jede Zeile braucht eine Quelle (WebSearch-Ergebnis oder WebFetch-URL). Format:
+⚠️ ABSOLUT KEINE ERFUNDENEN FAKTEN. Jeder einzelne Fakt muss durch eine echte, aufgerufene Quelle belegt sein. "Ich bin mir ziemlich sicher" zählt nicht. Nur was schwarz auf weiß per WebSearch gefunden UND per WebFetch auf der Zielseite bestätigt wurde, darf verwendet werden.
 
+Für jede:n der 5 finalen Künstler:innen MUSS ein Faktenblatt erstellt werden BEVOR Texte geschrieben werden. Ablauf pro Künstler:in:
+
+1. **WebSearch** nach "[Name] artist biography" / "[Name] Künstler Galerie"
+2. **WebFetch** der gefundenen Galerie-Seite oder Wikipedia-Seite — tatsächlich lesen, nicht nur URL notieren
+3. Fakten NUR aus dem gelesenen Inhalt extrahieren
+4. Wenn ein Fakt (z.B. Geburtsjahr) auf der Seite NICHT steht → Feld leer lassen, NICHT raten
+
+Format:
 ```
 FAKTENBLATT: [Name]
-- Geburtsjahr: [Jahr] — Quelle: [URL]
-- Geburtsort: [Ort] — Quelle: [URL]
-- Lebt in: [Stadt] — Quelle: [URL]
-- Galerie(n): [Namen] — Quelle: [URL]
-- Wichtigste Ausstellungen: [Liste] — je mit Quelle
-- Sammlungen: [Liste] — je mit Quelle
-- Preise/Auszeichnungen: [Liste] — je mit Quelle
-- STATUS: ✅ VERIFIZIERT / ❌ LÜCKEN (welche?)
+- Geburtsjahr: [Jahr] — Quelle: [URL] — WebFetch bestätigt: JA/NEIN
+- Geburtsort: [Ort] — Quelle: [URL] — WebFetch bestätigt: JA/NEIN
+- Lebt in: [Stadt] — Quelle: [URL] — WebFetch bestätigt: JA/NEIN
+- Galerie(n): [Namen] — Quelle: [URL] — WebFetch bestätigt: JA/NEIN
+- Ausstellungen: [Liste] — je mit Quelle + WebFetch bestätigt
+- Sammlungen: [Liste] — je mit Quelle + WebFetch bestätigt
+- Preise: [Liste] — je mit Quelle + WebFetch bestätigt
+- STATUS: ✅ KOMPLETT VERIFIZIERT / ⚠️ LÜCKEN: [welche Felder fehlen]
 ```
 
-**REGEL: Kein Fakt ohne Quelle.** Wenn eine Info nicht per WebSearch verifizierbar ist → NICHT verwenden. Lieber eine Zeile weniger als eine erfundene. Die Faktenblätter werden am Ende an `/tmp/phase1_rohmaterial.md` angehängt und dienen als Referenz für alle folgenden Phasen.
+**HARTE REGELN:**
+- Kein Fakt ohne WebFetch-Bestätigung → NICHT verwenden
+- "WebFetch bestätigt: NEIN" → Fakt STREICHEN, nicht in Text übernehmen
+- Lieber 3 verifizierte Fakten als 10 mit einer erfundenen dazwischen
+- Geburtsjahre und -orte: IMMER mit offizieller Galerie-Seite oder Wikipedia abgleichen
+- Sammlungen/Preise: NUR wenn auf der Künstler:in-Seite explizit genannt
+- Ausstellungen: NUR wenn auf Museums-/Galerie-Website mit Datum bestätigt
+- Phase 4 (Texte) darf NUR Fakten verwenden die im Faktenblatt "WebFetch bestätigt: JA" haben
+
+Die Faktenblätter werden an `/tmp/phase1_rohmaterial.md` angehängt und sind die EINZIGE Faktenquelle für alle folgenden Phasen. Alles was nicht im Faktenblatt steht, existiert nicht.
 
 Speichere in: `/tmp/phase1_rohmaterial.md`
 
@@ -404,8 +423,8 @@ Speichere in: `/tmp/phase5_design.md`
 
 Tritt einen Schritt zurück. Lies `/tmp/phase4_texte.md` UND die Faktenblätter aus `/tmp/phase1_rohmaterial.md` und prüfe:
 
-- **Faktenblatt-Abgleich:** Stimmt JEDE biografische Angabe im HTML mit dem Faktenblatt überein? (Geburtsjahr, Geburtsort, Galerie, Sammlungen, Ausstellungen)
-- **Quellen-Check:** Hat jeder Fakt im Faktenblatt eine URL? Stichprobenartig 3 URLs per WebFetch prüfen.
+- **Faktenblatt-Abgleich (PFLICHT):** Gehe JEDE:N Künstler:in einzeln durch. Vergleiche JEDE biografische Angabe im HTML Wort für Wort mit dem Faktenblatt. Geburtsjahr, Geburtsort, Galerie, Sammlungen, Ausstellungen, Preise — alles. Eine einzige Abweichung = KRITISCH.
+- **Quellen-Check (PFLICHT):** Hat jeder Fakt "WebFetch bestätigt: JA"? Wenn NEIN → KRITISCH. Zusätzlich: ALLE Künstler-Links im HTML per WebFetch aufrufen — jeder 404 = KRITISCH.
 - Stimmt die inhaltliche Struktur? (Zeitgeist → Künstler → Atelier → Ausstellungen)
 - Gibt es inhaltliche Widersprüche oder Inkonsistenzen?
 - Wirken Künstler:innen-Beschreibungen plausibel oder verdächtig generisch?
@@ -430,7 +449,7 @@ Technischer und rechtlicher Qualitätscheck. Prüfe:
 - Rechtlich: Links zu `impressum.html` und `datenschutz.html` im Footer?
 - Sicherheit: Alle externen Links mit `target="_blank" rel="noopener"`?
 - Keine offenen KRITISCH-Befunde aus Phase 5a?
-- **Faktenblatt-Konsistenz:** Geburtsjahre, Geburtsorte, Galerien im HTML = identisch mit Faktenblatt?
+- **Faktenblatt-Konsistenz (PFLICHT):** Geburtsjahre, Geburtsorte, Galerien im HTML müssen IDENTISCH mit Faktenblatt sein. Jede Abweichung = KRITISCH.
 
 Schreibe alle KRITISCH-Befunde explizit auf. Ein offener KRITISCH-Befund blockiert Phase 7.
 
