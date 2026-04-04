@@ -112,6 +112,7 @@ Reihenfolge von oben nach unten:
 - **Unter jeder Ausgabennummer:** Kurze Zusammenfassung mit den Künstler:innen-Namen der Ausgabe — Inter 300, grau (`#aaaaaa`), zentriert (z.B. `Andreani · Mohammed Sami · Kamrooz Aram · Flora Yukhnovich`)
 - Jede Ausgabe verlinkt auf `archiv/no-XX/index.html`
 - **Beim Abschluss jeder Ausgabe:** `ausgabe-aktuell.html` kopieren nach `archiv/no-XX/index.html` und neuen Eintrag in `archiv.html` ergänzen (inkl. Künstler:innen-Namen aus `name-card-name`-Links)
+- **ARCHIV-PFLICHT nach Kopie:** Nach dem Kopieren MUSS die Ausgabennummer in `<title>` und `<span class="header-issue">` auf die korrekte Nummer geändert werden (z.B. "01 / 2026" für No. 01). Archiv-Dateien dürfen NICHT die Nummer der aktuellen Ausgabe zeigen!
 - PDFs werden nicht mehr benötigt — HTML-Snapshot im archiv/-Ordner reicht
 
 ### Footer (innerhalb jeder Kategorie)
@@ -674,7 +675,7 @@ Google Fonts sind lokal eingebunden (`fonts/`). Bei neuen Ausgaben immer `<link 
 
 ## 10. Absolute Regeln — nie brechen
 
-1. **ERFINDE NICHTS.** Kein Werk, kein Datum, kein Preis, keine Ausstellung ohne verifizierte URL.
+1. **ERFINDE NICHTS.** Kein Werk, kein Datum, kein Preis, keine Ausstellung ohne verifizierte URL. Kein Geburtsjahr, kein Geburtsort, keine Galerie, keine Sammlung ohne WebFetch-Bestätigung.
 2. Daniel Richter ≠ Gerhard Richter. Nie verwechseln.
 3. **KEINE Kunsthalle Oldenburg** — die existiert nicht.
 4. Kein NFT, keine Deko-Malerei, kein Social-Media-only.
@@ -685,6 +686,11 @@ Google Fonts sind lokal eingebunden (`fonts/`). Bei neuen Ausgaben immer `<link 
 9. Layout-Reihenfolge: Zeitgeist → Künstler → Atelier Studie → Ausstellungen. Immer.
 10. Design immer aus SPECS.md Section 2 (Design-System) übernehmen.
 11. Qualität vor Geschwindigkeit. Immer.
+12. **Hintergrund IMMER `#ffffff`** — kein `#f8f8f8`, kein `#fafafa`, kein Grau. Auch nicht als CSS-Variable.
+13. **JEDER `target="_blank"` braucht `rel="noopener"`** — keine Ausnahme, auch nicht bei Buttondown-Links in Footern.
+14. **Archiv-Nummern prüfen** — nach dem Kopieren von ausgabe-aktuell.html ins Archiv: `<title>` und `<span class="header-issue">` MÜSSEN die Archiv-Nummer zeigen, nicht die aktuelle Ausgabe.
+15. **Keine unverifizierbaren Superlative** — "Jüngste Künstlerin in der Sammlung des...", "Erste Ausstellung seit..." — nur wenn per WebFetch auf der Quelle bestätigt. Sonst weglassen.
+16. **Kein Google Fonts CDN** — in KEINER Datei, auch nicht in Ausgaben-Unterordnern. Immer lokale `fonts/fonts.css` mit korrektem relativen Pfad.
 
 ---
 
