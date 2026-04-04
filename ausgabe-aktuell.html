@@ -1212,7 +1212,7 @@
 </script>
 
 <script>
-  async function nlSubmit(e) {
+  function nlSubmit(e) {
     e.preventDefault();
     var email = document.getElementById('nl-email').value.trim();
     var btn   = document.getElementById('nl-btn');
@@ -1221,24 +1221,31 @@
     btn.disabled = true;
     msg.className = 'newsletter-msg';
     msg.textContent = '';
-    var fd = new FormData();
-    fd.append('email', email);
-    try {
-      await fetch('https://buttondown.com/api/emails/embed-subscribe/titanweiss', {
-        method: 'POST',
-        mode: 'no-cors',
-        body: fd
-      });
+    // Formular im versteckten iframe absenden — Buttondown löst Opt-in-Mail aus,
+    // der Redirect landet im iframe, die Seite bleibt unberührt.
+    var iframe = document.getElementById('nl-iframe');
+    iframe.onload = function() {
       msg.className = 'newsletter-msg ok';
-      msg.textContent = 'Eingetragen. Bis Montag!';
+      msg.textContent = 'Fast geschafft — bitte E-Mail bestätigen!';
       document.getElementById('nl-email').value = '';
-    } catch(err) {
-      msg.className = 'newsletter-msg err';
-      msg.textContent = 'Etwas hat nicht geklappt — bitte nochmal versuchen.';
-      btn.disabled = false;
-    }
+      iframe.onload = null;
+    };
+    var form = document.getElementById('nl-hidden-form');
+    form.elements['email'].value = email;
+    form.submit();
   }
 </script>
+
+<!-- verstecktes iframe + Formular für Newsletter-Subscribe ohne Redirect -->
+<iframe id="nl-iframe" name="nl-iframe" style="display:none;" aria-hidden="true"></iframe>
+<form id="nl-hidden-form"
+      action="https://buttondown.com/api/emails/embed-subscribe/titanweiss"
+      method="post"
+      target="nl-iframe"
+      style="display:none;">
+  <input type="email" name="email" value="">
+  <input type="hidden" name="redirect" value="about:blank">
+</form>
 
 <!-- ─── LEGAL FOOTER ─── -->
 <div style="text-align:center; padding: 32px 20px; font-family:'Inter',sans-serif; font-size:0.7rem; font-weight:300; letter-spacing:0.12em; color:#cccccc;">
