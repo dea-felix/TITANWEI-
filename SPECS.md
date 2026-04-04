@@ -669,7 +669,7 @@ Google Fonts sind lokal eingebunden (`fonts/`). Bei neuen Ausgaben immer `<link 
 
 | Ausgabe | Künstler:innen |
 |---|---|
-| No. 01 (06.04.2026) | Cecily Brown, Jadé Fadojutimi, Otis Kwame Kye Quaicoe, Neo Rauch, Henry Taylor |
+| *(noch leer — Neustart ab No. 01, 07.04.2026)* | |
 
 ---
 
