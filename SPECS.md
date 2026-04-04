@@ -106,8 +106,9 @@ Reihenfolge von oben nach unten:
 ### Archiv
 - `archiv.html` — weiße Seite, kein Logo, kleiner `← Zurück`-Link oben links → index.html
 - Ausgaben als Liste zentriert: `No. 01`, `No. 02` etc. — Gold, Montserrat 700, mit border-bottom Trennlinie
+- **Unter jeder Ausgabennummer:** Kurze Zusammenfassung mit den Künstler:innen-Namen der Ausgabe — Inter 300, grau (`#aaaaaa`), zentriert (z.B. `Andreani · Mohammed Sami · Kamrooz Aram · Flora Yukhnovich`)
 - Jede Ausgabe verlinkt auf `archiv/no-XX/index.html`
-- **Beim Abschluss jeder Ausgabe:** `ausgabe-aktuell.html` kopieren nach `archiv/no-XX/index.html` und neuen Eintrag in `archiv.html` ergänzen
+- **Beim Abschluss jeder Ausgabe:** `ausgabe-aktuell.html` kopieren nach `archiv/no-XX/index.html` und neuen Eintrag in `archiv.html` ergänzen (inkl. Künstler:innen-Namen aus `name-card-name`-Links)
 - PDFs werden nicht mehr benötigt — HTML-Snapshot im archiv/-Ordner reicht
 
 ### Footer (innerhalb jeder Kategorie)
@@ -200,6 +201,9 @@ index.html (Startseite)
 - **Beide Links pro Künstler:in müssen unterschiedliche URLs haben** — nie zweimal dieselbe URL
 - Link 1: spezifischstes Werk / Galerie-Seite
 - Link 2: andere Institution / alternatives Werk / Museumseite
+- **PFLICHT: Jeden externen Link mit WebFetch prüfen bevor er eingebaut wird.** Ein 404 oder Redirect auf eine falsche Seite = Link weglassen und durch funktionierenden Link ersetzen. Nicht-geprüfte Links sind VERBOTEN.
+- **Galerie-Links:** Immer direkt zur Artist-Seite der Galerie verlinken (z.B. `hauserwirth.com/artists/name`), nicht zur Galerie-Startseite. Der Link muss zu Werken oder der Künstler:innen-Seite führen — keine allgemeinen Übersichtsseiten.
+- **Wenn Artist-Subpage nicht erreichbar:** Andere Quelle suchen (andere Galerie, Museum, Institution) die eine funktionierende Artist-Seite hat. Notfalls weglassen — niemals einen kaputten Link einbauen.
 
 ### Ausstellungen — Design-Regeln
 - **Keine Kästen, keine Cards, keine Borders** — saubere Liste mit `border-bottom: 1px solid #f0f0f0`
@@ -393,6 +397,7 @@ Arbeite jeden Punkt einzeln ab wie ein Pilot. Erst wenn ALLE bestehen: weiter zu
 - [ ] Alle Ausstellungen noch laufend?
 - [ ] Ausstellungs-Links spezifisch (nicht Startseite)?
 - [ ] Artist-Link für jede Ausstellung vorhanden?
+- [ ] **ALLE externen Links per WebFetch geprüft — kein einziger 404?** (Künstler:innen-Links, Ausstellungslinks, Werk-Links)
 - [ ] Zeitgeist-Essay sachlich korrekt?
 - [ ] Layout-Reihenfolge korrekt? (Zeitgeist → Künstler → Atelier Studie → Ausstellungen)
 - [ ] Header-Format: "XX / YYYY"?
