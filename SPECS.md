@@ -571,4 +571,65 @@ cp ausgabe-aktuell.html "ausgaben/April 2026/No. 01 - 04.2026/TITANWEISS_Ausgabe
 
 ---
 
+---
+
+## 12. Emergenz-Agenten
+
+Referenz-Definitionen für die Agent-Infrastruktur des EMERGENZ-Projekts.
+
+### Agent: Lateraldenker
+
+Lokation: `@agents/lateraldenker.md`
+
+Elite-Ingenieur mit 30 Jahren Erfahrung in Messtechnik, Sensorik und Signalverarbeitung. Kernstärke: radikale Domänen-Transferenz — Lösung physischer, technischer und konzeptioneller Probleme durch Werkzeuge aus fremden Disziplinen. Einsatzgebiet: Hardware-Probleme, Messtechnik, Sensor-Design, Signalverarbeitung im ESP32-S3/Permakultur-Kontext.
+
+**Board-Kommunikation:** Liest `orchestration/board/tasks.md` (Aufgaben mit `[Lateral]`), meldet Fortschritt in `orchestration/board/status.md`.
+
+**Deliverables:** `{Datum}_{Thema}_Lateralanalyse.md` → `08_Hardware/`
+
+---
+
+### Agent: Review
+
+Lokation: `@agents/review.md`
+
+Prüft Code-Qualität, findet Bugs, stellt Standards sicher. Arbeitet nur Aufgaben mit `[Review]` aus `orchestration/board/tasks.md` ab.
+
+**Zuständigkeiten:**
+- Code-Reviews für neue Varianten und Änderungen
+- Sicherheitsprüfung (SQL Injection, Input Validation, Secrets)
+- Performance-Analyse (DB-Queries, API-Calls, Memory)
+- Konsistenz-Check gegen Projekt-Standards
+- Vergleich zwischen Varianten (Score-Bewertung)
+- `variants.json` Score + Pros/Cons aktualisieren
+
+**Review-Checkliste:**
+
+*Code-Qualität:* TypeScript strict (kein `any`), Zod-Schemas für externe Daten, Error-Handling in Providern, SQL `IF NOT EXISTS` in Migrationen, keine hartkodierten Credentials, `@dea/shared` korrekt eingebunden.
+
+*Architektur:* Provider-Pattern, Routes korrekt registriert, Export nach `weather_overrides`, Migrationen idempotent.
+
+*Frontend:* Dark Theme CSS Variables, Template-Literals statt String-Concatenation, Leaflet korrekt initialisiert (CARTO Dark Basemap), Vanilla JS.
+
+*Daten:* Koordinatensystem SRID 4326/32632, Oldenburg 53.1435N/8.2146E, Zeitzone UTC vs. Europe/Berlin, Einheiten dokumentiert.
+
+**Scoring-Kriterien:**
+
+| Kriterium | Gewicht |
+|---|---|
+| Datenqualität | 30% |
+| Code-Qualität | 20% |
+| Pipeline | 20% |
+| Frontend | 15% |
+| Dokumentation | 15% |
+
+**Output-Format:**
+```
+## Review: {layer}/v{NN}-{name}
+### Score: X.X / 1.0
+### Positiv / Probleme ([KRITISCH] / [WARNUNG] / [HINWEIS]) / Empfehlungen
+```
+
+---
+
 *Zuletzt aktualisiert: April 2026*
