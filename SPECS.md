@@ -297,6 +297,24 @@ Wenn kein Wikimedia-Bild: URL zur Werk-Seite auf Galerie- oder Museum-Website no
 
 **Technik:** Eine fundamentale Maltechnik für professionelle Maler. Keine Hobby-Tipps.
 
+**VERIFY-FIRST PFLICHT — Faktenblatt pro Künstler:in:**
+
+Für jede:n der 5 finalen Künstler:innen MUSS ein Faktenblatt erstellt werden BEVOR Texte geschrieben werden. Jede Zeile braucht eine Quelle (WebSearch-Ergebnis oder WebFetch-URL). Format:
+
+```
+FAKTENBLATT: [Name]
+- Geburtsjahr: [Jahr] — Quelle: [URL]
+- Geburtsort: [Ort] — Quelle: [URL]
+- Lebt in: [Stadt] — Quelle: [URL]
+- Galerie(n): [Namen] — Quelle: [URL]
+- Wichtigste Ausstellungen: [Liste] — je mit Quelle
+- Sammlungen: [Liste] — je mit Quelle
+- Preise/Auszeichnungen: [Liste] — je mit Quelle
+- STATUS: ✅ VERIFIZIERT / ❌ LÜCKEN (welche?)
+```
+
+**REGEL: Kein Fakt ohne Quelle.** Wenn eine Info nicht per WebSearch verifizierbar ist → NICHT verwenden. Lieber eine Zeile weniger als eine erfundene. Die Faktenblätter werden am Ende an `/tmp/phase1_rohmaterial.md` angehängt und dienen als Referenz für alle folgenden Phasen.
+
 Speichere in: `/tmp/phase1_rohmaterial.md`
 
 ---
@@ -384,14 +402,17 @@ Speichere in: `/tmp/phase5_design.md`
 
 ### PHASE 5a: LATERALDENKER — Plausibilitätscheck
 
-Tritt einen Schritt zurück. Lies `/tmp/phase4_texte.md` und prüfe folgendes:
+Tritt einen Schritt zurück. Lies `/tmp/phase4_texte.md` UND die Faktenblätter aus `/tmp/phase1_rohmaterial.md` und prüfe:
 
+- **Faktenblatt-Abgleich:** Stimmt JEDE biografische Angabe im HTML mit dem Faktenblatt überein? (Geburtsjahr, Geburtsort, Galerie, Sammlungen, Ausstellungen)
+- **Quellen-Check:** Hat jeder Fakt im Faktenblatt eine URL? Stichprobenartig 3 URLs per WebFetch prüfen.
 - Stimmt die inhaltliche Struktur? (Zeitgeist → Künstler → Atelier → Ausstellungen)
 - Gibt es inhaltliche Widersprüche oder Inkonsistenzen?
 - Wirken Künstler:innen-Beschreibungen plausibel oder verdächtig generisch?
 - Gibt es Sätze die klingen als wären sie erfunden? ("Der Künstler ist bekannt für...")
 - Passen Stil-Einschätzungen zu den verlinkten Werken?
 - Gibt es Überschneidungen mit dem Künstler-Archiv (Wiederholungen)?
+- **Halluzinations-Muster:** Suche gezielt nach typischen KI-Erfindungen: falsche Geburtsjahre, erfundene Sammlungszugehörigkeiten, nicht existierende Ausstellungen, falsche Galerievertretungen
 
 Schreibe alle KRITISCH-Befunde explizit auf. Ein offener KRITISCH-Befund blockiert Phase 7.
 
@@ -403,12 +424,13 @@ Speichere in: `/tmp/phase5a_lateral.md`
 
 Technischer und rechtlicher Qualitätscheck. Prüfe:
 
-- Lokale Fonts: `<link rel="stylesheet" href="fonts/fonts.css">` vorhanden? Kein Google Fonts CDN?
+- Lokale Fonts: `<link rel="stylesheet" href="fonts/fonts.css">` vorhanden? **Kein Google Fonts CDN — auch nicht in Ausgaben-Unterordnern!** (DSGVO-Verstoß)
 - Farben: Nur `#FFD700` — kein `#c9a227`, kein anderes Gold?
 - Responsive: Mobile-Breakpoints vorhanden? Kein horizontales Scrollen?
 - Rechtlich: Links zu `impressum.html` und `datenschutz.html` im Footer?
 - Sicherheit: Alle externen Links mit `target="_blank" rel="noopener"`?
 - Keine offenen KRITISCH-Befunde aus Phase 5a?
+- **Faktenblatt-Konsistenz:** Geburtsjahre, Geburtsorte, Galerien im HTML = identisch mit Faktenblatt?
 
 Schreibe alle KRITISCH-Befunde explizit auf. Ein offener KRITISCH-Befund blockiert Phase 7.
 
