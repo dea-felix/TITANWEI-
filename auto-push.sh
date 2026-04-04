@@ -91,15 +91,16 @@ if ! grep -q "archiv/no-$nummer_padded/index.html" "$REPO_DIR/archiv.html"; then
     python3 - <<PYEOF
 import re
 
-# Zusammenfassung aus Meta-Description der Ausgabe extrahieren
+# Künstler:innennamen aus name-card-name Links extrahieren
 summary = ""
 try:
     with open("$latest", "r") as f:
         src = f.read()
-    m = re.search(r'<meta name="description" content="([^"]+)"', src)
-    if m:
-        # "Aktuelle Ausgabe: " vorne abschneiden falls vorhanden
-        summary = re.sub(r'^Aktuelle Ausgabe:\s*', '', m.group(1))
+    names = re.findall(r'class="name-card-name"[^>]*>([^<\n→]+)', src)
+    # Pfeile und Whitespace bereinigen
+    names = [n.strip().rstrip(' →').strip() for n in names if n.strip()]
+    if names:
+        summary = " · ".join(names)
 except:
     pass
 
