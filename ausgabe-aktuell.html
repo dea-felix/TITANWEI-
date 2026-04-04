@@ -1221,32 +1221,17 @@
     btn.disabled = true;
     msg.className = 'newsletter-msg';
     msg.textContent = '';
+    var fd = new FormData();
+    fd.append('email', email);
     try {
-      var res = await fetch('https://api.buttondown.email/v1/subscribers', {
+      await fetch('https://buttondown.com/api/emails/embed-subscribe/titanweiss', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Token dc61a8d1-582b-4d4a-a511-0918b4928e7a'
-        },
-        body: JSON.stringify({ email: email })
+        mode: 'no-cors',
+        body: fd
       });
-      if (res.ok || res.status === 201) {
-        msg.className = 'newsletter-msg ok';
-        msg.textContent = 'Eingetragen. Bis Montag!';
-        document.getElementById('nl-email').value = '';
-      } else if (res.status === 400) {
-        var data = await res.json().catch(function(){ return {}; });
-        if (data && data.detail && data.detail.toLowerCase().includes('already')) {
-          msg.className = 'newsletter-msg ok';
-          msg.textContent = 'Du bist bereits eingetragen.';
-        } else {
-          msg.className = 'newsletter-msg err';
-          msg.textContent = 'Ungültige E-Mail-Adresse.';
-        }
-        btn.disabled = false;
-      } else {
-        throw new Error('status ' + res.status);
-      }
+      msg.className = 'newsletter-msg ok';
+      msg.textContent = 'Eingetragen. Bis Montag!';
+      document.getElementById('nl-email').value = '';
     } catch(err) {
       msg.className = 'newsletter-msg err';
       msg.textContent = 'Etwas hat nicht geklappt — bitte nochmal versuchen.';
