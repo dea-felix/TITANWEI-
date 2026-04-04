@@ -101,7 +101,7 @@ Reihenfolge von oben nach unten:
 2. `Was die Kunst weiß.` — Montserrat 700, grau, uppercase
 3. Kategorielinks: ZEITGEIST / KÜNSTLER:INNEN / ATELIER STUDIE / AUSSTELLUNGEN — Gold, Montserrat 700, uppercase
 4. `Archiv` — Gold, winzig, dezent (opacity 0.7), → archiv.html
-5. Newsletter-Signup: Label + Email-Input + Button (Buttondown embed)
+5. Newsletter-Signup: Label + Email-Input + Button — inline, kein Redirect (versteckter iframe, Buttondown Opt-in-Mail wird ausgelöst)
 
 ### Archiv
 - `archiv.html` — weiße Seite, kein Logo, kleiner `← Zurück`-Link oben links → index.html
@@ -535,9 +535,15 @@ Google Fonts sind lokal eingebunden (`fonts/`). Bei neuen Ausgaben immer `<link 
 ## 8. Newsletter
 
 - **Dienst:** Buttondown (Free Tier, vollständige API)
-- **Versand:** Automatisch via GitHub Actions bei jedem Push
-- **Signup-URL:** `https://buttondown.com/titanweiss/subscribe`
-- **GitHub Secret:** `BUTTONDOWN_API_KEY` → Repo Settings → Secrets
+- **Versand neuer Ausgaben:** Automatisch via `auto-push.sh` → Buttondown API (`/v1/emails`)
+- **API-Key:** in `auto-push.sh` hinterlegt (dc61a8d1-…)
+
+### Signup-Formular (ausgabe-aktuell.html)
+- Kein Redirect zu Buttondown — Seite bleibt offen
+- Technisch: versteckter `<form target="nl-iframe">` + unsichtbares `<iframe>` — Buttondown verarbeitet die Anfrage, der Redirect landet im iframe
+- Double Opt-in bleibt erhalten — Buttondown schickt Bestätigungsmail
+- Hinweis unter der Bestätigung: "Nichts da? Kurz im Spam-Ordner nachschauen." (Buttondown-Mails landen initial oft im Spam)
+- Redirect-Ziel im hidden form: `danke.html`
 
 ### Buttondown Branding — Pflichtregeln
 - **Kein echter Name** — nirgendwo "Felix Weckner" sichtbar ✅
