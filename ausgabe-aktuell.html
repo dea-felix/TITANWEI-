@@ -135,6 +135,18 @@
     white-space: nowrap;
   }
   .landing-newsletter-form button:hover { opacity: 0.8; }
+  .landing-newsletter-form button:disabled { opacity: 0.4; cursor: default; }
+  .newsletter-msg {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    margin-top: 8px;
+    min-height: 1.2em;
+    transition: opacity 0.3s;
+  }
+  .newsletter-msg.ok  { color: #4caf50; }
+  .newsletter-msg.err { color: #e53935; }
 
   /* ─── ARTICLE HEADER (hidden on landing) ─── */
   .article-header {
@@ -714,11 +726,11 @@
 
   <div class="landing-newsletter">
     <div class="landing-newsletter-label">Jeden Montag &amp; Donnerstag im Postfach</div>
-    <form class="landing-newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/titanweiss" method="post" target="_self">
-      <input type="email" name="email" placeholder="deine@email.de" required>
-      <input type="hidden" name="redirect" value="https://dea-felix.github.io/TITANWEI-/danke.html">
-      <button type="submit">Abonnieren</button>
+    <form class="landing-newsletter-form" id="nl-form" onsubmit="nlSubmit(event)">
+      <input type="email" id="nl-email" placeholder="deine@email.de" required autocomplete="email">
+      <button type="submit" id="nl-btn">Abonnieren</button>
     </form>
+    <div class="newsletter-msg" id="nl-msg"></div>
   </div>
 </div>
 
@@ -817,7 +829,7 @@
       </div>
       <div>
         <span class="footer-label">Newsletter</span>
-        <p class="footer-text"><a href="https://buttondown.com/titanweiss/subscribe" target="_blank" style="color:#FFD700;text-decoration:none;">buttondown.com/titanweiss</a><br>Jeden Montag &amp; Donnerstag.</p>
+        <p class="footer-text"><a href="#" onclick="goBack();return false;" style="color:#FFD700;text-decoration:none;">Jetzt abonnieren →</a><br>Jeden Montag &amp; Donnerstag.</p>
       </div>
     </div>
   </footer>
@@ -975,7 +987,7 @@
       </div>
       <div>
         <span class="footer-label">Newsletter</span>
-        <p class="footer-text"><a href="https://buttondown.com/titanweiss/subscribe" target="_blank" style="color:#FFD700;text-decoration:none;">Jetzt abonnieren →</a></p>
+        <p class="footer-text"><a href="#" onclick="goBack();return false;" style="color:#FFD700;text-decoration:none;">Jetzt abonnieren →</a></p>
       </div>
     </div>
   </footer>
@@ -1062,7 +1074,7 @@
       </div>
       <div>
         <span class="footer-label">Newsletter</span>
-        <p class="footer-text"><a href="https://buttondown.com/titanweiss/subscribe" target="_blank" style="color:#FFD700;text-decoration:none;">Jetzt abonnieren →</a></p>
+        <p class="footer-text"><a href="#" onclick="goBack();return false;" style="color:#FFD700;text-decoration:none;">Jetzt abonnieren →</a></p>
       </div>
     </div>
   </footer>
@@ -1148,7 +1160,7 @@
       </div>
       <div>
         <span class="footer-label">Newsletter</span>
-        <p class="footer-text"><a href="https://buttondown.com/titanweiss/subscribe" target="_blank" style="color:#FFD700;text-decoration:none;">Jetzt abonnieren →</a></p>
+        <p class="footer-text"><a href="#" onclick="goBack();return false;" style="color:#FFD700;text-decoration:none;">Jetzt abonnieren →</a></p>
       </div>
     </div>
   </footer>
@@ -1197,6 +1209,50 @@
       goBack();
     }
   });
+</script>
+
+<script>
+  async function nlSubmit(e) {
+    e.preventDefault();
+    var email = document.getElementById('nl-email').value.trim();
+    var btn   = document.getElementById('nl-btn');
+    var msg   = document.getElementById('nl-msg');
+    if (!email) return;
+    btn.disabled = true;
+    msg.className = 'newsletter-msg';
+    msg.textContent = '';
+    try {
+      var res = await fetch('https://api.buttondown.email/v1/subscribers', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Token dc61a8d1-582b-4d4a-a511-0918b4928e7a'
+        },
+        body: JSON.stringify({ email: email })
+      });
+      if (res.ok || res.status === 201) {
+        msg.className = 'newsletter-msg ok';
+        msg.textContent = 'Eingetragen. Bis Montag!';
+        document.getElementById('nl-email').value = '';
+      } else if (res.status === 400) {
+        var data = await res.json().catch(function(){ return {}; });
+        if (data && data.detail && data.detail.toLowerCase().includes('already')) {
+          msg.className = 'newsletter-msg ok';
+          msg.textContent = 'Du bist bereits eingetragen.';
+        } else {
+          msg.className = 'newsletter-msg err';
+          msg.textContent = 'Ungültige E-Mail-Adresse.';
+        }
+        btn.disabled = false;
+      } else {
+        throw new Error('status ' + res.status);
+      }
+    } catch(err) {
+      msg.className = 'newsletter-msg err';
+      msg.textContent = 'Etwas hat nicht geklappt — bitte nochmal versuchen.';
+      btn.disabled = false;
+    }
+  }
 </script>
 
 <!-- ─── LEGAL FOOTER ─── -->
