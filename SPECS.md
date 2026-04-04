@@ -458,8 +458,7 @@ Prüfe ob PDF erstellt wurde und mindestens 50KB groß ist.
 | GitHub | Versionskontrolle, Trigger | github.com/dea-felix/TITANWEI- |
 | GitHub Pages | Hosting, Auto-Deploy | dea-felix.github.io/TITANWEI- |
 | Buttondown | Newsletter | buttondown.com/titanweiss |
-| GitHub Actions | Vollautomatische Pipeline | `.github/workflows/publish.yml` |
-| Scheduled Task | KI-Inhaltserstellung | `inspiration-kunstmagazin`, Mo+Do 7:10 Uhr |
+| Scheduled Task | KI-Inhaltserstellung + Auto-Publish | `inspiration-kunstmagazin`, Mo+Do 7:10 Uhr |
 
 ### Ordnerstruktur
 ```
@@ -468,20 +467,27 @@ kunstmagazin/
 ├── TITANWEISS_Design_Reference.html      ← verbindliches CSS-Template
 ├── index.html                            ← Startseite
 ├── ausgabe-aktuell.html                  ← immer aktuelle Ausgabe
-├── auto-push.sh                          ← manueller Fallback
-├── check.sh                              ← Health Check vor Publish
+├── archiv.html                           ← Archiv-Übersicht
+├── impressum.html                        ← Impressum (DSGVO-konform)
+├── datenschutz.html                      ← Datenschutzerklärung
+├── og-image.png                          ← 1200×630 Social-Preview-Bild
+├── auto-push.sh                          ← Vollautomatischer Publish-Workflow
+├── check.sh                              ← Health Check (läuft vor jedem Publish)
 ├── newsletter-pause                      ← wenn vorhanden: kein Newsletter
-├── .github/
-│   └── workflows/
-│       └── publish.yml                   ← GitHub Actions (mit Health Check)
+├── fonts/
+│   ├── fonts.css                         ← lokale @font-face Definitionen
+│   ├── montserrat-400/700/900.woff2      ← Montserrat lokal (DSGVO-konform)
+│   └── inter-300/400/500.woff2           ← Inter lokal (DSGVO-konform)
+├── archiv/
+│   └── no-01/index.html                 ← Snapshot Ausgabe 01
 └── ausgaben/
     ├── kuenstler_archiv.json             ← Wiederholungsschutz
     ├── kuenstler_backlog.json            ← Kandidaten für nächste Ausgaben
     ├── ausgaben_zaehler.json             ← Ausgaben-Counter
     └── April 2026/
-        └── No. 01 - 04.2026/
-            ├── TITANWEISS_Ausgabe_01_2026-04-06.html
-            ├── TITANWEISS_Ausgabe_01_2026-04-06.pdf
+        └── No. 02 - 04.2026/
+            ├── TITANWEISS_Ausgabe_02_2026-04-03.html
+            ├── TITANWEISS_Ausgabe_02_2026-04-03.pdf
             └── INHALT.md
 ```
 
@@ -495,23 +501,34 @@ TITANWEISS_Ausgabe_XX_YYYY-MM-DD.html
 ## 7. Publish-Workflow
 
 ### Vollautomatisch (Normalfall)
-1. Scheduled Task erstellt HTML + PDF → legt sie in `ausgaben/`-Ordner
-2. `git add . && git commit -m "Ausgabe X" && git push`
-3. GitHub Actions übernimmt: `ausgabe-aktuell.html` aktualisieren → Netlify deployt → Newsletter via Buttondown
+1. Scheduled Task (`inspiration-kunstmagazin`) startet Mo+Do um 7:10 Uhr
+2. Durchläuft Phasen 0–8: Recherche → Redaktion → Review → HTML → PDF
+3. **Phase 9** ruft `auto-push.sh` auf — das erledigt alles weitere:
+   - `check.sh` läuft als Gate (bricht ab bei Fehlern)
+   - `ausgabe-aktuell.html` wird mit neuer Ausgabe überschrieben
+   - `index.html` Ausgabe-Nummer wird aktualisiert
+   - `archiv/no-XX/index.html` Snapshot wird erstellt
+   - `archiv.html` bekommt neuen Eintrag
+   - Git Push → GitHub Pages deployt automatisch
+   - Newsletter an alle Abonnenten via Buttondown API
 
 ### Newsletter pausieren
-Leere Datei `newsletter-pause` in Root-Ordner legen und pushen. Löschen → läuft wieder.
+Leere Datei `newsletter-pause` in Root-Ordner anlegen:
+```bash
+touch ~/Desktop/kunstmagazin/newsletter-pause && cd ~/Desktop/kunstmagazin && git add newsletter-pause && git commit -m "Newsletter pausiert" && git push
+```
+Löschen → läuft wieder:
+```bash
+rm ~/Desktop/kunstmagazin/newsletter-pause && cd ~/Desktop/kunstmagazin && git add -A && git commit -m "Newsletter wieder aktiv" && git push
+```
 
 ### Manueller Fallback
 ```bash
-bash /Users/felixweckner/Desktop/kunstmagazin/auto-push.sh
+bash ~/Desktop/kunstmagazin/auto-push.sh
 ```
 
-### Sync-Problem vermeiden
-Nach jedem manuellen Design-Edit an `ausgabe-aktuell.html`:
-```bash
-cp ausgabe-aktuell.html "ausgaben/April 2026/No. 01 - 04.2026/TITANWEISS_Ausgabe_01_2026-04-06.html"
-```
+### Fonts — DSGVO-Hinweis
+Google Fonts sind lokal eingebunden (`fonts/`). Bei neuen Ausgaben immer `<link rel="stylesheet" href="fonts/fonts.css">` verwenden — KEIN Google Fonts CDN.
 
 ---
 
@@ -560,20 +577,45 @@ cp ausgabe-aktuell.html "ausgaben/April 2026/No. 01 - 04.2026/TITANWEISS_Ausgabe
 
 ---
 
-## 11. Offene Aufgaben
+## 11. Rechtliches
 
-- [ ] Buttondown-Branding einrichten (Tint-Farbe Gold, Description, Absender-Name)
-- [ ] Custom Domain überlegen (z.B. titanweiss.de oder titanweiss.art)
-- [ ] Echter Inhalt für Ausgabe No. 1 (aktuell Beispielinhalt auf der Website)
-- [x] Mobile-Optimierung — Responsive-Regeln in Abschnitt 2 festgehalten
-- [ ] Meta-Tags / SEO (og:title, og:description, og:image)
-- [ ] KI-Pipeline direkt mit GitHub Actions verbinden (Scheduled Task → Auto-Push ohne Terminal)
+### Impressum
+- Betreiber: Felix Weckner, Staustraße 14, 26122 Oldenburg
+- Kontakt: felixweckner@icloud.com
+- KI-Hinweis + Haftungsausschluss vorhanden (`impressum.html`)
+- Urheberrecht: eigene redaktionelle Leistungen, KI-unterstützt, Felix trägt Verantwortung
+
+### Datenschutzerklärung (`datenschutz.html`)
+- Hosting: GitHub Pages — Server-Logs max. 14 Tage
+- Schriftarten: lokal eingebunden, kein Google Fonts CDN
+- Newsletter: Buttondown, Rechtsgrundlage Einwilligung, Speicherung bis Abmeldung
+- Cookies: keine
+- KI-Werkzeuge: Claude von Anthropic, keine Besucherdaten werden übermittelt
+- Aufsichtsbehörde: LfD Niedersachsen, Hannover
+- KI-Kennzeichnungspflicht (EU AI Act Art. 50): gilt ab 2. August 2026
+
+### SEO & Social
+- og:image: `og-image.png` (1200×630px, weiß/schwarz/gold)
+- Alle Seiten: og:title, og:description, og:image, Twitter Card
+- Impressum + Datenschutz: `noindex, nofollow`
+
+---
+
+## 12. Offene Aufgaben
+
+- [ ] Custom Domain (titanweiss.de oder titanweiss.art)
+- [ ] Buttondown-Branding (Tint-Farbe Gold, Description, Absender-Name)
+- [x] Impressum + Datenschutz (DSGVO-konform, April 2026)
+- [x] Google Fonts lokal eingebunden
+- [x] SEO Meta-Tags + og:image
+- [x] KI-Pipeline vollautomatisch (Mo+Do 7:10 Uhr, Phasen 0–9)
+- [x] Mobile-Optimierung
 
 ---
 
 ---
 
-## 12. Emergenz-Agenten
+## 13. Emergenz-Agenten
 
 Referenz-Definitionen für die Agent-Infrastruktur des EMERGENZ-Projekts.
 
