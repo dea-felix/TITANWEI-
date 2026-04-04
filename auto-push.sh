@@ -89,10 +89,25 @@ PYEOF
 # Neuen Eintrag in archiv.html einfügen (falls noch nicht vorhanden)
 if ! grep -q "archiv/no-$nummer_padded/index.html" "$REPO_DIR/archiv.html"; then
     python3 - <<PYEOF
+import re
+
+# Zusammenfassung aus Meta-Description der Ausgabe extrahieren
+summary = ""
+try:
+    with open("$latest", "r") as f:
+        src = f.read()
+    m = re.search(r'<meta name="description" content="([^"]+)"', src)
+    if m:
+        # "Aktuelle Ausgabe: " vorne abschneiden falls vorhanden
+        summary = re.sub(r'^Aktuelle Ausgabe:\s*', '', m.group(1))
+except:
+    pass
+
 with open("$REPO_DIR/archiv.html", "r") as f:
     content = f.read()
 
-new_entry = '      <a class="archiv-item" href="archiv/no-$nummer_padded/index.html">No. $nummer_padded</a>\n'
+summary_html = f'\n        <div class="archiv-summary">{summary}</div>' if summary else ''
+new_entry = f'      <div class="archiv-item">\n        <a href="archiv/no-$nummer_padded/index.html">No. $nummer_padded</a>{summary_html}\n      </div>\n'
 
 # Vor dem schließenden </div> der archiv-list einfügen
 content = content.replace('    </div>\n  </div>', new_entry + '    </div>\n  </div>', 1)
