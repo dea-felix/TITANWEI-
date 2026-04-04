@@ -1,0 +1,5 @@
+{
+  "version": 1,
+  "beschreibung": "Kandidaten aus Phase 1 die nicht in die aktuelle Ausgabe gekommen sind. Phase 1 liest diese Datei und priorisiert Backlog-Kandidaten vor neuer Recherche.",
+  "backlog": []
+}

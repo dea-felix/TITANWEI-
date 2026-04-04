@@ -19,7 +19,7 @@ Ein persönliches Kunstmagazin von Felix Weckner. Erscheint jeden Montag und Don
 ## 2. Design-System
 
 ### Philosophie
-Minimalistisch, clean, Apple-Style. Keine Boxen, keine Kästen, keine überflüssigen Elemente. Viel Weißraum. Alles atmet. Das verbindliche CSS-Template liegt in `TITANWEISS_Design_Reference.html`.
+Minimalistisch, clean, Apple-Style. Keine Boxen, keine Kästen, keine überflüssigen Elemente. Viel Weißraum. Alles atmet. Alle Design-Regeln sind in dieser Datei dokumentiert.
 
 ### Farben
 | Token | Wert | Verwendung |
@@ -529,7 +529,6 @@ if repo:
 ```
 kunstmagazin/
 ├── SPECS.md                              ← diese Datei — einzige Wahrheit
-├── TITANWEISS_Design_Reference.html      ← verbindliches CSS-Template
 ├── index.html                            ← Startseite
 ├── ausgabe-aktuell.html                  ← immer aktuelle Ausgabe
 ├── archiv.html                           ← Archiv-Übersicht
@@ -643,7 +642,7 @@ Google Fonts sind lokal eingebunden (`fonts/`). Bei neuen Ausgaben immer `<link 
 7. Sprache: Deutsch.
 8. Akzentfarbe: `#FFD700`. Nicht `#c9a227`.
 9. Layout-Reihenfolge: Zeitgeist → Künstler → Atelier Studie → Ausstellungen. Immer.
-10. Design immer aus `TITANWEISS_Design_Reference.html` kopieren.
+10. Design immer aus SPECS.md Section 2 (Design-System) übernehmen.
 11. Qualität vor Geschwindigkeit. Immer.
 
 ---
