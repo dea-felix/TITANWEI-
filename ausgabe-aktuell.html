@@ -1220,19 +1220,18 @@
     if (!email) return;
     btn.disabled = true;
     msg.className = 'newsletter-msg';
-    msg.textContent = '';
+    msg.textContent = '…';
     // Formular im versteckten iframe absenden — Buttondown löst Opt-in-Mail aus,
     // der Redirect landet im iframe, die Seite bleibt unberührt.
-    var iframe = document.getElementById('nl-iframe');
-    iframe.onload = function() {
-      msg.className = 'newsletter-msg ok';
-      msg.textContent = 'Fast geschafft — bitte E-Mail bestätigen!';
-      document.getElementById('nl-email').value = '';
-      iframe.onload = null;
-    };
     var form = document.getElementById('nl-hidden-form');
     form.elements['email'].value = email;
     form.submit();
+    // Nach 1,5 Sek. Bestätigung zeigen (iframe-Load ist nicht zuverlässig cross-origin)
+    setTimeout(function() {
+      msg.className = 'newsletter-msg ok';
+      msg.innerHTML = 'Fast geschafft — bitte E-Mail bestätigen!<br><span style="font-size:0.68rem;opacity:0.7;">Nichts da? Kurz im Spam-Ordner nachschauen.</span>';
+      document.getElementById('nl-email').value = '';
+    }, 1500);
   }
 </script>
 
@@ -1244,7 +1243,7 @@
       target="nl-iframe"
       style="display:none;">
   <input type="email" name="email" value="">
-  <input type="hidden" name="redirect" value="about:blank">
+  <input type="hidden" name="redirect" value="https://dea-felix.github.io/TITANWEI-/danke.html">
 </form>
 
 <!-- ─── LEGAL FOOTER ─── -->
