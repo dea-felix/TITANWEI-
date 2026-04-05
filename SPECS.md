@@ -31,7 +31,7 @@ Minimalistisch, clean, Apple-Style. Keine Boxen, keine Kästen, keine überflüs
 | Sekundärtext | `#555555` | Einleitungen, Fließtext |
 | Grau | `#999999` | Metainfos, Labels |
 | Trennlinie | `#f0f0f0` | Divider |
-| **Akzentfarbe** | **`#FFD700`** | **Links, Labels, CTAs — NIE `#c9a227`** |
+| **Akzentfarbe** | **`#EDB800`** | **Links, Labels, CTAs — NIE `#c9a227`** |
 
 ### Typografie
 | Schrift | Gewichte | Verwendung |
@@ -61,14 +61,14 @@ Das Logo ist immer identisch — nie abweichen:
 
 **Ausgaben-Label** (über dem Logo):
 - Format: `No. XX` (Landing) oder `No. XX · Monat YYYY` (Kontext-abhängig)
-- Farbe: `#FFD700` Gold
+- Farbe: `#EDB800` Gold
 - Schrift: Montserrat 700, uppercase, winzig (`0.55rem` / `10px`)
 
 ### Design-Regeln
 - **Hintergrund überall: `#ffffff` (reines Weiß — "Titanweiß")** — keine grauen Sections, kein `#f8f8f8`, kein `#fafafa`, auch Footer weiß
 - **Keine Kästen, keine Cards, keine Borders** — Zeitgeist "Im Kommen" als saubere Liste mit `border-bottom: 1px solid #f0f0f0` als Trennlinie, kein Rahmen
 - Keine schwarzen Blöcke, keine Card-Schatten
-- Kategorielinks auf Landing: `#FFD700` Gold, Montserrat 700, uppercase
+- Kategorielinks auf Landing: `#EDB800` Gold, Montserrat 700, uppercase
 - Trennlinien: `1px solid #f0f0f0`
 - Abstände großzügig (min. 40px)
 - Labels: Montserrat 700, uppercase, `letter-spacing: 0.2em+`
@@ -128,7 +128,7 @@ Reihenfolge von oben nach unten:
 - Jeder Eintrag: Name als klickbarer Extern-Link (`→`) → direkt zur Galerie/Institution des Künstlers/der Künstlerin (kein `showSection` — das führt zu Verwirrung)
 - **Im Kommen enthält IMMER andere Künstler:innen als die Künstler:innen-Sektion** — keine Überschneidungen
 - Trennung zwischen Einträgen: `border-bottom: 1px solid #f0f0f0`
-- Name: Montserrat 700, hover → `#FFD700`
+- Name: Montserrat 700, hover → `#EDB800`
 
 ---
 
@@ -159,7 +159,7 @@ index.html (Startseite)
 
 ### Artikel-Ansicht (beim Öffnen einer Kategorie)
 - Fixierter Header erscheint: Logo `TITANWEISS` links → `index.html`, `"← Kategorien"` rechts → `goBack()`
-- Header: Glaseffekt (`backdrop-filter: blur(12px)`), `border-bottom: 1px solid #FFD700`
+- Header: Glaseffekt (`backdrop-filter: blur(12px)`), `border-bottom: 1px solid #EDB800`
 - Jede Kategorie hat eigene Sektion mit `id="section-zeitgeist"` etc.
 - Jede Sektion endet mit eigenem Footer inkl. `"← Alle Kategorien"` Link
 - JavaScript-Regeln: `var` statt `const` (Safari-Kompatibilität), `DOMContentLoaded` statt `load`
@@ -409,7 +409,7 @@ Plant das visuelle Layout.
 
 **Reihenfolge:** Header → Zeitgeist → Künstler+Werke → Atelier Studie → Ausstellungen → Footer
 
-**Design:** Montserrat + Inter, #111111 Text, #FFD700 Gold für Akzente, weißer Hintergrund, extrem viel Weißraum, Apple-Website-Feeling.
+**Design:** Montserrat + Inter, #111111 Text, #EDB800 Gold für Akzente, weißer Hintergrund, extrem viel Weißraum, Apple-Website-Feeling.
 
 **Header (exakt):** TITANWEISS all-black links — "XX / YYYY" rechts
 **Footer (exakt):** TITANWEISS links — "XX / YYYY" rechts — nichts sonst
@@ -445,7 +445,7 @@ Speichere in: `/tmp/phase5a_lateral.md`
 Technischer und rechtlicher Qualitätscheck. Prüfe:
 
 - Lokale Fonts: `<link rel="stylesheet" href="fonts/fonts.css">` vorhanden? **Kein Google Fonts CDN — auch nicht in Ausgaben-Unterordnern!** (DSGVO-Verstoß)
-- Farben: Nur `#FFD700` — kein `#c9a227`, kein anderes Gold?
+- Farben: Nur `#EDB800` — kein `#c9a227`, kein anderes Gold?
 - Responsive: Mobile-Breakpoints vorhanden? Kein horizontales Scrollen?
 - Rechtlich: Links zu `impressum.html` und `datenschutz.html` im Footer?
 - Sicherheit: Alle externen Links mit `target="_blank" rel="noopener"`?
@@ -478,7 +478,7 @@ Arbeite jeden Punkt einzeln ab wie ein Pilot. Erst wenn ALLE bestehen: weiter zu
 - [ ] Zeitgeist-Essay sachlich korrekt?
 - [ ] Layout-Reihenfolge korrekt? (Zeitgeist → Künstler → Atelier Studie → Ausstellungen)
 - [ ] Header-Format: "XX / YYYY"?
-- [ ] Farbe: #FFD700 (kein #c9a227)?
+- [ ] Farbe: #EDB800 (kein #c9a227)?
 - [ ] Footer: nur TITANWEISS + Nummer?
 - [ ] Kein Werk ohne Bild und ohne Link?
 - [ ] KEINE Kunsthalle Oldenburg genannt?
@@ -493,7 +493,7 @@ Speichere in: `/tmp/phase6_review.md`
 
 Baut die HTML-Datei. NUR wenn Phase 6 alle 19 Punkte approved hat.
 
-**Design-System:** Montserrat + Inter (Google Fonts), #ffffff Hintergrund, #111111 Text, #FFD700 Akzente.
+**Design-System:** Montserrat + Inter (Google Fonts), #ffffff Hintergrund, #111111 Text, #EDB800 Akzente.
 
 **Pfad dynamisch ermitteln:**
 ```python
@@ -504,7 +504,7 @@ kunstmagazin_path = paths[0] if paths else None
 
 **Bilder (Drei-Stufen-Regel):**
 1. Wikimedia-Bild: `<img>` Tag mit `loading="lazy"`
-2. Nur Link verfügbar: Gesamter Block als klickbarer `<a>` — dunkler Hintergrund (#1a1a1a), Künstler + Titel + "Werk ansehen →" in #FFD700, 3:2-Verhältnis
+2. Nur Link verfügbar: Gesamter Block als klickbarer `<a>` — dunkler Hintergrund (#1a1a1a), Künstler + Titel + "Werk ansehen →" in #EDB800, 3:2-Verhältnis
 3. Weder noch: Werk komplett weglassen
 
 **Ausstellungskarten:** Zwei Links pro Karte — "Zur Ausstellung →" + "Künstler:in →"
@@ -682,7 +682,7 @@ Google Fonts sind lokal eingebunden (`fonts/`). Bei neuen Ausgaben immer `<link 
 5. **KEINE STOCKFOTOS.** Nie. Kein Unsplash, Pexels, Pixabay.
 6. Ausstellungen NUR Oldenburg + Bremen. MIT spezifischen Links.
 7. Sprache: Deutsch.
-8. Akzentfarbe: `#FFD700`. Nicht `#c9a227`.
+8. Akzentfarbe: `#EDB800`. Nicht `#c9a227`.
 9. Layout-Reihenfolge: Zeitgeist → Künstler → Atelier Studie → Ausstellungen. Immer.
 10. Design immer aus SPECS.md Section 2 (Design-System) übernehmen.
 11. Qualität vor Geschwindigkeit. Immer.

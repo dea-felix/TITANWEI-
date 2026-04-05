@@ -34,7 +34,7 @@ fi
 
 # ── 2. PFLICHTSTRUKTUR ──
 echo "[ 2/7 ] HTML-Struktur"
-for check in "TITANWEISS" "Zeitgeist" "Künstler" "Atelier" "Ausstellung" "FFD700" "<footer" "<header"; do
+for check in "TITANWEISS" "Zeitgeist" "Künstler" "Atelier" "Ausstellung" "EDB800" "<footer" "<header"; do
     if ! grep -q "$check" "$latest"; then
         echo "  ✗ FEHLER: '$check' fehlt im HTML"
         ERRORS=$((ERRORS + 1))

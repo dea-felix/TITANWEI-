@@ -175,7 +175,7 @@ EMAIL_BODY="<!DOCTYPE html>
     </tr>
     <tr>
       <td>
-        <a href='${SITE_URL}/ausgabe-aktuell.html' style='font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#FFD700;text-decoration:none;'>Ausgabe lesen →</a>
+        <a href='${SITE_URL}/ausgabe-aktuell.html' style='font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#EDB800;text-decoration:none;'>Ausgabe lesen →</a>
       </td>
     </tr>
     <tr>
