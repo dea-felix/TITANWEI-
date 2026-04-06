@@ -492,17 +492,62 @@ Speichere in: `/tmp/phase6_review.md`
 
 ---
 
-### PHASE 7: BUILD AGENT
+### PHASE 7: BUILD AGENT (Template-System)
 
-Baut die HTML-Datei. NUR wenn Phase 6 alle 19 Punkte approved hat.
+Baut die HTML-Datei über das Template-System. NUR wenn Phase 6 alle 19 Punkte approved hat.
 
-**Design-System:** Montserrat + Inter (Google Fonts), #ffffff Hintergrund, #111111 Text, #EDB800 Akzente.
+**WICHTIG: Die KI schreibt KEIN vollständiges HTML mehr.** Stattdessen werden nur die Inhalte als separate HTML-Snippets geschrieben. CSS, JavaScript, Header, Footer und die gesamte Seitenstruktur kommen aus `template.html` und werden NIE von der KI generiert. Das spart ~50% der Output-Tokens.
 
 **Pfad dynamisch ermitteln:**
 ```python
 import glob
 paths = glob.glob("/sessions/*/mnt/kunstmagazin/")
 kunstmagazin_path = paths[0] if paths else None
+```
+
+**Schritt 1: Content-Ordner anlegen**
+```python
+import os, json
+content_dir = "/tmp/ausgabe_content"
+os.makedirs(content_dir, exist_ok=True)
+```
+
+**Schritt 2: metadata.json schreiben**
+```python
+meta = {
+    "ausgabe_nr": "XX",       # z.B. "02" — immer zweistellig
+    "monat": "Monatsname",    # z.B. "April" — deutsch, großgeschrieben
+    "jahr": "YYYY",           # z.B. "2026"
+    "datum": "YYYY-MM-DD"     # z.B. "2026-04-10" — heutiges Datum
+}
+with open(f"{content_dir}/metadata.json", "w", encoding="utf-8") as f:
+    json.dump(meta, f, indent=2, ensure_ascii=False)
+```
+
+**Schritt 3: Content-Snippets schreiben (4 Dateien)**
+
+Jede Datei enthält NUR den reinen Inhalt der jeweiligen Sektion — OHNE `<p class="section-label">`, OHNE `<div class="section-inner">`, OHNE Footer. Nur der Content zwischen section-label und dem schließenden `</div>` der section-inner.
+
+- `zeitgeist.html` — Die 4 Zeitgeist-Rubriken (Markt & Preise, Im Kommen, Stil & Material, Zeitgeist-Essay)
+- `kuenstler.html` — Die 5 Künstler:innen-Blöcke
+- `atelier.html` — Die Atelier-Studie
+- `ausstellungen.html` — Die Ausstellungen
+
+Beispiel für eine Content-Datei (`zeitgeist.html`):
+```html
+      <!-- Markt & Preise -->
+      <div class="zeitgeist-rubrik">
+        <p class="rubrik-label">Markt & Preise</p>
+        <h2 class="rubrik-title">Titel hier</h2>
+        <div class="body-text">
+          <p>Inhalt hier...</p>
+        </div>
+      </div>
+
+      <!-- Im Kommen -->
+      <div class="zeitgeist-rubrik">
+        ...
+      </div>
 ```
 
 **Bilder (Drei-Stufen-Regel):**
@@ -512,8 +557,23 @@ kunstmagazin_path = paths[0] if paths else None
 
 **Ausstellungskarten:** Zwei Links pro Karte — "Zur Ausstellung →" + "Künstler:in →"
 
-**Dateiname:** `TITANWEISS_Ausgabe_XX_YYYY-MM-DD.html`
-**Speichern in:** `ausgaben/{Monatsname Jahr}/No. {XX} - {MM}.{YYYY}/`
+**Schritt 4: Build-Script aufrufen**
+```python
+import subprocess
+result = subprocess.run(
+    ["python3", kunstmagazin_path + "build_ausgabe.py", content_dir],
+    capture_output=True, text=True
+)
+print(result.stdout)
+if result.returncode != 0:
+    print("BUILD FEHLER:", result.stderr)
+```
+
+Das Script baut aus `template.html` + Content-Dateien die fertige Ausgabe:
+- **Dateiname:** `TITANWEISS_Ausgabe_XX_YYYY-MM-DD.html`
+- **Speichern in:** `ausgaben/{Monatsname Jahr}/No. {XX} - {MM}.{YYYY}/`
+
+**NIEMALS `template.html` verändern** — das ist die fixe Design-Grundlage. Nur bei expliziten Design-Änderungen durch Felix darf das Template angepasst werden.
 
 ---
 
@@ -579,6 +639,8 @@ Damit `auto-push.sh` direkt pushen und den Newsletter senden kann, müssen in de
 ```
 kunstmagazin/
 ├── SPECS.md                              ← diese Datei — einzige Wahrheit
+├── template.html                         ← FESTES Template (CSS/JS/Struktur) — NIE von KI ändern
+├── build_ausgabe.py                      ← Build-Script: Template + Content → fertige Ausgabe
 ├── index.html                            ← Startseite
 ├── ausgabe-aktuell.html                  ← immer aktuelle Ausgabe
 ├── archiv.html                           ← Archiv-Übersicht
