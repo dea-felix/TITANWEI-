@@ -113,7 +113,11 @@
       letter-spacing: 0.08em;
       color: var(--grey);
       margin-bottom: 60px;
+      text-decoration: none;
+      display: block;
+      transition: opacity 0.2s;
     }
+    .landing-slogan:hover { opacity: 0.5; }
 
     .landing-nav {
       display: flex;
@@ -598,7 +602,7 @@
   <div class="issue-landing" id="landing">
     <span class="landing-label">No. 01 · April 2026</span>
     <a href="index.html" class="landing-logo">TITANWEISS</a>
-    <p class="landing-slogan">Was die Kunst weiß.</p>
+    <a href="index.html" class="landing-slogan">Was die Kunst weiß.</a>
 
     <nav class="landing-nav">
       <a class="landing-nav-item" onclick="showSection('zeitgeist')">Zeitgeist</a>

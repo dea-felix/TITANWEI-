@@ -73,6 +73,9 @@ Das Logo ist immer identisch — nie abweichen:
 - Abstände großzügig (min. 40px)
 - Labels: Montserrat 700, uppercase, `letter-spacing: 0.2em+`
 - Keine gelbe Linie im Header (`border-bottom: none`)
+- **KEIN `landing-logo` auf der Kategorie-Seite** — kein großes TITANWEISS auf der Landing von `ausgabe-aktuell.html`. Die CSS-Klasse `.landing-logo` muss `display: none` haben oder darf gar nicht im HTML erscheinen.
+- **Kategorie-Nav OHNE Trennlinien** — `.landing-nav-item` hat KEIN `border-bottom`. Die Kategorien stehen schlicht und clean untereinander, kein Rahmen, keine Linien zwischen den Items.
+- **`"Was die Kunst weiß."` ist immer ein `<a>`-Tag** — nie ein `<p>`-Tag. Es muss klickbar sein und zu `index.html` führen. CSS: `text-decoration: none`, Hover: `opacity: 0.5`.
 
 ### Responsive — Pflichtanforderung
 - **Die Website muss auf allen Geräten funktionieren** — kein Überschneiden, kein Abschneiden, kein horizontales Scrollen
@@ -567,6 +570,11 @@ if repo:
 | Buttondown | Newsletter | buttondown.com/titanweiss |
 | Scheduled Task | KI-Inhaltserstellung + Auto-Publish | `inspiration-kunstmagazin`, Mo+Do 7:10 Uhr |
 
+### Netzwerk-Allowlist (Cowork-Einstellungen)
+Damit `auto-push.sh` direkt pushen und den Newsletter senden kann, müssen in den Cowork Desktop-Einstellungen unter **"Ausgehenden Netzwerkverkehr erlauben" → "Zusätzlich erlaubte Domains"** folgende Einträge vorhanden sein:
+- `github.com`
+- `api.buttondown.email`
+
 ### Ordnerstruktur
 ```
 kunstmagazin/
@@ -641,8 +649,9 @@ Google Fonts sind lokal eingebunden (`fonts/`). Bei neuen Ausgaben immer `<link 
 ## 8. Newsletter
 
 - **Dienst:** Buttondown (Free Tier, vollständige API)
-- **Versand neuer Ausgaben:** Automatisch via `auto-push.sh` → Buttondown API (`/v1/emails`)
+- **Versand neuer Ausgaben:** Automatisch via `auto-push.sh` → generiert `newsletter-senden.sh` (wird vom nächsten Scheduled Task Run ausgeführt wenn Netzwerk-Allowlist konfiguriert ist)
 - **API-Key:** in `auto-push.sh` hinterlegt (dc61a8d1-…)
+- **Newsletter-Link zeigt auf `index.html`** — NICHT auf `ausgabe-aktuell.html`. Der CTA "Ausgabe lesen →" führt zur Startseite, von der aus der Leser selbst in die Ausgabe navigiert.
 
 ### Signup-Formular (ausgabe-aktuell.html)
 - Kein Redirect zu Buttondown — Seite bleibt offen
