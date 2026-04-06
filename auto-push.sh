@@ -166,7 +166,8 @@ RESPONSE=\$(curl -s -o /tmp/bd_response.json -w "%{http_code}" \\
     -d "{
         \\"subject\\": \\"TITANWEISS — Ausgabe No. ${nummer}\\",
         \\"body\\": \$(echo "\$EMAIL_BODY" | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))'),
-        \\"status\\": \\"about_to_send\\"
+        \\"status\\": \\"about_to_send\\",
+        \\"email_number\\": ${nummer}
     }")
 
 if [ "\$RESPONSE" = "201" ] || [ "\$RESPONSE" = "200" ]; then
