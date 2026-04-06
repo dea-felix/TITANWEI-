@@ -1,5 +1,17 @@
 {
   "version": 1,
   "beschreibung": "Archiv aller Kuenstler/innen die bisher in TITANWEISS erschienen sind. Phase 1 liest diese Datei zuerst und schliesst alle gelisteten Kuenstler/innen aus.",
-  "ausgaben": []
+  "ausgaben": [
+    {
+      "nr": 1,
+      "datum": "2026-04-06",
+      "kuenstlerinnen": [
+        "Luc Tuymans",
+        "Nicole Eisenman",
+        "Lenz Geerk",
+        "Walter Price",
+        "Elizabeth Peyton"
+      ]
+    }
+  ]
 }
