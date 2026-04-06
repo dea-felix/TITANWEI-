@@ -131,9 +131,11 @@ git commit -m "Auto: Ausgabe No. $nummer — $datum_iso" || echo "  (Nichts zu c
 git push
 echo "  ✓ Gepusht → GitHub Pages deployt in ~1 Minute"
 
-# ── 7. NEWSLETTER ──
+# ── 7. NEWSLETTER-SCRIPT GENERIEREN ──
+# (Newsletter-Versand muss vom Mac aus erfolgen — Claude-Sandbox hat keinen
+#  externen Internetzugang zu api.buttondown.email)
 echo ""
-echo "[ 7 ] Newsletter via Buttondown..."
+echo "[ 7 ] Newsletter-Script generieren..."
 
 # Newsletter-Pause prüfen
 if [ -f "$REPO_DIR/newsletter-pause" ]; then
@@ -148,63 +150,42 @@ fi
 BUTTONDOWN_API_KEY="dc61a8d1-582b-4d4a-a511-0918b4928e7a"
 SITE_URL="https://dea-felix.github.io/TITANWEI-"
 
-EMAIL_BODY="<!DOCTYPE html>
-<html>
-<head><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'></head>
-<body style='margin:0;padding:0;background:#ffffff;font-family:Inter,Helvetica,sans-serif;'>
-  <table width='100%' cellpadding='0' cellspacing='0' style='max-width:560px;margin:0 auto;padding:48px 32px;'>
-    <tr>
-      <td style='padding-bottom:40px;border-bottom:1px solid #f0f0f0;'>
-        <span style='font-family:Georgia,serif;font-size:11px;font-weight:700;letter-spacing:0.35em;text-transform:uppercase;color:#111;'>TITANWEISS</span>
-      </td>
-    </tr>
-    <tr>
-      <td style='padding:40px 0 24px;'>
-        <span style='font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#aaa;'>Ausgabe No. ${nummer} &nbsp;—&nbsp; ${datum}</span>
-      </td>
-    </tr>
-    <tr>
-      <td style='padding-bottom:32px;'>
-        <p style='font-size:22px;font-weight:700;line-height:1.3;color:#111;margin:0;'>Die neue Ausgabe ist da.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style='padding-bottom:48px;'>
-        <p style='font-size:15px;color:#555;line-height:1.7;margin:0;'>Zeitgeist, Künstler, Atelier Studie, Ausstellungen — alles frisch recherchiert und aufbereitet.</p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='${SITE_URL}/ausgabe-aktuell.html' style='font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#EDB800;text-decoration:none;'>Ausgabe lesen →</a>
-      </td>
-    </tr>
-    <tr>
-      <td style='padding-top:48px;border-top:1px solid #f0f0f0;margin-top:48px;'>
-        <span style='font-size:11px;color:#ccc;letter-spacing:0.1em;text-transform:uppercase;'>Was die Kunst weiß.</span>
-      </td>
-    </tr>
-  </table>
-</body>
-</html>"
+# Script schreiben das Felix vom Mac Terminal ausführen kann
+cat > "$REPO_DIR/newsletter-senden.sh" <<NEWSLETTER_SCRIPT
+#!/bin/bash
+# TITANWEISS — Newsletter manuell senden
+# Ausführen mit: bash newsletter-senden.sh
 
-RESPONSE=$(curl -s -o /tmp/buttondown_response.json -w "%{http_code}" \
-    -X POST "https://api.buttondown.email/v1/emails" \
-    -H "Authorization: Token ${BUTTONDOWN_API_KEY}" \
-    -H "Content-Type: application/json" \
-    -H "X-Buttondown-Live-Dangerously: true" \
+EMAIL_BODY='<!DOCTYPE html><html><head><meta charset="UTF-8"></head><body style="margin:0;padding:0;background:#ffffff;font-family:Inter,Helvetica,sans-serif;"><table width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;margin:0 auto;padding:48px 32px;"><tr><td style="padding-bottom:40px;border-bottom:1px solid #f0f0f0;"><span style="font-family:Georgia,serif;font-size:11px;font-weight:700;letter-spacing:0.35em;text-transform:uppercase;color:#111;">TITANWEISS</span></td></tr><tr><td style="padding:40px 0 24px;"><span style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#aaa;">Ausgabe No. ${nummer} &nbsp;—&nbsp; ${datum}</span></td></tr><tr><td style="padding-bottom:32px;"><p style="font-size:22px;font-weight:700;line-height:1.3;color:#111;margin:0;">Die neue Ausgabe ist da.</p></td></tr><tr><td style="padding-bottom:48px;"><p style="font-size:15px;color:#555;line-height:1.7;margin:0;">Zeitgeist, Künstler, Atelier Studie, Ausstellungen — alles frisch recherchiert und aufbereitet.</p></td></tr><tr><td><a href="${SITE_URL}/ausgabe-aktuell.html" style="font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#EDB800;text-decoration:none;">Ausgabe lesen →</a></td></tr><tr><td style="padding-top:48px;border-top:1px solid #f0f0f0;"><span style="font-size:11px;color:#ccc;letter-spacing:0.1em;text-transform:uppercase;">Was die Kunst weiß.</span></td></tr></table></body></html>'
+
+RESPONSE=\$(curl -s -o /tmp/bd_response.json -w "%{http_code}" \\
+    -X POST "https://api.buttondown.email/v1/emails" \\
+    -H "Authorization: Token ${BUTTONDOWN_API_KEY}" \\
+    -H "Content-Type: application/json" \\
+    -H "X-Buttondown-Live-Dangerously: true" \\
     -d "{
-        \"subject\": \"TITANWEISS — Ausgabe No. ${nummer}\",
-        \"body\": $(echo "$EMAIL_BODY" | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))'),
-        \"status\": \"about_to_send\"
+        \\"subject\\": \\"TITANWEISS — Ausgabe No. ${nummer}\\",
+        \\"body\\": \$(echo "\$EMAIL_BODY" | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))'),
+        \\"status\\": \\"about_to_send\\"
     }")
+
+if [ "\$RESPONSE" = "201" ] || [ "\$RESPONSE" = "200" ]; then
+    echo "✓ Newsletter gesendet! (Ausgabe No. ${nummer})"
+    rm -f "\$0"
+else
+    echo "✗ Fehler (HTTP \$RESPONSE):"
+    cat /tmp/bd_response.json
+fi
+NEWSLETTER_SCRIPT
+
+chmod +x "$REPO_DIR/newsletter-senden.sh"
+echo "  ✓ newsletter-senden.sh erstellt"
 
 echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-if [ "$RESPONSE" = "201" ] || [ "$RESPONSE" = "200" ]; then
-    echo "  ✓ PUBLISH ABGESCHLOSSEN"
-    echo "  ✓ Newsletter wird gesendet (Ausgabe No. ${nummer})"
-else
-    echo "  ✓ Publish OK — aber Newsletter-Fehler (HTTP $RESPONSE)"
-    cat /tmp/buttondown_response.json 2>/dev/null
-fi
+echo "  ✓ PUBLISH ABGESCHLOSSEN"
+echo ""
+echo "  → Newsletter: im Ordner 'newsletter-senden.sh'"
+echo "    öffne Terminal, führe aus:"
+echo "    bash ~/Documents/Claude/kunstmagazin/newsletter-senden.sh"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"

@@ -103,15 +103,7 @@
     }
 
     .landing-logo {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 900;
-      font-size: clamp(2rem, 6vw, 4rem);
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--text);
-      text-decoration: none;
-      display: block;
-      margin-bottom: 12px;
+      display: none;
     }
 
     .landing-slogan {
@@ -136,20 +128,18 @@
     .landing-nav-item {
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
-      font-size: 0.75rem;
-      letter-spacing: 0.25em;
+      font-size: 0.8rem;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
       color: var(--gold);
       cursor: pointer;
-      padding: 18px 0;
-      border-bottom: 1px solid var(--line);
+      padding: 14px 0;
       width: 100%;
       text-align: center;
       text-decoration: none;
-      transition: color 0.2s, letter-spacing 0.2s;
+      transition: opacity 0.2s;
     }
-    .landing-nav-item:first-child { border-top: 1px solid var(--line); }
-    .landing-nav-item:hover { letter-spacing: 0.32em; color: var(--text); }
+    .landing-nav-item:hover { opacity: 0.6; }
 
     .landing-archive {
       font-family: 'Montserrat', sans-serif;

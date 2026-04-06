@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TITANWEISS — No. 01 · April 2026</title>
   <meta name="description" content="TITANWEISS No. 01 · April 2026. Zeitgenössische Kunst, Fokus Malerei. Artforum-Niveau auf Deutsch.">
-  <link rel="stylesheet" href="../../fonts/fonts.css">
+  <link rel="stylesheet" href="fonts/fonts.css">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -103,15 +103,7 @@
     }
 
     .landing-logo {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 900;
-      font-size: clamp(2rem, 6vw, 4rem);
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--text);
-      text-decoration: none;
-      display: block;
-      margin-bottom: 12px;
+      display: none;
     }
 
     .landing-slogan {
@@ -136,20 +128,18 @@
     .landing-nav-item {
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
-      font-size: 0.75rem;
-      letter-spacing: 0.25em;
+      font-size: 0.8rem;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
       color: var(--gold);
       cursor: pointer;
-      padding: 18px 0;
-      border-bottom: 1px solid var(--line);
+      padding: 14px 0;
       width: 100%;
       text-align: center;
       text-decoration: none;
-      transition: color 0.2s, letter-spacing 0.2s;
+      transition: opacity 0.2s;
     }
-    .landing-nav-item:first-child { border-top: 1px solid var(--line); }
-    .landing-nav-item:hover { letter-spacing: 0.32em; color: var(--text); }
+    .landing-nav-item:hover { opacity: 0.6; }
 
     .landing-archive {
       font-family: 'Montserrat', sans-serif;
@@ -600,14 +590,14 @@
   <!-- STICKY HEADER (hidden on landing) -->
   <header class="article-header" id="article-header">
     <a class="header-back" onclick="goBack()">← Kategorien</a>
-    <a href="../../index.html" class="header-logo">TITANWEISS</a>
+    <a href="index.html" class="header-logo">TITANWEISS</a>
     <span class="header-issue">01 / 2026</span>
   </header>
 
   <!-- LANDING -->
   <div class="issue-landing" id="landing">
     <span class="landing-label">No. 01 · April 2026</span>
-    <a href="../../index.html" class="landing-logo">TITANWEISS</a>
+    <a href="index.html" class="landing-logo">TITANWEISS</a>
     <p class="landing-slogan">Was die Kunst weiß.</p>
 
     <nav class="landing-nav">
@@ -617,7 +607,7 @@
       <a class="landing-nav-item" onclick="showSection('ausstellungen')">Ausstellungen</a>
     </nav>
 
-    <a href="../../archiv.html" class="landing-archive">Archiv</a>
+    <a href="archiv.html" class="landing-archive">Archiv</a>
 
     <form class="landing-newsletter" onsubmit="submitNewsletter(event)">
       <input type="email" id="nl-email" placeholder="deine@email.de" required>
@@ -713,11 +703,11 @@
     <!-- Footer -->
     <div class="section-footer">
       <div>
-        <a href="../../index.html" class="footer-logo">TITANWEISS</a>
+        <a href="index.html" class="footer-logo">TITANWEISS</a>
         <p class="footer-tagline">Was die Kunst weiß.</p>
         <div class="footer-legal" style="margin-top:16px;">
-          <a href="../../impressum.html">Impressum</a>
-          <a href="../../datenschutz.html">Datenschutz</a>
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
         </div>
       </div>
       <div>
@@ -835,11 +825,11 @@
     <!-- Footer -->
     <div class="section-footer">
       <div>
-        <a href="../../index.html" class="footer-logo">TITANWEISS</a>
+        <a href="index.html" class="footer-logo">TITANWEISS</a>
         <p class="footer-tagline">Was die Kunst weiß.</p>
         <div class="footer-legal" style="margin-top:16px;">
-          <a href="../../impressum.html">Impressum</a>
-          <a href="../../datenschutz.html">Datenschutz</a>
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
         </div>
       </div>
       <div>
@@ -924,11 +914,11 @@
     <!-- Footer -->
     <div class="section-footer">
       <div>
-        <a href="../../index.html" class="footer-logo">TITANWEISS</a>
+        <a href="index.html" class="footer-logo">TITANWEISS</a>
         <p class="footer-tagline">Was die Kunst weiß.</p>
         <div class="footer-legal" style="margin-top:16px;">
-          <a href="../../impressum.html">Impressum</a>
-          <a href="../../datenschutz.html">Datenschutz</a>
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
         </div>
       </div>
       <div>
@@ -1002,11 +992,11 @@
     <!-- Footer -->
     <div class="section-footer">
       <div>
-        <a href="../../index.html" class="footer-logo">TITANWEISS</a>
+        <a href="index.html" class="footer-logo">TITANWEISS</a>
         <p class="footer-tagline">Was die Kunst weiß.</p>
         <div class="footer-legal" style="margin-top:16px;">
-          <a href="../../impressum.html">Impressum</a>
-          <a href="../../datenschutz.html">Datenschutz</a>
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
         </div>
       </div>
       <div>
