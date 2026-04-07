@@ -40,12 +40,12 @@ Minimalistisch, clean, Apple-Style. Keine Boxen, keine Kästen, keine überflüs
 | Inter | 300, 400, 500 | Fließtext, Metainfos |
 
 ### Logo — verbindliche Definition
-Das Logo ist immer identisch — nie abweichen:
+Das Logo ist immer identisch — nie abweichen. **Das Logo muss auf JEDER Seite und in JEDEM Kontext exakt gleich aussehen** — Startseite, Header, Footer, Archiv. Kein Unterschied in Gewicht, Spacing oder Stil erlaubt.
 
 | Eigenschaft | Wert |
 |---|---|
 | Text | `TITANWEISS` (immer Großbuchstaben) |
-| Schrift Website | Montserrat 900 |
+| Schrift Website | Montserrat **700** — NICHT 900 (bei 900 wirkt das "a" dicker als auf der Startseite) |
 | Schrift Email | `'Montserrat', 'Trebuchet MS', Arial, sans-serif` (Montserrat via @import wenn möglich, sonst Fallback) |
 | Farbe | `#111111` (schwarz) |
 | Letter-spacing | `0.35em` |
@@ -762,6 +762,7 @@ Google Fonts sind lokal eingebunden (`fonts/`). Bei neuen Ausgaben immer `<link 
 14. **Archiv-Nummern prüfen** — nach dem Kopieren von ausgabe-aktuell.html ins Archiv: `<title>` und `<span class="header-issue">` MÜSSEN die Archiv-Nummer zeigen, nicht die aktuelle Ausgabe.
 15. **Keine unverifizierbaren Superlative** — "Jüngste Künstlerin in der Sammlung des...", "Erste Ausstellung seit..." — nur wenn per WebFetch auf der Quelle bestätigt. Sonst weglassen.
 16. **Kein Google Fonts CDN** — in KEINER Datei, auch nicht in Ausgaben-Unterordnern. Immer lokale `fonts/fonts.css` mit korrektem relativen Pfad.
+17. **Logo überall identisch** — `font-weight: 700`, `letter-spacing: 0.35em`, `text-transform: uppercase`, `color: #111111`. Auf Startseite, im Header, im Footer — exakt gleich. Nie `font-weight: 900` für das Logo (ergibt anderes "a").
 
 ---
 
