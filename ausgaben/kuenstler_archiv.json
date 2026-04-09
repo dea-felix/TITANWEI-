@@ -12,6 +12,17 @@
         "Walter Price",
         "Elizabeth Peyton"
       ]
+    },
+    {
+      "nr": 2,
+      "datum": "2026-04-09",
+      "kuenstlerinnen": [
+        "Christina Quarles",
+        "Lucas Arruda",
+        "Nathanaëlle Herbelin",
+        "Mamma Andersson",
+        "George Rouy"
+      ]
     }
   ]
 }
