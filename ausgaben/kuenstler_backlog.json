@@ -1,5 +1,46 @@
 {
   "version": 1,
   "beschreibung": "Kandidaten aus Phase 1 die nicht in die aktuelle Ausgabe gekommen sind. Phase 1 liest diese Datei und priorisiert Backlog-Kandidaten vor neuer Recherche.",
-  "backlog": []
+  "backlog": [
+    {
+      "name": "Jonas Wood",
+      "geburtsort": "Boston, Massachusetts",
+      "geburtsjahr": 1977,
+      "galerie": "David Zwirner / Gagosian",
+      "notiz": "Figurative Malerei, Pattern & Decoration, Sportmotive — starke Marktposition",
+      "hinzugefuegt_in_ausgabe": 3
+    },
+    {
+      "name": "Conny Maier",
+      "geburtsort": "Berlin",
+      "geburtsjahr": 1987,
+      "galerie": "Hauser & Wirth (ab 2026) / Société Berlin",
+      "notiz": "Deutsche Autodidaktin, Neo-Expressionismus, Pinakothek München Okt 2026 — sehr aktuell",
+      "hinzugefuegt_in_ausgabe": 3
+    },
+    {
+      "name": "Loie Hollowell",
+      "geburtsort": "Woodland, California",
+      "geburtsjahr": 1983,
+      "galerie": "Pace Gallery",
+      "notiz": "Abstrakte Malerei, sensorische Körperkarten, Pace-Vertretung — institutionell stark",
+      "hinzugefuegt_in_ausgabe": 3
+    },
+    {
+      "name": "Lynette Yiadom-Boakye",
+      "geburtsort": "London",
+      "geburtsjahr": 1977,
+      "galerie": "Jack Shainman Gallery / Corvi-Mora",
+      "notiz": "Fictive portraiture, Booker Prize nominiert — Tate-Retrospektive 2020/21 — kanonisch",
+      "hinzugefuegt_in_ausgabe": 3
+    },
+    {
+      "name": "Frank Bowling",
+      "geburtsort": "Bartica, Guyana",
+      "geburtsjahr": 1934,
+      "galerie": "Hauser & Wirth",
+      "notiz": "Abstrakte Malerei, Color Field, Tate-Retrospektive 2019 — historisch wichtig, noch lebend",
+      "hinzugefuegt_in_ausgabe": 3
+    }
+  ]
 }

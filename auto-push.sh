@@ -23,7 +23,7 @@ fi
 # ── 2. NEUESTE AUSGABE FINDEN ──
 echo ""
 echo "[ 2 ] Neueste Ausgabe suchen..."
-latest=$(find "$REPO_DIR/ausgaben" -name "TITANWEISS_Ausgabe_*.html" | sort | tail -1)
+latest=$(find "$REPO_DIR/ausgaben" -name "TITANWEISS_Ausgabe_*.html" -not -path "*/referenz/*" | sort | tail -1)
 
 if [ -z "$latest" ]; then
     echo "✗ Keine Ausgabe gefunden in ausgaben/ — Publish abgebrochen."

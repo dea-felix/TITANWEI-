@@ -4,7 +4,9 @@
 # Aufruf: bash check.sh
 
 set -e
-cd /Users/felixweckner/Desktop/kunstmagazin
+# Dynamischer Pfad: funktioniert in Cowork-Sandbox und lokal
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+cd "$SCRIPT_DIR"
 
 ERRORS=0
 WARNINGS=0
@@ -14,7 +16,7 @@ echo "  TITANWEISS — Health Check"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 
 # ── Neueste Ausgabe finden ──
-latest=$(find ausgaben -name "TITANWEISS_Ausgabe_*.html" | sort | tail -1)
+latest=$(find ausgaben -name "TITANWEISS_Ausgabe_*.html" -not -path "*/referenz/*" | sort | tail -1)
 if [ -z "$latest" ]; then
     echo "✗ FEHLER: Keine Ausgabe gefunden in ausgaben/"
     exit 1
@@ -34,7 +36,7 @@ fi
 
 # ── 2. PFLICHTSTRUKTUR ──
 echo "[ 2/7 ] HTML-Struktur"
-for check in "TITANWEISS" "Zeitgeist" "Künstler" "Atelier" "Ausstellung" "EDB800" "<footer" "<header"; do
+for check in "TITANWEISS" "Zeitgeist" "Künstler" "Atelier" "Ausstellung" "EDB800" "section-footer" "article-header"; do
     if ! grep -q "$check" "$latest"; then
         echo "  ✗ FEHLER: '$check' fehlt im HTML"
         ERRORS=$((ERRORS + 1))
