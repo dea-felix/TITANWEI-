@@ -773,7 +773,8 @@ Google Fonts sind lokal eingebunden (`fonts/`). Bei neuen Ausgaben immer `<link 
 15. **Keine unverifizierbaren Superlative** — "Jüngste Künstlerin in der Sammlung des...", "Erste Ausstellung seit..." — nur wenn per WebFetch auf der Quelle bestätigt. Sonst weglassen.
 16. **Kein Google Fonts CDN** — in KEINER Datei, auch nicht in Ausgaben-Unterordnern. Immer lokale `fonts/fonts.css` mit korrektem relativen Pfad.
 17. **Logo überall identisch** — `font-weight: 700`, `letter-spacing: 0.35em`, `text-transform: uppercase`, `color: #111111`. Auf Startseite, im Header, im Footer — exakt gleich. Nie `font-weight: 900` für das Logo (ergibt anderes "a").
-18. **Keine eigenen CSS-Klassen erfinden** — nur die Klassen aus `template.html` verwenden. Insbesondere "Im Kommen": ausschließlich `icoming-list`, `icoming-item`, `icoming-name` — NIEMALS `im-kommen-*` oder andere Varianten. Das Design muss in jeder Ausgabe identisch sein.
+18. **Kein Name des Herausgebers in redaktionellen Texten** — "Felix", "Felix Weckner" oder jede persönliche Anrede darf NIEMALS in Artikeltexten, Künstlerbeschreibungen, Zeitgeist-Texten oder Atelier-Studien erscheinen. Die Website ist ein öffentliches Magazin, kein persönlicher Brief. Künstler-Empfehlungen neutral formulieren ("Diese Position ist interessant weil...", "Eine Referenz für...") — nie "Für Felix ist..." oder "Was Felix interessant macht:". Ausnahme: Impressum und Datenschutzerklärung (dort gesetzlich erforderlich).
+19. **Keine eigenen CSS-Klassen erfinden** — nur die Klassen aus `template.html` verwenden. Insbesondere "Im Kommen": ausschließlich `icoming-list`, `icoming-item`, `icoming-name` — NIEMALS `im-kommen-*` oder andere Varianten. Das Design muss in jeder Ausgabe identisch sein.
 
 ---
 
