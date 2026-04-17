@@ -132,6 +132,16 @@ Reihenfolge von oben nach unten:
 - **Im Kommen enthält IMMER andere Künstler:innen als die Künstler:innen-Sektion** — keine Überschneidungen
 - Trennung zwischen Einträgen: `border-bottom: 1px solid #f0f0f0`
 - Name: Montserrat 700, hover → `#EDB800`
+- **PFLICHT: Immer exakt diese CSS-Klassen verwenden — nie eigene erfinden:**
+```html
+<div class="icoming-list">
+  <div class="icoming-item">
+    <div class="icoming-name"><a href="[URL]" target="_blank" rel="noopener">Name der Künstlerin →</a></div>
+    <div class="body-text"><p>Beschreibungstext...</p></div>
+  </div>
+</div>
+```
+- **VERBOTEN:** `im-kommen-list`, `im-kommen-item`, `im-kommen-header`, `im-kommen-name`, `im-kommen-link` oder andere selbst erfundene Klassen. Das Template kennt nur `icoming-*`.
 
 ---
 
@@ -763,6 +773,7 @@ Google Fonts sind lokal eingebunden (`fonts/`). Bei neuen Ausgaben immer `<link 
 15. **Keine unverifizierbaren Superlative** — "Jüngste Künstlerin in der Sammlung des...", "Erste Ausstellung seit..." — nur wenn per WebFetch auf der Quelle bestätigt. Sonst weglassen.
 16. **Kein Google Fonts CDN** — in KEINER Datei, auch nicht in Ausgaben-Unterordnern. Immer lokale `fonts/fonts.css` mit korrektem relativen Pfad.
 17. **Logo überall identisch** — `font-weight: 700`, `letter-spacing: 0.35em`, `text-transform: uppercase`, `color: #111111`. Auf Startseite, im Header, im Footer — exakt gleich. Nie `font-weight: 900` für das Logo (ergibt anderes "a").
+18. **Keine eigenen CSS-Klassen erfinden** — nur die Klassen aus `template.html` verwenden. Insbesondere "Im Kommen": ausschließlich `icoming-list`, `icoming-item`, `icoming-name` — NIEMALS `im-kommen-*` oder andere Varianten. Das Design muss in jeder Ausgabe identisch sein.
 
 ---
 
