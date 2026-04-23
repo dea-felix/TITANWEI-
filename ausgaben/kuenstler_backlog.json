@@ -3,36 +3,52 @@
   "beschreibung": "Kandidaten aus Phase 1 die nicht in die aktuelle Ausgabe gekommen sind. Phase 1 liest diese Datei und priorisiert Backlog-Kandidaten vor neuer Recherche.",
   "backlog": [
     {
+      "name": "Anys Reimann",
+      "geburtsort": "Düsseldorf",
+      "geburtsjahr": null,
+      "galerie": null,
+      "notiz": "Weserburg Bremen: erste museale Einzelausstellung 'Mirrorball' 2. Mai – 4. Oktober 2026 — Porträts Schwarzer Frauen, collagierte Malerei",
+      "hinzugefuegt_in_ausgabe": 6
+    },
+    {
+      "name": "Tunji Adeniyi-Jones",
+      "geburtsort": "London",
+      "geburtsjahr": 1992,
+      "galerie": "White Cube / Morán Morán / Nicelle Beauchene",
+      "notiz": "Yale MFA 2017, Yoruba-Bildsprache, Sammlungen Birmingham Museum of Art, Dallas Museum of Art, Pérez Art Museum Miami; White Cube Seoul 2025 'Immersions'",
+      "hinzugefuegt_in_ausgabe": 6
+    },
+    {
+      "name": "Hilary Pecis",
+      "geburtsort": "Fullerton, Kalifornien",
+      "geburtsjahr": 1979,
+      "galerie": "Timothy Taylor",
+      "notiz": "Acryl auf Leinwand, Stillleben/Interieurs/Landschaften, Sammlungen Aïshti Foundation, Orange County Museum of Art, Nasher Museum of Art",
+      "hinzugefuegt_in_ausgabe": 6
+    },
+    {
       "name": "Conny Maier",
       "geburtsort": "Berlin",
       "geburtsjahr": 1987,
       "galerie": "Hauser & Wirth (ab 2026) / Société Berlin",
-      "notiz": "Deutsche Autodidaktin, Neo-Expressionismus, Pinakothek München Okt 2026 — sehr aktuell",
+      "notiz": "Deutsche Autodidaktin, Neo-Expressionismus, Pinakothek München Okt 2026 — sehr aktuell (bereits in Ausgabe 4)",
       "hinzugefuegt_in_ausgabe": 3
     },
     {
-      "name": "Vivian Greven",
-      "geburtsort": "Bonn",
-      "geburtsjahr": 1985,
-      "galerie": "Kadel Willborn / Perrotin",
-      "notiz": "Klassizistische Akte in digital anmutenden Farbfeldern — Sammlungen Hamburger Kunsthalle, Kunstmuseum Bonn, Long Museum Shanghai; 2026 Gruppenausstellung Long Museum West Bund",
-      "hinzugefuegt_in_ausgabe": 5
+      "name": "Jenna Gribbon",
+      "geburtsort": "Knoxville, Tennessee",
+      "geburtsjahr": 1978,
+      "galerie": "MASSIMODECARLO / Fredericks & Freiser / Lévy Gorvy Dayan",
+      "notiz": "Hunter College MFA, intime figurative Malerei, Politik des Schauens; 'Rainbows in Shadow' MASSIMODECARLO Mailand 2025",
+      "hinzugefuegt_in_ausgabe": 6
     },
     {
-      "name": "Doron Langberg",
-      "geburtsort": "Yokneam Moshava, Israel",
-      "geburtsjahr": 1985,
-      "galerie": "Victoria Miro",
-      "notiz": "Großformatige queere Intimität, lichtdurchflutet — MMA, Whitney, National Portrait Gallery London; Kunsthal Rotterdam 2024",
-      "hinzugefuegt_in_ausgabe": 5
-    },
-    {
-      "name": "Shara Hughes",
-      "geburtsort": "Atlanta, Georgia",
-      "geburtsjahr": 1981,
-      "galerie": "David Zwirner",
-      "notiz": "Imaginäre Landschaften, Hybrid aus abstrakter und figurativer Malerei — Whitney Biennale 2017, starker Marktanstieg",
-      "hinzugefuegt_in_ausgabe": 5
+      "name": "Rita Ackermann",
+      "geburtsort": "Budapest",
+      "geburtsjahr": 1968,
+      "galerie": "Hauser & Wirth",
+      "notiz": "Ungarisch-amerikanisch; 'Doubles' Hauser & Wirth Paris 2025, 'Copyists' Centre Pompidou-Metz 2025/26",
+      "hinzugefuegt_in_ausgabe": 6
     }
   ]
 }
