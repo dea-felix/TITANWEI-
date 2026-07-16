@@ -9,6 +9,62 @@
       "galerie": "Hauser & Wirth (ab 2026) / Société Berlin",
       "notiz": "Deutsche Autodidaktin, Neo-Expressionismus, Pinakothek München Okt 2026 — sehr aktuell (bereits in Ausgabe 4)",
       "hinzugefuegt_in_ausgabe": 3
+    },
+    {
+      "name": "Norbert Bisky",
+      "geburtsort": "Leipzig",
+      "geburtsjahr": 1970,
+      "galerie": "Esther Schipper / König Galerie",
+      "notiz": "Schüler von Baselitz und Jim Dine, expressiv-figurative Malerei — starker Baselitz-Bezug für spätere Ausgabe.",
+      "hinzugefuegt_in_ausgabe": 11
+    },
+    {
+      "name": "Nicolas Party",
+      "geburtsort": "Lausanne",
+      "geburtsjahr": 1980,
+      "galerie": "Hauser & Wirth (Konsortium)",
+      "notiz": "Pastell-Landschaften/Porträts, hohe Institutionsdichte — evtl. zu dekorativ fuer expressionistischen Schwerpunkt.",
+      "hinzugefuegt_in_ausgabe": 11
+    },
+    {
+      "name": "Toyin Ojih Odutola",
+      "geburtsort": "Ile-Ife, Nigeria",
+      "geburtsjahr": 1985,
+      "galerie": "Jack Shainman",
+      "notiz": "Zeichnung/Malerei, starke Institutionspräsenz — fuer Zeichnungs-Schwerpunktausgabe.",
+      "hinzugefuegt_in_ausgabe": 11
+    },
+    {
+      "name": "Danielle McKinney",
+      "geburtsort": "Montgomery, Alabama",
+      "geburtsjahr": 1981,
+      "galerie": "Marianne Boesky",
+      "notiz": "Ex-Fotografin, seit 2023 Oelmalerei, intime Interieurs. Sammlungen Met, Hirshhorn, LACMA.",
+      "hinzugefuegt_in_ausgabe": 11
+    },
+    {
+      "name": "Sanya Kantarovsky",
+      "geburtsort": "Moskau",
+      "geburtsjahr": 1982,
+      "galerie": "Michael Werner / Modern Art / Capitain Petzel / Luhring Augustine",
+      "notiz": "Dunkel-humorvolle expressive Figuration, Diaspora-Bezug.",
+      "hinzugefuegt_in_ausgabe": 11
+    },
+    {
+      "name": "Danica Lundy",
+      "geburtsort": "Salt Spring Island, Kanada",
+      "geburtsjahr": 1991,
+      "galerie": "White Cube (Mason's Yard)",
+      "notiz": "Psychologisch aufgeladene Figuration, gute Emerging-Kandidatin.",
+      "hinzugefuegt_in_ausgabe": 11
+    },
+    {
+      "name": "Tomm El-Saieh",
+      "geburtsort": "Port-au-Prince, Haiti",
+      "geburtsjahr": 1984,
+      "galerie": "Luhring Augustine",
+      "notiz": "Dichte rhythmische Abstraktion, Vodou-Trance-Bezug — starker Kandidat fuer Abstraktions-Schwerpunkt.",
+      "hinzugefuegt_in_ausgabe": 11
     }
   ]
 }
