@@ -23,7 +23,10 @@ fi
 # ── 2. NEUESTE AUSGABE FINDEN ──
 echo ""
 echo "[ 2 ] Neueste Ausgabe suchen..."
-latest=$(find "$REPO_DIR/ausgaben" -name "TITANWEISS_Ausgabe_*.html" -not -path "*/referenz/*" | sort | tail -1)
+# WICHTIG: nach Dateiname sortieren, nicht nach vollem Pfad — deutsche Monatsnamen
+# (April, Juli, Juni, Mai, ...) sortieren alphabetisch NICHT chronologisch, das
+# wuerde zur falschen "neuesten" Ausgabe fuehren sobald mehrere Monatsordner existieren.
+latest=$(find "$REPO_DIR/ausgaben" -name "TITANWEISS_Ausgabe_*.html" -not -path "*/referenz/*" | while read -r f; do echo "$(basename "$f")|$f"; done | sort | tail -1 | cut -d'|' -f2-)
 
 if [ -z "$latest" ]; then
     echo "✗ Keine Ausgabe gefunden in ausgaben/ — Publish abgebrochen."
@@ -96,7 +99,7 @@ summary = ""
 try:
     with open("$latest", "r") as f:
         src = f.read()
-    names = re.findall(r'class="name-card-name"[^>]*>([^<\n→]+)', src)
+    names = re.findall(r'class="[^"]*name-card-name[^"]*"[^>]*>([^<\n→]+)', src)
     # Pfeile und Whitespace bereinigen
     names = [n.strip().rstrip(' →').strip() for n in names if n.strip()]
     if names:

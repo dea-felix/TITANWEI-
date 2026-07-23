@@ -111,6 +111,28 @@
         "Caroline Walker",
         "Anna Park"
       ]
+    },
+    {
+      "nr": 11,
+      "datum": "2026-07-16",
+      "kuenstlerinnen": [
+        "André Butzer",
+        "Michael Armitage",
+        "Jana Euler",
+        "Daniel Crews-Chubb",
+        "Ilana Savdie"
+      ]
+    },
+    {
+      "nr": 12,
+      "datum": "2026-07-23",
+      "kuenstlerinnen": [
+        "Nicolas Party",
+        "Norbert Bisky",
+        "Sanya Kantarovsky",
+        "Tomm El-Saieh",
+        "Danica Lundy"
+      ]
     }
   ]
 }

@@ -16,7 +16,10 @@ echo "  TITANWEISS — Health Check"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 
 # ── Neueste Ausgabe finden ──
-latest=$(find ausgaben -name "TITANWEISS_Ausgabe_*.html" -not -path "*/referenz/*" | sort | tail -1)
+# WICHTIG: nach Dateiname sortieren, nicht nach vollem Pfad — deutsche Monatsnamen
+# (April, Juli, Juni, Mai, ...) sortieren alphabetisch NICHT chronologisch, das
+# wuerde bei "sort" auf dem vollen Pfad zur falschen "neuesten" Ausgabe fuehren.
+latest=$(find ausgaben -name "TITANWEISS_Ausgabe_*.html" -not -path "*/referenz/*" | while read -r f; do echo "$(basename "$f")|$f"; done | sort | tail -1 | cut -d'|' -f2-)
 if [ -z "$latest" ]; then
     echo "✗ FEHLER: Keine Ausgabe gefunden in ausgaben/"
     exit 1

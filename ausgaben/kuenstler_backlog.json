@@ -3,12 +3,44 @@
   "beschreibung": "Kandidaten aus Phase 1 die nicht in die aktuelle Ausgabe gekommen sind. Phase 1 liest diese Datei und priorisiert Backlog-Kandidaten vor neuer Recherche.",
   "backlog": [
     {
-      "name": "Conny Maier",
-      "geburtsort": "Berlin",
-      "geburtsjahr": 1987,
-      "galerie": "Hauser & Wirth (ab 2026) / Société Berlin",
-      "notiz": "Deutsche Autodidaktin, Neo-Expressionismus, Pinakothek München Okt 2026 — sehr aktuell (bereits in Ausgabe 4)",
-      "hinzugefuegt_in_ausgabe": 3
+      "name": "Toyin Ojih Odutola",
+      "geburtsort": "Ile-Ife, Nigeria",
+      "geburtsjahr": 1985,
+      "galerie": "Jack Shainman",
+      "notiz": "Zeichnung/Malerei, starke Institutionspräsenz — fuer Zeichnungs-Schwerpunktausgabe.",
+      "hinzugefuegt_in_ausgabe": 11
+    },
+    {
+      "name": "Danielle McKinney",
+      "geburtsort": "Montgomery, Alabama",
+      "geburtsjahr": 1981,
+      "galerie": "Marianne Boesky",
+      "notiz": "Ex-Fotografin, seit 2023 Oelmalerei, intime Interieurs. Sammlungen Met, Hirshhorn, LACMA. Nur WebSearch-bestätigt, vor Verwendung per WebFetch gegenlesen.",
+      "hinzugefuegt_in_ausgabe": 11
+    },
+    {
+      "name": "Hurvin Anderson",
+      "geburtsort": "Birmingham (Handsworth), UK",
+      "geburtsjahr": 1965,
+      "galerie": "VeneKlasen (vormals Michael Werner)",
+      "notiz": "Windrush-Generation, laufende Tate-Britain-Einzelausstellung 26.03.–23.08.2026 (70+ Werke). Sammlungen MoMA, Tate. Starker INSTITUTION-Kandidat.",
+      "hinzugefuegt_in_ausgabe": 12
+    },
+    {
+      "name": "Florian Krewer",
+      "geburtsort": "Gerolstein, Deutschland",
+      "geburtsjahr": 1986,
+      "galerie": "VeneKlasen",
+      "notiz": "Meisterschüler von Peter Doig, Kunstakademie Düsseldorf, lebt in New York. Laufende Einzelausstellung Musée d'Art Moderne de Paris, 19.06.2026–04.01.2027 (Schenkung ans Museum). Sammlungen Centre Pompidou, MCA Chicago. Großformatige expressive Figurenmalerei.",
+      "hinzugefuegt_in_ausgabe": 12
+    },
+    {
+      "name": "Andy Robert",
+      "geburtsort": "Les Cayes, Haiti",
+      "geburtsjahr": 1984,
+      "galerie": "VeneKlasen",
+      "notiz": "MFA CalArts, Whitney Independent Study Program, Studio Museum Harlem Residency 2016/17. Malerei zwischen Abstraktion und Figuration. Nur WebSearch-bestätigt, vor Verwendung per WebFetch gegenlesen.",
+      "hinzugefuegt_in_ausgabe": 12
     }
   ]
 }
